@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/routing';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 
 export const Header: React.FC = () => {
@@ -15,6 +15,8 @@ export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const normalizedPathname = pathname.replace(/^\/(en|pt)(?=\/|$)/, '') || '/';
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -22,14 +24,14 @@ export const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: t('work'), href: '/#portfolio' },
-    { label: t('services'), href: '/#services' },
-    { label: t('about'), href: '/#about' },
-    { label: t('contact'), href: '/#contact' },
+    { label: t('work'), href: '#portfolio' },
+    { label: t('services'), href: '#services' },
+    { label: t('about'), href: '#about' },
+    { label: t('contact'), href: '#contact' },
   ];
 
   const handleLanguageToggle = (locale: 'en' | 'pt') => {
-    router.push(pathname, { locale });
+    router.replace(normalizedPathname as '/', { locale });
   };
 
   return (
