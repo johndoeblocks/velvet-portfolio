@@ -1,46 +1,32 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import EmailJSInit from "@/components/email-js-init"
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import '@/app/globals.css';
 
-const inter = Inter({ subsets: ["latin"] })
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
-  title: "Velvet Neuron | Desenvolvimento Web em Póvoa de Santa Iria, Portugal",
-  description:
-    "Empresa de desenvolvimento web em Póvoa de Santa Iria, Portugal. Especialistas em soluções web inovadoras, desenvolvimento full-stack, design UI/UX e soluções web3.",
-  keywords:
-    "desenvolvimento web, portugal, póvoa de santa iria, web development, full-stack, UI/UX, web3, react, next.js",
-  openGraph: {
-    title: "Velvet Neuron | Desenvolvimento Web em Póvoa de Santa Iria, Portugal",
-    description:
-      "Empresa de desenvolvimento web em Póvoa de Santa Iria, Portugal. Especialistas em soluções web inovadoras, desenvolvimento full-stack, design UI/UX e soluções web3.",
-    url: "https://velvetneuron.com",
-    siteName: "Velvet Neuron",
-    locale: "pt_PT",
-    type: "website",
-  },
-  alternates: {
-    languages: {
-      en: "/en",
-      pt: "/",
-    },
-  },
-    generator: 'v0.app'
-}
+  title: 'Velvet Neuron | Digital Product Engineering',
+  description: 'We design and build high-performance digital products that give companies a competitive edge.',
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="pt" className="scroll-smooth">
-      <body className={inter.className}>
-        <EmailJSInit />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
         {children}
       </body>
     </html>
-  )
+  );
 }

@@ -1,0 +1,116 @@
+{
+  "nav": {
+    "work": "Trabalhos",
+    "services": "Serviços",
+    "about": "Sobre",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "headline": "Engenharia para Vantagem Digital",
+    "subheadline": "Desenhamos e construímos produtos digitais de alto desempenho que dão às empresas uma vantagem competitiva.",
+    "cta_work": "Ver Trabalhos",
+    "cta_project": "Iniciar Projeto"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "description": "Soluções completas para empresas modernas",
+    "product_engineering": "Engenharia de Produtos",
+    "product_engineering_desc": "Plataformas web e aplicações personalizadas construídas para escala e desempenho.",
+    "ai_automation": "IA e Automação",
+    "ai_automation_desc": "Sistemas inteligentes que simplificam operações e desbloqueiam novas possibilidades.",
+    "web_platforms": "Plataformas Web",
+    "web_platforms_desc": "Aplicações de alto desempenho com experiências de utilizador excecionais.",
+    "trading_data": "Sistemas de Trading e Dados",
+    "trading_data_desc": "Infraestrutura sofisticada para cargas de trabalho financeiras e analíticas.",
+    "performance": "Otimização de Desempenho",
+    "performance_desc": "Otimização rápida garantindo que seus produtos funcionam no pico de eficiência."
+  },
+  "portfolio": {
+    "title": "Trabalhos em Destaque",
+    "description": "Projetos recentes que mostram a nossa experiência",
+    "view_project": "Ver Projeto",
+    "projects": {
+      "dominos_norway": {
+        "name": "Dominos Noruega",
+        "category": "Plataforma de E-commerce",
+        "description": "Contribuição / colaboração técnica no redesenho completo da plataforma e otimização de desempenho."
+      },
+      "dominos_sweden": {
+        "name": "Dominos Suécia",
+        "category": "Plataforma de E-commerce",
+        "description": "Contribuição / colaboração técnica em experiência de encomenda perfeita com gestão de inventário em tempo real."
+      },
+      "burberry": {
+        "name": "Burberry",
+        "category": "E-commerce de Luxo",
+        "description": "Contribuição / colaboração técnica em plataforma digital premium apresentando as últimas coleções."
+      },
+      "talho_halal": {
+        "name": "Talho Halal",
+        "category": "Plataforma de Restaurante",
+        "description": "Plataforma de restaurante moderna com integração de entrega e atualizações em tempo real."
+      },
+      "scoreplay": {
+        "name": "Scoreplay",
+        "category": "Análise de Desportos",
+        "description": "Plataforma de análise de desportos avançada com processamento de dados ao vivo."
+      },
+      "quizflow": {
+        "name": "QuizFlow",
+        "category": "Tecnologia Educacional",
+        "description": "Plataforma de questionários interativos com recursos de colaboração em tempo real."
+      }
+    }
+  },
+  "process": {
+    "title": "Nosso Processo",
+    "description": "Uma abordagem estruturada para construir produtos digitais excepcionais",
+    "step_1": {
+      "title": "Estratégia",
+      "description": "Analisamos seus objetivos e definimos uma estratégia digital clara."
+    },
+    "step_2": {
+      "title": "Arquitetura",
+      "description": "Desenhamos sistemas escaláveis que crescem com o seu negócio."
+    },
+    "step_3": {
+      "title": "Desenvolvimento",
+      "description": "Construímos aplicações prontas para produção com engenharia de precisão."
+    },
+    "step_4": {
+      "title": "Lançamento",
+      "description": "Implemente com confiança e monitore cada métrica."
+    },
+    "step_5": {
+      "title": "Crescimento",
+      "description": "Otimize continuamente e escale inteligentemente."
+    }
+  },
+  "technology": {
+    "title": "Stack de Tecnologia",
+    "description": "Usamos ferramentas e plataformas de ponta"
+  },
+  "about": {
+    "title": "Sobre Velvet Neuron",
+    "description": "Construímos infraestrutura digital para empresas que querem avançar mais rápido e operar de forma mais inteligente.",
+    "mission": "Nossa missão é engenharia de vantagem digital através de precisão, inovação e artesanato."
+  },
+  "contact": {
+    "title": "Vamos construir algo excepcional.",
+    "description": "Pronto para transformar sua presença digital? Entre em contato com nossa equipa.",
+    "form": {
+      "name": "Seu Nome",
+      "email": "Seu Email",
+      "company": "Nome da Empresa",
+      "project": "Conte-nos sobre seu projeto",
+      "submit": "Enviar Mensagem",
+      "success": "Obrigado! Entraremos em contato em breve.",
+      "error": "Algo correu mal. Por favor, tente novamente."
+    }
+  },
+  "footer": {
+    "company": "Velvet Neuron",
+    "rights": "Todos os direitos reservados.",
+    "follow": "Siga-nos"
+  }
+}

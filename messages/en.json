@@ -1,0 +1,116 @@
+{
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "Engineering Digital Advantage",
+    "subheadline": "We design and build high-performance digital products that give companies a competitive edge.",
+    "cta_work": "View Work",
+    "cta_project": "Start a Project"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Comprehensive solutions for modern businesses",
+    "product_engineering": "Product Engineering",
+    "product_engineering_desc": "Custom web platforms and applications built for scale and performance.",
+    "ai_automation": "AI & Automation",
+    "ai_automation_desc": "Intelligent systems that streamline operations and unlock new possibilities.",
+    "web_platforms": "Web Platforms",
+    "web_platforms_desc": "High-performance applications with exceptional user experiences.",
+    "trading_data": "Trading & Data Systems",
+    "trading_data_desc": "Sophisticated infrastructure for financial and analytical workloads.",
+    "performance": "Performance Optimization",
+    "performance_desc": "Rapid-fire optimization ensuring your products run at peak efficiency."
+  },
+  "portfolio": {
+    "title": "Featured Work",
+    "description": "Recent projects showcasing our expertise",
+    "view_project": "View Project",
+    "projects": {
+      "dominos_norway": {
+        "name": "Dominos Norway",
+        "category": "E-commerce Platform",
+        "description": "Work contribution / technical collaboration on complete platform redesign and performance optimization."
+      },
+      "dominos_sweden": {
+        "name": "Dominos Sweden",
+        "category": "E-commerce Platform",
+        "description": "Work contribution / technical collaboration on seamless ordering experience with real-time inventory management."
+      },
+      "burberry": {
+        "name": "Burberry",
+        "category": "Luxury E-commerce",
+        "description": "Work contribution / technical collaboration on premium digital platform showcasing latest collections."
+      },
+      "talho_halal": {
+        "name": "Talho Halal",
+        "category": "Restaurant Platform",
+        "description": "Modern restaurant platform with delivery integration and real-time updates."
+      },
+      "scoreplay": {
+        "name": "Scoreplay",
+        "category": "Sports Analytics",
+        "description": "Advanced sports analytics platform with live data processing."
+      },
+      "quizflow": {
+        "name": "QuizFlow",
+        "category": "Educational Tech",
+        "description": "Interactive quiz platform with real-time collaboration features."
+      }
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "description": "A structured approach to building exceptional digital products",
+    "step_1": {
+      "title": "Strategy",
+      "description": "We analyze your goals and define a clear digital strategy."
+    },
+    "step_2": {
+      "title": "Architecture",
+      "description": "Design scalable systems that grow with your business."
+    },
+    "step_3": {
+      "title": "Development",
+      "description": "Build production-ready applications with precision engineering."
+    },
+    "step_4": {
+      "title": "Launch",
+      "description": "Deploy with confidence and monitor every metric."
+    },
+    "step_5": {
+      "title": "Growth",
+      "description": "Optimize continuously and scale intelligently."
+    }
+  },
+  "technology": {
+    "title": "Technology Stack",
+    "description": "We use cutting-edge tools and platforms"
+  },
+  "about": {
+    "title": "About Velvet Neuron",
+    "description": "We build digital infrastructure for companies that want to move faster and operate smarter.",
+    "mission": "Our mission is to engineer digital advantage through precision, innovation, and craftsmanship."
+  },
+  "contact": {
+    "title": "Let's build something exceptional.",
+    "description": "Ready to transform your digital presence? Get in touch with our team.",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "company": "Company Name",
+      "project": "Tell us about your project",
+      "submit": "Send Message",
+      "success": "Thank you! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "company": "Velvet Neuron",
+    "rights": "All rights reserved.",
+    "follow": "Follow us"
+  }
+}

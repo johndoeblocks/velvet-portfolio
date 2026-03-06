@@ -1,76 +1,151 @@
-"use client"
+'use client';
 
-import type React from "react"
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
-import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { useLanguage } from "@/context/language-context"
-
-export default function HeroSection() {
-  const { t } = useLanguage()
-
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault()
-
-    // Find the contact section or the Get In Touch heading
-    const contactSection = document.getElementById("contact")
-    const getInTouchHeading = document.querySelector("#contact h2")
-
-    if (contactSection) {
-      // Scroll to the contact section with offset to account for fixed header
-      const headerHeight = 80 // Approximate header height
-      const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      })
-
-      // Focus on the heading for accessibility
-      if (getInTouchHeading && getInTouchHeading instanceof HTMLElement) {
-        getInTouchHeading.focus()
-      }
-    }
-  }
+export const HeroSection: React.FC = () => {
+  const t = useTranslations('hero');
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-green-950 to-gray-950"></div>
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-800 rounded-full filter blur-[100px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-700 rounded-full filter blur-[100px]"></div>
-      </div>
-      <div className="container mx-auto px-4 relative z-10 text-center">
-        <div className="mx-auto mb-8 w-32 h-32">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9B1jcD6hpOyJWyQrf9ycJ6A0XVaFKh.png"
-            alt="Velvet Neuron Logo"
-            width={128}
-            height={128}
-            className="w-full h-full object-contain"
-          />
-        </div>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 tracking-tight">
-            Velvet Neuron
-          </span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">{t("tagline")}</p>
-        <Button
-          onClick={scrollToContact}
-          className="bg-gradient-to-r from-green-700 to-emerald-600 hover:from-green-800 hover:to-emerald-700 text-white text-lg px-8 py-6 h-auto border-0"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated gradient orbs */}
+      <motion.div
+        className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[120px]"
+        animate={{
+          x: [0, 40, 0],
+          y: [0, -30, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"
+        animate={{
+          x: [0, -30, 0],
+          y: [0, 20, 0],
+          scale: [1.1, 1, 1.1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[100px]"
+        animate={{
+          x: [-150, -100, -150],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-40" />
+
+      {/* Radial fade from center */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
+        {/* Logo badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex justify-center mb-10"
         >
-          {t("getInTouch")}
-        </Button>
-        <div className="mt-16">
-          <Link href="#about" className="inline-flex items-center text-gray-400 hover:text-white transition-colors">
-            <span className="mr-2">{t("discoverMore")}</span>
-            <ChevronDown className="animate-bounce" />
-          </Link>
-        </div>
+          <div className="relative">
+            <Image
+              src="/logo.png"
+              alt="Velvet Neuron"
+              width={80}
+              height={80}
+              className="animate-float"
+              priority
+            />
+            {/* Glow behind logo */}
+            <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-2xl scale-150" />
+          </div>
+        </motion.div>
+
+        {/* Pill badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="inline-flex items-center space-x-2 mb-8 px-4 py-2 bg-white/[0.04] border border-white/[0.08] rounded-full backdrop-blur-sm"
+        >
+          <div className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" />
+          <span className="text-xs text-gray-400 font-medium tracking-widest uppercase">
+            Digital Systems · AI Tools · Trading Infrastructure
+          </span>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="text-5xl sm:text-7xl md:text-[5.5rem] font-black leading-[0.95] tracking-tight mb-8 text-glow"
+        >
+          <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
+            {t('headline')}
+          </span>
+        </motion.h1>
+
+        {/* Subheadline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
+        >
+          {t('subheadline')}
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <motion.a
+            href="#portfolio"
+            className="group px-8 py-4 bg-white text-black font-semibold rounded-full inline-flex items-center space-x-2 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-shadow duration-500"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span>{t('cta_work')}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            className="group px-8 py-4 bg-white/[0.06] text-white font-semibold rounded-full border border-white/[0.1] inline-flex items-center space-x-2 hover:bg-white/[0.1] hover:border-white/[0.2] transition-all duration-500"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span>{t('cta_project')}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.a>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-1.5"
+          >
+            <motion.div className="w-1 h-1.5 bg-white/40 rounded-full" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
