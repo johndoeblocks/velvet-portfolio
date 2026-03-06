@@ -12,6 +12,7 @@ export const Header: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const activeLocale: 'en' | 'pt' = currentLocale.startsWith('pt') ? 'pt' : 'en';
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,6 +32,7 @@ export const Header: React.FC = () => {
   ];
 
   const handleLanguageToggle = (locale: 'en' | 'pt') => {
+    if (locale === activeLocale) return;
     router.replace(normalizedPathname as '/', { locale });
   };
 
@@ -84,13 +86,13 @@ export const Header: React.FC = () => {
                 key={locale}
                 onClick={() => handleLanguageToggle(locale)}
                 className={`relative px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                  currentLocale === locale
+                  activeLocale === locale
                     ? 'text-white'
                     : 'text-gray-500 hover:text-gray-300'
                 }`}
                 whileTap={{ scale: 0.95 }}
               >
-                {currentLocale === locale && (
+                {activeLocale === locale && (
                   <motion.div
                     layoutId="locale-indicator"
                     className="absolute inset-0 bg-purple-600/80 rounded-full"
@@ -120,13 +122,13 @@ export const Header: React.FC = () => {
                 key={locale}
                 onClick={() => handleLanguageToggle(locale)}
                 className={`relative px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
-                  currentLocale === locale
+                  activeLocale === locale
                     ? 'text-white'
                     : 'text-gray-500'
                 }`}
                 whileTap={{ scale: 0.95 }}
               >
-                {currentLocale === locale && (
+                {activeLocale === locale && (
                   <motion.div
                     layoutId="locale-indicator-mobile"
                     className="absolute inset-0 bg-purple-600/80 rounded-full"
