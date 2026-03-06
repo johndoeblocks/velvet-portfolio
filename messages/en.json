@@ -25,6 +25,9 @@
     "performance": "Performance Optimization",
     "performance_desc": "Rapid-fire optimization ensuring your products run at peak efficiency."
   },
+  "promoVideo": {
+    "title": "Promotional Video"
+  },
   "portfolio": {
     "title": "Featured Work",
     "description": "Recent projects showcasing our expertise",

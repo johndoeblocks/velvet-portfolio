@@ -25,6 +25,9 @@
     "performance": "Otimização de Desempenho",
     "performance_desc": "Otimização rápida garantindo que seus produtos funcionam no pico de eficiência."
   },
+  "promoVideo": {
+    "title": "Vídeo Promocional"
+  },
   "portfolio": {
     "title": "Trabalhos em Destaque",
     "description": "Projetos recentes que mostram a nossa experiência",
