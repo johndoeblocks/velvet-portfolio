@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
 import { ServicesSection } from '@/components/services-section';
+import { PromoVideoSection } from '@/components/promo-video-section';
 import { PortfolioSection } from '@/components/portfolio-section';
 import { ProcessSection } from '@/components/process-section';
 import { TechnologySection } from '@/components/technology-section';
@@ -32,6 +33,8 @@ export default function Home() {
         <HeroSection />
         <SectionDivider />
         <ServicesSection />
+        <SectionDivider />
+        <PromoVideoSection />
         <SectionDivider />
         <PortfolioSection />
         <SectionDivider />
