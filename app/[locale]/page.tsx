@@ -10,13 +10,11 @@ import { ProcessSection } from '@/components/process-section';
 import { TechnologySection } from '@/components/technology-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
-import { CustomCursor } from '@/components/custom-cursor';
 import { SectionDivider } from '@/components/section-divider';
 
 export default function Home() {
   return (
     <>
-      <CustomCursor />
       <motion.main
         className="bg-black text-white overflow-hidden noise relative"
         initial={{ opacity: 0 }}

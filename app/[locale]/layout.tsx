@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { CustomCursor } from '@/components/custom-cursor';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export default async function LocaleLayout({
       disableTransitionOnChange
     >
       <NextIntlClientProvider locale={locale} messages={messages}>
+        <CustomCursor />
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>

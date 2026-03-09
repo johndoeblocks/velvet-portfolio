@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export const PromoVideoSection: React.FC = () => {
   const t = useTranslations('promoVideo');
@@ -33,6 +34,21 @@ export const PromoVideoSection: React.FC = () => {
             preload="metadata"
             playsInline
           />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-8 flex justify-center"
+        >
+          <Link
+            href="/cv"
+            className="inline-flex items-center rounded-full border border-white/15 bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-purple-100"
+          >
+            {t('cta')}
+          </Link>
         </motion.div>
       </div>
     </section>
