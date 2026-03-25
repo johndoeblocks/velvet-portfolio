@@ -1,48 +1,39 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
-import { ServicesSection } from '@/components/services-section';
-import { PromoVideoSection } from '@/components/promo-video-section';
-import { PortfolioSection } from '@/components/portfolio-section';
-import { ProcessSection } from '@/components/process-section';
-import { TechnologySection } from '@/components/technology-section';
-import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import { SectionDivider } from '@/components/section-divider';
 
+const ServicesSection = dynamic(async () => (await import('@/components/services-section')).ServicesSection);
+const PromoVideoSection = dynamic(async () => (await import('@/components/promo-video-section')).PromoVideoSection);
+const PortfolioSection = dynamic(async () => (await import('@/components/portfolio-section')).PortfolioSection);
+const ProcessSection = dynamic(async () => (await import('@/components/process-section')).ProcessSection);
+const TechnologySection = dynamic(async () => (await import('@/components/technology-section')).TechnologySection);
+const ContactSection = dynamic(async () => (await import('@/components/contact-section')).ContactSection);
+
 export default function Home() {
   return (
-    <>
-      <motion.main
-        className="bg-black text-white overflow-hidden noise relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Persistent animated gradient background */}
-        <div className="fixed inset-0 -z-20">
-          <div className="absolute inset-0 bg-black" />
-          <div className="absolute inset-0 grid-pattern opacity-50" />
-        </div>
+    <main className="bg-black text-white overflow-hidden noise relative">
+      <div className="fixed inset-0 -z-20">
+        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0 grid-pattern opacity-50" />
+      </div>
 
-        <Header />
-        <HeroSection />
-        <SectionDivider />
-        <ServicesSection />
-        <SectionDivider />
-        <PromoVideoSection />
-        <SectionDivider />
-        <PortfolioSection />
-        <SectionDivider />
-        <ProcessSection />
-        <SectionDivider />
-        <TechnologySection />
-        <SectionDivider />
-        <ContactSection />
-        <Footer />
-      </motion.main>
-    </>
+      <Header />
+      <HeroSection />
+      <SectionDivider />
+      <ServicesSection />
+      <SectionDivider />
+      <PromoVideoSection />
+      <SectionDivider />
+      <PortfolioSection />
+      <SectionDivider />
+      <ProcessSection />
+      <SectionDivider />
+      <TechnologySection />
+      <SectionDivider />
+      <ContactSection />
+      <Footer />
+    </main>
   );
 }

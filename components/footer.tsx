@@ -1,9 +1,6 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Github, Linkedin } from 'lucide-react';
 
@@ -21,18 +18,14 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <Link href="/" className="flex items-center space-x-3 mb-4 group w-fit">
               <Image
                 src="/logo.png"
-                alt="Velvet Neuron"
+                alt=""
                 width={28}
                 height={28}
+                aria-hidden="true"
                 className="opacity-80 group-hover:opacity-100 transition-opacity"
               />
               <span className="text-white font-semibold text-sm group-hover:text-purple-300 transition-colors">
@@ -42,15 +35,10 @@ export const Footer: React.FC = () => {
             <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
               Digital infrastructure for companies that want to move faster.
             </p>
-          </motion.div>
+          </div>
 
           {/* Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          <div>
             <h3 className="text-xs font-medium tracking-[0.2em] uppercase text-gray-500 mb-5">
               Navigation
             </h3>
@@ -66,37 +54,31 @@ export const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Social */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div>
             <h3 className="text-xs font-medium tracking-[0.2em] uppercase text-gray-500 mb-5">
               {t('follow')}
             </h3>
             <div className="flex gap-3">
-              {socialLinks.map((link, idx) => {
+              {socialLinks.map((link) => {
                 const Icon = link.icon;
                 return (
-                  <motion.a
-                    key={idx}
+                  <a
+                    key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
                     className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white hover:border-white/[0.2] transition-all duration-300"
-                    whileHover={{ y: -2 }}
                   >
                     <Icon className="w-4 h-4" />
-                  </motion.a>
+                  </a>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom bar */}

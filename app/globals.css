@@ -9,6 +9,10 @@
 
   body {
     @apply bg-black text-white;
+  }
+
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
     cursor: none;
   }
 

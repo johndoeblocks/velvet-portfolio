@@ -1,30 +1,43 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const CustomCursor: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { damping: 25, stiffness: 250 });
-  const springY = useSpring(cursorY, { damping: 25, stiffness: 250 });
+  const dotRef = useRef<HTMLDivElement | null>(null);
+  const ringRef = useRef<HTMLDivElement | null>(null);
+  const targetPosition = useRef({ x: -100, y: -100 });
+  const currentPosition = useRef({ x: -100, y: -100 });
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Only enable custom cursor on non-touch devices
-    if (typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
-      setIsVisible(true);
-    } else {
-      // Restore default cursor on touch devices
-      document.body.style.cursor = 'auto';
+    if (typeof window === 'undefined' || !window.matchMedia('(pointer: fine)').matches) {
       return;
     }
 
+    setIsVisible(true);
+    document.body.classList.add('has-custom-cursor');
+
+    const renderCursor = () => {
+      currentPosition.current.x += (targetPosition.current.x - currentPosition.current.x) * 0.18;
+      currentPosition.current.y += (targetPosition.current.y - currentPosition.current.y) * 0.18;
+
+      const transform = `translate3d(${currentPosition.current.x}px, ${currentPosition.current.y}px, 0)`;
+
+      if (dotRef.current) {
+        dotRef.current.style.transform = transform;
+      }
+
+      if (ringRef.current) {
+        ringRef.current.style.transform = transform;
+      }
+
+      frameRef.current = window.requestAnimationFrame(renderCursor);
+    };
+
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+      targetPosition.current = { x: e.clientX, y: e.clientY };
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -44,60 +57,52 @@ export const CustomCursor: React.FC = () => {
       }
     };
 
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+
     window.addEventListener('mousemove', moveCursor);
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseenter', handleMouseEnter);
+    frameRef.current = window.requestAnimationFrame(renderCursor);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mouseenter', handleMouseEnter);
+      document.body.classList.remove('has-custom-cursor');
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
     };
-  }, [cursorX, cursorY]);
+  }, []);
 
   if (!isVisible) return null;
 
   return (
     <>
-      {/* Main cursor dot */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          x: springX,
-          y: springY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
+      <div
+        ref={dotRef}
+        className="pointer-events-none fixed left-0 top-0 z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
       >
-        <motion.div
-          className="rounded-full bg-white"
-          animate={{
-            width: isHovering ? 48 : 8,
-            height: isHovering ? 48 : 8,
-            opacity: isHovering ? 0.8 : 1,
-          }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
+        <div
+          className={`rounded-full bg-white transition-all duration-200 ease-out ${
+            isHovering ? 'h-12 w-12 opacity-80' : 'h-2 w-2 opacity-100'
+          }`}
         />
-      </motion.div>
+      </div>
 
-      {/* Glow ring */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
-        style={{
-          x: springX,
-          y: springY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
+      <div
+        ref={ringRef}
+        className="pointer-events-none fixed left-0 top-0 z-[9998] -translate-x-1/2 -translate-y-1/2"
       >
-        <motion.div
-          className="rounded-full border border-purple-500/30"
-          animate={{
-            width: isHovering ? 64 : 32,
-            height: isHovering ? 64 : 32,
-            opacity: isHovering ? 0.6 : 0.3,
-          }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+        <div
+          className={`rounded-full border border-purple-500/30 transition-all duration-300 ease-out ${
+            isHovering ? 'h-16 w-16 opacity-60' : 'h-8 w-8 opacity-30'
+          }`}
         />
-      </motion.div>
+      </div>
     </>
   );
 };

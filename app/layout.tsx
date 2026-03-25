@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     other: [
       {
         rel: 'mask-icon',
-        url: '/icon.svg',
+        url: '/logo.png',
         color: '#8b5cf6',
       },
     ],
