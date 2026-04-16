@@ -6,6 +6,7 @@ import { Github, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const t = useTranslations('footer');
+  const navT = useTranslations('nav');
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -33,14 +34,14 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
-              Digital infrastructure for companies that want to move faster.
+              {t('tagline')}
             </p>
           </div>
 
           {/* Links */}
           <div>
             <h3 className="text-xs font-medium tracking-[0.2em] uppercase text-gray-500 mb-5">
-              Navigation
+              {t('navigation')}
             </h3>
             <ul className="space-y-3 text-sm">
               {['portfolio', 'services', 'contact'].map((link) => (
@@ -49,7 +50,7 @@ export const Footer: React.FC = () => {
                     href={`#${link}`}
                     className="text-gray-500 hover:text-white transition-colors duration-300"
                   >
-                    {link.charAt(0).toUpperCase() + link.slice(1)}
+                    {link === 'portfolio' ? navT('work') : link === 'services' ? navT('services') : navT('contact')}
                   </a>
                 </li>
               ))}
@@ -88,10 +89,10 @@ export const Footer: React.FC = () => {
           </p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gray-400 transition-colors">
-              Privacy
+              {t('privacy')}
             </a>
             <a href="#" className="hover:text-gray-400 transition-colors">
-              Terms
+              {t('terms')}
             </a>
           </div>
         </div>

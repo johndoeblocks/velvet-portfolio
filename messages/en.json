@@ -115,6 +115,10 @@
   "footer": {
     "company": "Velvet Neuron",
     "rights": "All rights reserved.",
-    "follow": "Follow us"
+    "follow": "Follow us",
+    "tagline": "Digital infrastructure for companies that want to move faster.",
+    "navigation": "Navigation",
+    "privacy": "Privacy",
+    "terms": "Terms"
   }
 }

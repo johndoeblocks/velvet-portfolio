@@ -19,7 +19,6 @@ export const Header: React.FC = () => {
   const navItems = [
     { label: t('work'), href: '#portfolio' },
     { label: t('services'), href: '#services' },
-    { label: t('about'), href: '#about' },
     { label: t('contact'), href: '#contact' },
   ];
 
@@ -66,11 +65,10 @@ export const Header: React.FC = () => {
                 key={locale}
                 href={normalizedPathname as '/'}
                 locale={locale}
-                className={`relative px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                  activeLocale === locale
+                className={`relative px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${activeLocale === locale
                     ? 'bg-purple-600/80 text-white'
                     : 'text-gray-500 hover:text-gray-300'
-                }`}
+                  }`}
               >
                 {locale.toUpperCase()}
               </Link>
@@ -93,11 +91,10 @@ export const Header: React.FC = () => {
                 key={locale}
                 href={normalizedPathname as '/'}
                 locale={locale}
-                className={`relative px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
-                  activeLocale === locale
+                className={`relative px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${activeLocale === locale
                     ? 'bg-purple-600/80 text-white'
                     : 'text-gray-500 hover:text-gray-300'
-                }`}
+                  }`}
               >
                 {locale.toUpperCase()}
               </Link>
@@ -113,19 +110,16 @@ export const Header: React.FC = () => {
             className="text-white w-8 h-8 flex flex-col items-center justify-center gap-1.5"
           >
             <span
-              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${
-                menuOpen ? 'translate-y-[7px] rotate-45' : ''
-              }`}
+              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${menuOpen ? 'translate-y-[7px] rotate-45' : ''
+                }`}
             />
             <span
-              className={`block h-px w-5 bg-white transition-all duration-200 ${
-                menuOpen ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'
-              }`}
+              className={`block h-px w-5 bg-white transition-all duration-200 ${menuOpen ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'
+                }`}
             />
             <span
-              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${
-                menuOpen ? '-translate-y-[7px] -rotate-45' : ''
-              }`}
+              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''
+                }`}
             />
           </button>
         </div>
@@ -134,9 +128,8 @@ export const Header: React.FC = () => {
       {/* Mobile Menu */}
       <div
         id={mobileMenuId}
-        className={`overflow-hidden border-b border-white/[0.06] bg-black/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${
-          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-b-transparent'
-        }`}
+        className={`overflow-hidden border-b border-white/[0.06] bg-black/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-b-transparent'
+          }`}
       >
         <div className="flex flex-col px-6 py-6 space-y-1">
           {navItems.map((item) => (
