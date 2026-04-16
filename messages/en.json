@@ -5,9 +5,13 @@
     "about": "About",
     "contact": "Contact"
   },
+  "metadata": {
+    "title": "Velvet Neuron | High-Performance Digital Products",
+    "description": "Exceptional digital product engineering. We design high-performance technologies that grant a structural competitive advantage to your company. Start your project."
+  },
   "hero": {
-    "headline": "Engineering Digital Advantage",
-    "subheadline": "We design and build high-performance digital products that give companies a competitive edge.",
+    "headline": "High-Performance Digital Products",
+    "subheadline": "Velvet Neuron doesn't just build software; we architect the future of your business. We combine sophisticated engineering, elite design, and high performance to build premium digital products focused on a single goal: your company's market leadership.",
     "cta_work": "View Work",
     "cta_project": "Start a Project"
   },

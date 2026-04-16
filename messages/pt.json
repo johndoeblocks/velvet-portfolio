@@ -5,9 +5,13 @@
     "about": "Sobre",
     "contact": "Contacto"
   },
+  "metadata": {
+    "title": "Velvet Neuron | Produtos Digitais de Alta Performance",
+    "description": "Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa. Inicie o seu projeto."
+  },
   "hero": {
-    "headline": "Engenharia para Vantagem Digital",
-    "subheadline": "Desenhamos e construímos produtos digitais de alto desempenho que dão às empresas uma vantagem competitiva.",
+    "headline": "Produtos Digitais de Alta Performance",
+    "subheadline": "A Velvet Neuron não cria apenas software; arquitetamos o futuro do seu negócio. Combinamos engenharia sofisticada, design de elite e alta performance para construir produtos digitais premium focados num único objetivo: a liderança de mercado da sua empresa.",
     "cta_work": "Ver Trabalhos",
     "cta_project": "Iniciar Projeto"
   },
