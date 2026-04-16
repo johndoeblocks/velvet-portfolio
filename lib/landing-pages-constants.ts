@@ -270,7 +270,7 @@ export const SERVICES: ServiceConfig[] = [
       },
       {
         question: "Quanto custa o desenvolvimento de uma aplicação móvel?",
-        answer: "Uma app mobile de complexidade média começa a partir dos 5 000€. O custo final depende das funcionalidades, integrações e design. Após a consulta gratuita, apresentamos uma proposta detalhada e transparente.",
+        answer: "Uma app mobile de complexidade média começa a partir dos 1 000€. O custo final depende das funcionalidades, integrações e design. Após a consulta gratuita, apresentamos uma proposta detalhada e transparente.",
       },
       {
         question: "A Velvet Neuron publica a aplicação nas lojas?",
