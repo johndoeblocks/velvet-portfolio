@@ -1,8 +1,26 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, params?: any) => void;
+  }
+}
+
 export const PromoVideoSection: React.FC = () => {
   const t = useTranslations('promoVideo');
+
+  const trackVideoEvent = (action: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        video_title: 'VSL',
+        video_url: '/videos/VSL.mp4',
+        video_provider: 'html5'
+      });
+    }
+  };
 
   return (
     <section className="relative z-10 py-20 px-6" id="promo-video">
@@ -18,6 +36,8 @@ export const PromoVideoSection: React.FC = () => {
             controls
             preload="metadata"
             playsInline
+            onPlay={() => trackVideoEvent('video_start')}
+            onEnded={() => trackVideoEvent('video_complete')}
           >
             <track
               default
