@@ -113,7 +113,8 @@
       "project": "Conte-nos sobre seu projeto",
       "submit": "Enviar Mensagem",
       "success": "Obrigado! Entraremos em contato em breve.",
-      "error": "Algo correu mal. Por favor, tente novamente."
+      "error": "Algo correu mal. Por favor, tente novamente.",
+      "whatsapp": "Mensagem no WhatsApp"
     }
   },
   "footer": {

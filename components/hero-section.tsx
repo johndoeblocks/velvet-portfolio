@@ -8,9 +8,9 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
-      <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[100px]" />
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[80px] pointer-events-none" />
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 grid-pattern opacity-40" />

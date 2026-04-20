@@ -1,10 +1,14 @@
+import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { CustomCursor } from '@/components/custom-cursor';
 import { ThemeProvider } from '@/components/theme-provider';
+
+// const CustomCursor = dynamic(() => import('@/components/custom-cursor').then(mod => mod.CustomCursor), {
+//   ssr: false
+// });
 
 export async function generateMetadata({
   params,
@@ -17,6 +21,34 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      locale: locale === 'pt' ? 'pt_PT' : 'en_US',
+      type: 'website',
+      url: `https://www.velvetneuron.com/${locale}`,
+      siteName: 'Velvet Neuron',
+      images: [
+        {
+          url: '/logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Velvet Neuron',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: ['/logo.png'],
+    },
+    alternates: {
+      languages: {
+        'en-US': '/en',
+        'pt-PT': '/pt',
+      },
+    },
   };
 }
 
@@ -51,7 +83,7 @@ export default async function LocaleLayout({
       disableTransitionOnChange
     >
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>

@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
-import { Footer } from '@/components/footer';
 import { SectionDivider } from '@/components/section-divider';
 
 const ServicesSection = dynamic(async () => (await import('@/components/services-section')).ServicesSection);
@@ -10,6 +9,7 @@ const PortfolioSection = dynamic(async () => (await import('@/components/portfol
 const ProcessSection = dynamic(async () => (await import('@/components/process-section')).ProcessSection);
 const TechnologySection = dynamic(async () => (await import('@/components/technology-section')).TechnologySection);
 const ContactSection = dynamic(async () => (await import('@/components/contact-section')).ContactSection);
+const Footer = dynamic(async () => (await import('@/components/footer')).Footer);
 
 export default function Home() {
   return (

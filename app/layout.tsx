@@ -5,14 +5,17 @@ import '@/app/globals.css';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.velvetneuron.com'),
   title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
   description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa. Inicie o seu projeto.',
   icons: {
@@ -33,6 +36,28 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/manifest.json',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_PT',
+    url: 'https://www.velvetneuron.com',
+    siteName: 'Velvet Neuron',
+    title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
+    description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Velvet Neuron',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
+    description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.',
+    images: ['/logo.png'],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',

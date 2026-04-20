@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Mail, MapPin, ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MapPin, ArrowRight, CheckCircle, AlertCircle, MessageCircle } from "lucide-react";
 
 export const ContactSection: React.FC = () => {
   const t = useTranslations("contact");
@@ -102,6 +102,24 @@ export const ContactSection: React.FC = () => {
                 className="text-gray-500 text-sm hover:text-purple-400 transition-colors ml-12"
               >
                 hello@velvetneuron.com
+              </a>
+            </div>
+
+            <div className="group">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:border-purple-500/30 transition-colors">
+                  <MessageCircle className="w-4 h-4 text-purple-400" />
+                </div>
+                <h3 className="text-sm font-semibold text-white">WhatsApp</h3>
+              </div>
+              <a
+                href="https://wa.me/351969370801"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 text-sm hover:text-purple-400 transition-colors ml-12 flex items-center gap-2"
+              >
+                {t("form.whatsapp")}
+                <ArrowRight className="w-3 h-3" />
               </a>
             </div>
 
