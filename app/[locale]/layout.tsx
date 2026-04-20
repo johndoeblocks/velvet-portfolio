@@ -5,10 +5,8 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from '@/components/theme-provider';
-
-// const CustomCursor = dynamic(() => import('@/components/custom-cursor').then(mod => mod.CustomCursor), {
-//   ssr: false
-// });
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { CustomCursor } from '@/components/custom-cursor-wrapper';
 
 export async function generateMetadata({
   params,
@@ -84,6 +82,7 @@ export default async function LocaleLayout({
     >
       <NextIntlClientProvider locale={locale} messages={messages}>
         {/* <CustomCursor /> */}
+        <SpeedInsights />
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>
