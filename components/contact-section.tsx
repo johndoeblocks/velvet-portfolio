@@ -5,12 +5,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Mail, MapPin, ArrowRight, CheckCircle, AlertCircle, MessageCircle } from "lucide-react";
 
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, params?: any) => void;
+  }
+}
+
 export const ContactSection: React.FC = () => {
   const t = useTranslations("contact");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
   const [error, setError] = useState(false);
+
+  const trackEvent = (action: string, label: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: 'Contact',
+        event_label: label,
+      });
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,6 +48,7 @@ export const ContactSection: React.FC = () => {
 
       if (!res.ok) throw new Error("Failed to send");
 
+      trackEvent('form_submission', 'Contact Form');
       setSuccess(true);
       form.reset();
       setTimeout(() => setSuccess(false), 5000);
@@ -99,6 +114,7 @@ export const ContactSection: React.FC = () => {
               </div>
               <a
                 href="mailto:hello@velvetneuron.com"
+                onClick={() => trackEvent('email_click', 'hello@velvetneuron.com')}
                 className="text-gray-500 text-sm hover:text-purple-400 transition-colors ml-12"
               >
                 hello@velvetneuron.com
@@ -116,6 +132,7 @@ export const ContactSection: React.FC = () => {
                 href="https://wa.me/351969370801"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('whatsapp_click', '+351969370801')}
                 className="text-gray-500 text-sm hover:text-purple-400 transition-colors ml-12 flex items-center gap-2"
               >
                 {t("form.whatsapp")}
