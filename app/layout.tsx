@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { getLocale } from 'next-intl/server';
 import '@/app/globals.css';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/cookie-consent';
+import { SITE_URL } from '@/lib/seo';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.velvetneuron.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
   description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa. Inicie o seu projeto.',
   icons: {
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_PT',
-    url: 'https://www.velvetneuron.com',
+    url: SITE_URL,
     siteName: 'Velvet Neuron',
     title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
     description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.',
@@ -70,40 +72,43 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+  const htmlLang = locale.startsWith('pt') ? 'pt' : 'en';
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://www.velvetneuron.com/#website",
-        "url": "https://www.velvetneuron.com",
+        "@id": `${SITE_URL}/#website`,
+        "url": SITE_URL,
         "name": "Velvet Neuron",
         "description": "Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.",
         "publisher": {
-          "@id": "https://www.velvetneuron.com/#organization"
+          "@id": `${SITE_URL}/#organization`
         },
         "inLanguage": "pt-PT"
       },
       {
         "@type": ["Organization", "ProfessionalService"],
-        "@id": "https://www.velvetneuron.com/#organization",
+        "@id": `${SITE_URL}/#organization`,
         "name": "Velvet Neuron",
-        "url": "https://www.velvetneuron.com",
+        "url": SITE_URL,
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://www.velvetneuron.com/#logo",
-          "url": "https://www.velvetneuron.com/logo.png",
-          "contentUrl": "https://www.velvetneuron.com/logo.png",
+          "@id": `${SITE_URL}/#logo`,
+          "url": `${SITE_URL}/logo.png`,
+          "contentUrl": `${SITE_URL}/logo.png`,
           "caption": "Logótipo Velvet Neuron",
           "inLanguage": "pt-PT"
         },
         "image": {
-          "@id": "https://www.velvetneuron.com/#logo"
+          "@id": `${SITE_URL}/#logo`
         },
         "description": "A Velvet Neuron é uma agência especializada em Digital Product Engineering. Projetamos e construímos produtos digitais de alta performance focados em criar vantagem competitiva e fomentar a liderança de mercado para os nossos clientes.",
         "address": {
@@ -144,7 +149,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={htmlLang} suppressHydrationWarning>
       <head>
         {/* Google Consent Mode v2 - Default State (Before any other scripts) */}
         <script

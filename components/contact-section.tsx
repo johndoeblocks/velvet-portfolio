@@ -7,7 +7,7 @@ import { Mail, MapPin, ArrowRight, CheckCircle, AlertCircle, MessageCircle } fro
 
 declare global {
   interface Window {
-    gtag: (command: string, action: string, params?: any) => void;
+    gtag: any;
   }
 }
 

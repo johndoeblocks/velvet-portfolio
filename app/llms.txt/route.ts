@@ -1,11 +1,12 @@
 import { landingPagesData } from "@/lib/landing-pages-data";
 import { SERVICES } from "@/lib/landing-pages-constants";
+import { SITE_URL } from '@/lib/seo';
 
 // Force static generation at build time
 export const dynamic = "force-static";
 
 const BASE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.velvetneuron.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL
 ).replace(/\/$/, "");
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────

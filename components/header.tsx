@@ -1,19 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import { usePathname } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 export const Header: React.FC = () => {
   const t = useTranslations('nav');
-  const pathname = usePathname();
-  const currentLocale = useLocale();
-  const activeLocale: 'en' | 'pt' = currentLocale.startsWith('pt') ? 'pt' : 'en';
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const normalizedPathname = pathname.replace(/^\/(en|pt)(?=\/|$)/, '') || '/';
   const mobileMenuId = 'mobile-navigation';
 
   const navItems = [
@@ -26,7 +22,7 @@ export const Header: React.FC = () => {
     <header
       className="fixed top-0 w-full z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-xl shadow-lg shadow-black/20"
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
           <Image
@@ -58,23 +54,8 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Language Switcher & CTA */}
-        <div className="hidden md:flex items-center space-x-4">
-          <div className="flex items-center bg-white/[0.04] rounded-full px-1 py-1 border border-white/[0.06]">
-            {(['en', 'pt'] as const).map((locale) => (
-              <Link
-                key={locale}
-                href={normalizedPathname as '/'}
-                locale={locale}
-                className={`relative px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${activeLocale === locale
-                    ? 'bg-purple-600/80 text-white'
-                    : 'text-gray-500 hover:text-gray-300'
-                  }`}
-              >
-                {locale.toUpperCase()}
-              </Link>
-            ))}
-          </div>
-
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageSwitcher />
           <a
             href="#contact"
             className="px-5 py-2 bg-white text-black rounded-full text-sm font-semibold hover:scale-[1.03] hover:bg-purple-100 transition-all duration-300"
@@ -84,23 +65,8 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile */}
-        <div className="md:hidden flex items-center space-x-3">
-          <div className="flex items-center bg-white/[0.04] rounded-full px-1 py-1 border border-white/[0.06]">
-            {(['en', 'pt'] as const).map((locale) => (
-              <Link
-                key={locale}
-                href={normalizedPathname as '/'}
-                locale={locale}
-                className={`relative px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${activeLocale === locale
-                    ? 'bg-purple-600/80 text-white'
-                    : 'text-gray-500 hover:text-gray-300'
-                  }`}
-              >
-                {locale.toUpperCase()}
-              </Link>
-            ))}
-          </div>
-
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitcher compact />
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}

@@ -1,12 +1,15 @@
-import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from '@/components/theme-provider';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { CustomCursor } from '@/components/custom-cursor-wrapper';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import {
+  buildLocaleAlternates,
+  buildLocalizedUrl,
+  toAppLocale,
+} from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -14,6 +17,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const activeLocale = toAppLocale(locale);
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
   return {
@@ -22,9 +26,9 @@ export async function generateMetadata({
     openGraph: {
       title: t('title'),
       description: t('description'),
-      locale: locale === 'pt' ? 'pt_PT' : 'en_US',
+      locale: activeLocale === 'pt' ? 'pt_PT' : 'en_US',
       type: 'website',
-      url: `https://www.velvetneuron.com/${locale}`,
+      url: buildLocalizedUrl(activeLocale, '/'),
       siteName: 'Velvet Neuron',
       images: [
         {
@@ -41,12 +45,7 @@ export async function generateMetadata({
       description: t('description'),
       images: ['/logo.png'],
     },
-    alternates: {
-      languages: {
-        'en-US': '/en',
-        'pt-PT': '/pt',
-      },
-    },
+    alternates: buildLocaleAlternates('/', activeLocale),
   };
 }
 
@@ -67,7 +66,7 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as 'en' | 'pt')) {
     notFound();
   }
 
@@ -81,7 +80,6 @@ export default async function LocaleLayout({
       disableTransitionOnChange
     >
       <NextIntlClientProvider locale={locale} messages={messages}>
-        {/* <CustomCursor /> */}
         <SpeedInsights />
         {children}
       </NextIntlClientProvider>

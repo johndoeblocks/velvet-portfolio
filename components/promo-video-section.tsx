@@ -5,7 +5,7 @@ import { Link } from '@/i18n/routing';
 
 declare global {
   interface Window {
-    gtag: (command: string, action: string, params?: any) => void;
+    gtag: any;
   }
 }
 
