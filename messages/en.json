@@ -110,6 +110,7 @@
       "name": "Your Name",
       "email": "Your Email",
       "company": "Company Name",
+      "phone": "Phone Number",
       "project": "Tell us about your project",
       "submit": "Send Message",
       "success": "Thank you! We'll get back to you soon.",

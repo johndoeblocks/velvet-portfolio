@@ -34,10 +34,11 @@ export const ContactSection: React.FC = () => {
     try {
       const formData = new FormData(form);
       const payload = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        company: formData.get("company"),
-        message: formData.get("message"),
+        name: String(formData.get("name") ?? "").trim(),
+        email: String(formData.get("email") ?? "").trim(),
+        company: String(formData.get("company") ?? "").trim(),
+        phone: String(formData.get("phone") ?? "").trim(),
+        message: String(formData.get("message") ?? "").trim(),
       };
 
       const res = await fetch("/api/contact", {
@@ -176,13 +177,24 @@ export const ContactSection: React.FC = () => {
                 className={inputClasses}
               />
             </div>
-            <input
-              type="text"
-              name="company"
-              placeholder={t("form.company")}
-              required
-              className={inputClasses}
-            />
+            <div className="grid sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="company"
+                placeholder={t("form.company")}
+                required
+                className={inputClasses}
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder={t("form.phone")}
+                autoComplete="tel"
+                inputMode="tel"
+                required
+                className={inputClasses}
+              />
+            </div>
             <textarea
               name="message"
               placeholder={t("form.project")}
@@ -228,7 +240,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm"
                 >
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                  Something went wrong. Please try again or email us directly.
+                  {t("form.error")}
                 </motion.div>
               )}
             </AnimatePresence>
