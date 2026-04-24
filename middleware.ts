@@ -27,5 +27,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/blog/:path*'],
+  matcher: ['/', '/(pt|en)/:path*', '/blog/:path*'],
 };
