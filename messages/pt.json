@@ -8,21 +8,21 @@
     "cta": "Agendar conversa"
   },
   "metadata": {
-    "title": "Velvet Neuron | Websites que Geram Leads",
-    "description": "Agência sénior em Portugal que cria websites, automações e experiências digitais que aumentam confiança, reduzem fricção e geram leads qualificados."
+    "title": "Velvet Neuron | Websites, Apps e Automação",
+    "description": "Agência sénior em Portugal que cria websites, automações, apps e experiências digitais para equipas que querem operar melhor e crescer com mais confiança."
   },
   "hero": {
     "eyebrow": "Agência sénior de produto digital em Portugal",
-    "headline": "Transformamos visitas em leads.",
-    "subheadline": "Websites, automações e experiências digitais que aumentam confiança, reduzem fricção e ajudam PMEs a vender melhor.",
+    "headline": "Construímos sistemas digitais que trabalham.",
+    "subheadline": "Websites, apps e automações para PMEs que precisam de vender melhor, operar com menos fricção e criar experiências mais credíveis.",
     "cta_primary": "Agendar conversa",
     "cta_secondary": "Ver trabalhos",
     "cta_video": "Ver vídeo",
-    "proof_title": "Menos camadas. Mais execução.",
+    "proof_title": "Estratégia, produto e execução.",
     "proof_intro": "Trabalha diretamente com uma equipa sénior no posicionamento, UX, desenvolvimento e lançamento, sem camadas desnecessárias nem processos vagos.",
     "proof_point_1": "Estratégia, copy, design, desenvolvimento e SEO no mesmo fluxo",
     "proof_point_2": "Entrega bilingue para equipas portuguesas e internacionais",
-    "proof_point_3": "Construído para credibilidade, velocidade e geração de leads",
+    "proof_point_3": "Construído para confiança, velocidade e operação real",
     "stat_1_value": "PT + EN",
     "stat_1_label": "Entrega bilingue",
     "stat_2_value": "Sénior",
@@ -32,13 +32,13 @@
   },
   "promoVideo": {
     "eyebrow": "Vídeo de apresentação",
-    "title": "Como criamos confiança online.",
+    "title": "Como pensamos produto digital.",
     "description": "Uma explicação curta da abordagem da Velvet Neuron antes de agendar uma conversa.",
     "cta": "Falar depois de ver"
   },
   "trust": {
     "eyebrow": "Porque é que os clientes nos escolhem",
-    "title": "Mais confiança. Mais pedidos.",
+    "title": "Digital mais claro. Operação mais forte.",
     "description": "Focamo-nos nos sinais que fazem os potenciais clientes confiar mais cedo e avançar para contacto com mais segurança.",
     "experience_label": "Experiência relevante com trabalho desenvolvido para equipas por trás de",
     "experience_copy": "Experiência relevante em ecommerce, plataformas digitais e negócios de serviços em Portugal e na Europa.",
@@ -56,18 +56,18 @@
         "description": "Velocidade, SEO técnico, analytics e estrutura entram no projeto desde o início, não no fim."
       },
       "conversion": {
-        "title": "Desenhado para gerar contacto",
+        "title": "Desenhado para gerar ação",
         "description": "Cada secção é pensada para reduzir dúvida, reforçar confiança e levar visitantes qualificados até ao contacto."
       }
     }
   },
   "services": {
     "eyebrow": "Serviços",
-    "title": "Sistemas para vender melhor.",
-    "description": "Uma equipa sénior para clarificar a oferta, desenhar a experiência, construir o produto e melhorar a forma como o site é encontrado e converte.",
+    "title": "O que construímos consigo.",
+    "description": "Uma equipa sénior para criar websites, apps, automações e bases digitais que tornam o negócio mais claro, eficiente e preparado para crescer.",
     "items": {
       "websites": {
-        "title": "Websites que geram leads",
+        "title": "Websites que explicam e vendem",
         "description": "Sites de elevada confiança, construídos para explicar a oferta com clareza e gerar leads com melhor qualidade."
       },
       "positioning": {
@@ -75,22 +75,22 @@
         "description": "Headlines mais fortes, melhor estrutura e CTAs mais claros para que o valor seja percebido mais depressa."
       },
       "web_apps": {
-        "title": "Portais que poupam tempo",
+        "title": "Apps e portais à medida",
         "description": "Experiências digitais personalizadas, rápidas e polidas, fáceis de usar por equipas e clientes."
       },
       "ai_automation": {
-        "title": "Menos trabalho manual",
+        "title": "Automações que poupam tempo",
         "description": "Sistemas práticos que eliminam trabalho repetitivo, ligam a sua stack e aceleram a operação."
       },
       "seo_performance": {
-        "title": "Mais visibilidade. Mais velocidade.",
+        "title": "Velocidade, SEO e base técnica",
         "description": "Estrutura mais limpa, metadata mais forte e páginas mais rápidas para melhorar visibilidade e conversão."
       }
     }
   },
   "portfolio": {
     "eyebrow": "Trabalhos selecionados",
-    "title": "Prova em negócios reais.",
+    "title": "Websites, apps e operações reais.",
     "description": "Uma combinação de entrega direta a clientes e colaboração técnica em projetos em Portugal e na Europa.",
     "note": "O trabalho recente passa por ecommerce, desporto, restauração e equipas de produto digital.",
     "view_project": "Abrir galeria",
@@ -131,10 +131,10 @@
   "process": {
     "eyebrow": "Processo",
     "title": "Do diagnóstico ao lançamento.",
-    "description": "Um processo simples que reduz risco, mantém o âmbito claro e leva o projeto a lançamento sem confusão.",
+    "description": "Um processo simples para perceber o problema certo, desenhar a solução certa e lançar sem ruído.",
     "items": {
       "step_1": {
-        "title": "Encontramos as fugas",
+        "title": "Mapeamos o problema",
         "description": "Analisamos o site atual, a oferta e a jornada do cliente para encontrar as maiores falhas de confiança e conversão."
       },
       "step_2": {
@@ -142,7 +142,7 @@
         "description": "Clarificamos a proposta de valor, definimos o fluxo da página e afinamos a copy antes do design começar."
       },
       "step_3": {
-        "title": "Construímos para converter",
+        "title": "Construímos a solução",
         "description": "Desenhamos a experiência, construímos o produto e integramos performance, SEO e analytics na base."
       },
       "step_4": {
@@ -176,8 +176,8 @@
   },
   "contact": {
     "eyebrow": "Começar a conversa",
-    "title": "Vamos encontrar a fuga.",
-    "description": "Partilhe objetivos, timing e bloqueios atuais. Se houver fit, voltamos com uma abordagem realista em vez de um discurso vago.",
+    "title": "Vamos perceber o que construir.",
+    "description": "Partilhe objetivos, timing e bloqueios atuais. Se houver fit, voltamos com uma abordagem realista para website, app, automação ou melhoria digital.",
     "details_title": "O que pode esperar",
     "details_intro": "A primeira conversa é direta e útil.",
     "detail_1": "Revemos o seu site atual, a oferta ou a ideia de produto.",
