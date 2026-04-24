@@ -8,17 +8,17 @@
     "cta": "Book intro call"
   },
   "metadata": {
-    "title": "Velvet Neuron | Websites and Digital Products That Convert",
-    "description": "Senior-led agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready digital products that turn traffic into qualified leads."
+    "title": "Velvet Neuron | Websites That Generate Leads",
+    "description": "Senior-led agency in Portugal building websites, automations, and digital experiences that build trust, reduce friction, and generate qualified leads."
   },
   "hero": {
     "eyebrow": "Senior-led digital product agency in Portugal",
-    "headline": "Websites and digital products that earn trust and turn attention into enquiries.",
-    "subheadline": "Velvet Neuron helps ambitious teams launch clearer offers, stronger design, faster websites, and SEO-ready experiences that convert visitors into clients.",
+    "headline": "We turn visits into leads.",
+    "subheadline": "Websites, automations, and digital experiences that build trust, reduce friction, and help SMEs sell more effectively.",
     "cta_primary": "Book an intro call",
     "cta_secondary": "See selected work",
     "cta_video": "Watch the video",
-    "proof_title": "A practical partner from strategy to launch",
+    "proof_title": "Fewer layers. More execution.",
     "proof_intro": "You work directly with a senior team on the message, UX, build, and launch, without layers of handoffs or vague process.",
     "proof_point_1": "Strategy, copy, design, development, and SEO in one flow",
     "proof_point_2": "Bilingual delivery for Portuguese and international teams",
@@ -32,65 +32,65 @@
   },
   "promoVideo": {
     "eyebrow": "Video overview",
-    "title": "See how we think about trust, clarity, and conversion.",
+    "title": "How we build online trust.",
     "description": "A short walkthrough of the Velvet Neuron approach before you book a call.",
     "cta": "Talk after watching"
   },
   "trust": {
     "eyebrow": "Why clients choose us",
-    "title": "A more credible digital presence starts with the right fundamentals.",
+    "title": "More trust. More enquiries.",
     "description": "We focus on the signals that make prospects trust you faster and contact you with more confidence.",
     "experience_label": "Selected experience includes work delivered with teams behind",
     "experience_copy": "Relevant experience across ecommerce, product platforms, and service businesses in Portugal and Europe.",
     "items": {
       "senior": {
-        "title": "Senior involvement throughout",
+        "title": "Senior execution throughout",
         "description": "No bait-and-switch. The people shaping the strategy are the same people designing and building the work."
       },
       "clarity": {
-        "title": "Clear offer and sharper messaging",
+        "title": "Clear offer. Faster decision.",
         "description": "We help visitors understand what you do, why it matters, and what to do next in a few seconds."
       },
       "performance": {
-        "title": "Performance and SEO built in",
+        "title": "SEO and speed built in",
         "description": "Speed, technical SEO, analytics, and structure are part of the build, not an afterthought."
       },
       "conversion": {
-        "title": "Designed to drive action",
+        "title": "Designed to drive contact",
         "description": "Every section is shaped to reduce doubt, strengthen trust, and move qualified visitors toward contact."
       }
     }
   },
   "services": {
     "eyebrow": "Services",
-    "title": "What we can improve for you",
+    "title": "Systems that sell better.",
     "description": "One senior team that can clarify the offer, design the experience, build the product, and improve how it ranks and converts.",
     "items": {
       "websites": {
-        "title": "Websites and landing pages",
+        "title": "Websites that generate leads",
         "description": "High-trust marketing sites built to explain your offer clearly and generate better-quality leads."
       },
       "positioning": {
-        "title": "Positioning and conversion copy",
+        "title": "Messaging that sells",
         "description": "Sharper headlines, better structure, and clearer calls to action so visitors understand the value faster."
       },
       "web_apps": {
-        "title": "Web apps and client portals",
+        "title": "Portals that save time",
         "description": "Custom product experiences that feel polished, fast, and easy for teams and customers to use."
       },
       "ai_automation": {
-        "title": "AI automations and internal tools",
+        "title": "Less manual work",
         "description": "Practical systems that remove repetitive work, connect your stack, and support a faster operation."
       },
       "seo_performance": {
-        "title": "Technical SEO and speed",
+        "title": "More visibility. More speed.",
         "description": "Cleaner structure, stronger metadata, and faster pages that help search visibility and conversion."
       }
     }
   },
   "portfolio": {
     "eyebrow": "Selected work",
-    "title": "Proof across ecommerce, product, and service brands",
+    "title": "Proof from real businesses.",
     "description": "A mix of direct client delivery and technical collaboration across Portugal and Europe.",
     "note": "Recent work spans ecommerce, sports, food service, and digital product teams.",
     "view_project": "Open gallery",
@@ -130,30 +130,30 @@
   },
   "process": {
     "eyebrow": "Process",
-    "title": "What working together looks like",
+    "title": "From diagnosis to launch.",
     "description": "A simple process that reduces risk, keeps scope clear, and gets you to launch without confusion.",
     "items": {
       "step_1": {
-        "title": "Audit and alignment",
+        "title": "Find the leaks",
         "description": "We review your current website, offer, and buyer journey to find the biggest trust and conversion gaps."
       },
       "step_2": {
-        "title": "Structure and messaging",
+        "title": "Clarify the offer",
         "description": "We clarify the value proposition, define the page flow, and sharpen the copy before design starts."
       },
       "step_3": {
-        "title": "Design and development",
+        "title": "Build to convert",
         "description": "We design the experience, build the product, and bake performance, SEO, and analytics into the foundation."
       },
       "step_4": {
-        "title": "Launch and improvement",
+        "title": "Launch and improve",
         "description": "We launch with QA, track behaviour, and keep improving the pages that matter most."
       }
     }
   },
   "faq": {
     "eyebrow": "Common questions",
-    "title": "Questions we usually hear before a project starts",
+    "title": "Before we start.",
     "description": "The goal is to make the next step feel clear, not high-pressure.",
     "items": {
       "timeline": {
@@ -176,7 +176,7 @@
   },
   "contact": {
     "eyebrow": "Start the conversation",
-    "title": "Tell us what you need, and we'll suggest the clearest next step.",
+    "title": "Let’s find the leak.",
     "description": "Share your goals, timeline, and current blockers. If there's a fit, we'll come back with a realistic approach instead of a vague pitch.",
     "details_title": "What to expect",
     "details_intro": "The first conversation is straightforward and practical.",
