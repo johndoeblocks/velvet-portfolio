@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
                 width={32}
                 height={32}
                 aria-hidden="true"
-                className="rounded-full ring-1 ring-slate-900/8"
+                className="rounded-full"
               />
               <span className="text-base font-semibold tracking-tight text-slate-900">
                 Velvet Neuron
