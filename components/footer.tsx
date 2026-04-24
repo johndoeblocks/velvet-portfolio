@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
-                src="/icon.svg"
+                src="/ico.svg"
                 alt=""
                 width={32}
                 height={32}

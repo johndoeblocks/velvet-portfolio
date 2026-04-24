@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/icon.svg"
+            src="/ico.svg"
             alt=""
             width={38}
             height={38}
