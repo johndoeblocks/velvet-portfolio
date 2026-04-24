@@ -52,12 +52,9 @@ export default async function Home({ params }: HomeProps) {
       <ContactSection />
       <Footer />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c'),
-        }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema).replace(/</g, '\\u003c')}
+      </script>
     </main>
   );
 }

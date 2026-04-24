@@ -35,6 +35,8 @@ const serviceTranslations: Record<string, string> = {
   'desenvolvimento de websites': 'website development',
   'desenvolvimento de aplicações': 'app development',
   'SEO técnico e performance web': 'technical SEO and web performance',
+  'loja online': 'ecommerce development',
+  'aplicações desktop': 'desktop app development',
 };
 
 const taglineTranslations: Record<string, string> = {
@@ -44,6 +46,10 @@ const taglineTranslations: Record<string, string> = {
     'Web and mobile products built for usability, speed, and a stronger customer experience.',
   'SEO técnico e performance web':
     'Technical SEO and performance improvements that help your website load faster, rank better, and convert with less friction.',
+  'loja online':
+    'Online stores designed for clearer product discovery, smoother checkout, and stronger ecommerce conversion.',
+  'aplicações desktop':
+    'Desktop applications built for internal workflows, operational speed, and reliable day-to-day use.',
 };
 
 const locationTranslations: Record<string, string> = {
@@ -55,8 +61,10 @@ const locationTranslations: Record<string, string> = {
   Setúbal: 'Setubal',
   Guimarães: 'Guimaraes',
   Faro: 'Faro',
+  Guarda: 'Guarda',
   Leiria: 'Leiria',
   Funchal: 'Funchal',
+  'Ponta Delgada': 'Ponta Delgada',
   Évora: 'Evora',
   Viseu: 'Viseu',
   'Viana do Castelo': 'Viana do Castelo',

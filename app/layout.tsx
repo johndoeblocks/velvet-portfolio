@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
-import Script from 'next/script';
 import '@/app/globals.css';
 import { CookieConsent } from '@/components/cookie-consent';
 import { SITE_URL } from '@/lib/seo';
@@ -80,7 +79,7 @@ export default async function RootLayout({
 }) {
   const locale = await getLocale();
   const isPortuguese = locale.startsWith('pt');
-  const htmlLang = isPortuguese ? 'pt' : 'en';
+  const htmlLang = isPortuguese ? 'pt-PT' : 'en';
   const siteDescription = isPortuguese
     ? 'Agência sénior em Portugal que cria websites, landing pages, apps e experiências digitais preparadas para SEO e focadas em gerar leads qualificados.'
     : 'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.';
@@ -173,45 +172,8 @@ export default async function RootLayout({
             `,
           }}
         />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
-        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WYPHX4MX4F"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WYPHX4MX4F', {
-              'anonymize_ip': true,
-              'cookie_flags': 'SameSite=None;Secure'
-            });
-          `}
-        </Script>
-        <Script id="apollo-tracker" strategy="afterInteractive">
-          {`
-            function initApollo() {
-              var n = Math.random().toString(36).substring(7);
-              var o = document.createElement('script');
-              o.src = 'https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=' + n;
-              o.async = true;
-              o.defer = true;
-              o.onload = function() {
-                window.trackingFunctions.onLoad({ appId: '69e8f7a90f50e3001d12b881' });
-              };
-              document.head.appendChild(o);
-            }
-            initApollo();
-          `}
-        </Script>
-
         <CookieConsent />
 
         <script

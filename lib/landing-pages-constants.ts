@@ -42,7 +42,7 @@ export const LOCATIONS: LocationConfig[] = [
     slug: "aveiro",
     description: "polo industrial e tecnológico da Região Centro, conhecida como a Veneza de Portugal",
     industries: ["indústria", "tecnologia", "comércio", "logística", "ambiente"],
-    vibe: "Moderna e conectada — Aveiro é uma das cidades com maior densidade de empresas exporadoras e PMEs industriais 4.0.",
+    vibe: "Moderna e conectada — Aveiro é uma das cidades com maior densidade de empresas exportadoras e PMEs industriais 4.0.",
   },
   {
     name: "Setúbal",
@@ -66,6 +66,13 @@ export const LOCATIONS: LocationConfig[] = [
     vibe: "Ensolarada e cosmopolita — o Algarve é um mercado de alto valor com milhões de visitantes internacionais por ano.",
   },
   {
+    name: "Guarda",
+    slug: "guarda",
+    description: "capital do distrito mais elevado de Portugal, com forte ligação à indústria, logística, saúde e serviços regionais",
+    industries: ["indústria", "logística", "saúde", "comércio", "turismo"],
+    vibe: "Interior, estratégica e resiliente — a Guarda liga Portugal e Espanha e ganha força quando as empresas locais comunicam melhor no digital.",
+  },
+  {
     name: "Leiria",
     slug: "leiria",
     description: "cidade intermunicipal com forte tradição industrial e localização estratégica no Centro",
@@ -78,6 +85,13 @@ export const LOCATIONS: LocationConfig[] = [
     description: "capital da Madeira e destino turístico premium de classe mundial",
     industries: ["turismo", "hotelaria", "serviços", "comércio", "imobiliário"],
     vibe: "Exclusiva e internacional — o Funchal combina beleza natural única com um mercado empresarial em plena digitalização.",
+  },
+  {
+    name: "Ponta Delgada",
+    slug: "ponta-delgada",
+    description: "principal centro económico dos Açores, com forte ligação ao turismo, serviços, comércio e economia azul",
+    industries: ["turismo", "serviços", "comércio", "economia azul", "agricultura"],
+    vibe: "Atlântica e internacional — Ponta Delgada beneficia de uma presença digital clara para ligar negócios locais a clientes dentro e fora dos Açores.",
   },
   {
     name: "Évora",
@@ -131,9 +145,9 @@ export const LOCATIONS: LocationConfig[] = [
   {
     name: "Portalegre",
     slug: "portalegre",
-    description: "capital do Alto Alentejo, com forte ligação à industria corticeira e ao turismo de natureza",
+    description: "capital do Alto Alentejo, com forte ligação à indústria corticeira e ao turismo de natureza",
     industries: ["cortiça", "turismo", "agricultura", "comércio", "energia renovável"],
-    vibe: "Verde e competitiva — Portalegre aposta em digitalizaçao para valorizar os seus recursos únicos no mercado global.",
+    vibe: "Verde e competitiva — Portalegre aposta em digitalização para valorizar os seus recursos únicos no mercado global.",
   },
   {
     name: "Beja",

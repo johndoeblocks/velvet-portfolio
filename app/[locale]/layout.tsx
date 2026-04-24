@@ -3,7 +3,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { ThemeProvider } from '@/components/theme-provider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import {
   buildLocaleAlternates,
@@ -71,18 +70,12 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages({ locale });
+  const enableVercelInsights = process.env.VERCEL_ENV === 'production';
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-      disableTransitionOnChange
-    >
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        <SpeedInsights />
-        {children}
-      </NextIntlClientProvider>
-    </ThemeProvider>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {enableVercelInsights ? <SpeedInsights /> : null}
+      {children}
+    </NextIntlClientProvider>
   );
 }

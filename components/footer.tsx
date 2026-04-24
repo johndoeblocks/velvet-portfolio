@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/icon.svg"
                 alt=""
                 width={32}
                 height={32}
@@ -47,24 +47,29 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-slate-600">
               <li>
-                <a href="#services" className="transition-colors hover:text-slate-900">
+                <Link href="/#services" className="transition-colors hover:text-slate-900">
                   {navT('services')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#portfolio" className="transition-colors hover:text-slate-900">
+                <Link href="/#portfolio" className="transition-colors hover:text-slate-900">
                   {navT('work')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#process" className="transition-colors hover:text-slate-900">
+                <Link href="/#process" className="transition-colors hover:text-slate-900">
                   {navT('process')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="transition-colors hover:text-slate-900">
+                <Link href="/blog" className="transition-colors hover:text-slate-900">
+                  {navT('blog')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#contact" className="transition-colors hover:text-slate-900">
                   {navT('contact')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -74,6 +79,11 @@ export const Footer: React.FC = () => {
               {t('resources')}
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-slate-600">
+              <li>
+                <Link href="/blog" className="transition-colors hover:text-slate-900">
+                  {t('blog')}
+                </Link>
+              </li>
               <li>
                 <Link href="/cv" className="transition-colors hover:text-slate-900">
                   {t('cv')}

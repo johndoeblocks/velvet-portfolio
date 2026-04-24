@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
+import { getLocalizedBlogPath } from '@/lib/blog-routes';
 import { cn } from '@/lib/utils';
 
 const LANGUAGE_OPTIONS = [
@@ -32,11 +33,12 @@ export function LanguageSwitcher({
     >
       {LANGUAGE_OPTIONS.map((option) => {
         const isActive = option.locale === activeLocale;
+        const href = getLocalizedBlogPath(pathname, option.locale);
 
         return (
           <Link
             key={option.locale}
-            href={pathname}
+            href={href}
             locale={option.locale}
             aria-current={isActive ? 'page' : undefined}
             className={cn(

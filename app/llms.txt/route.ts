@@ -1,3 +1,4 @@
+import { BLOG_POSTS } from '@/lib/blog-data';
 import { landingPagesData } from '@/lib/landing-pages-data';
 import { SERVICES } from '@/lib/landing-pages-constants';
 import { SITE_URL } from '@/lib/seo';
@@ -99,12 +100,26 @@ ${servicesList}
     })
     .join('\n\n');
 
+  const blogLinks = BLOG_POSTS.map((post) => {
+    const en = post.content.en;
+    const pt = post.content.pt;
+
+    return `- [${en.title}](${BASE_URL}/en/blog/${post.slugs.en}): ${en.description}\n- [${pt.title}](${BASE_URL}/pt/blog/${post.slugs.pt}): ${pt.description}`;
+  }).join('\n');
+
   const importantPages = `\
 ## Important Pages
 
 ### Core Pages
 
 ${staticLinks}
+
+### Blog
+
+- [Blog index EN](${BASE_URL}/en/blog): Practical guides on web development, SEO, conversion, MVPs, and Web3 UX.
+- [Blog index PT](${BASE_URL}/pt/blog): Guias práticos sobre desenvolvimento web, SEO, conversão, MVPs e UX Web3.
+
+${blogLinks}
 
 ### Location-Specific Landing Pages
 
