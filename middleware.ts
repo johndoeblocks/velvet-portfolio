@@ -6,13 +6,6 @@ import { BLOG_SLUGS } from './lib/blog-routes';
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  if (request.nextUrl.hostname === 'www.velvetneuron.com') {
-    const url = request.nextUrl.clone();
-    url.hostname = 'velvetneuron.com';
-
-    return NextResponse.redirect(url, 308);
-  }
-
   const blogArticleMatch = request.nextUrl.pathname.match(/^\/blog\/([^/]+)\/?$/);
 
   if (blogArticleMatch) {
