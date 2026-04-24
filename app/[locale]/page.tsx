@@ -1,39 +1,63 @@
-import dynamic from 'next/dynamic';
+import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
-import { SectionDivider } from '@/components/section-divider';
+import { TrustSection } from '@/components/trust-section';
+import { PromoVideoSection } from '@/components/promo-video-section';
+import { ServicesSection } from '@/components/services-section';
+import { PortfolioSection } from '@/components/portfolio-section';
+import { ProcessSection } from '@/components/process-section';
+import { FAQ_SECTION_KEYS, FAQSection } from '@/components/faq-section';
+import { ContactSection } from '@/components/contact-section';
+import { Footer } from '@/components/footer';
 
-const ServicesSection = dynamic(async () => (await import('@/components/services-section')).ServicesSection);
-const PromoVideoSection = dynamic(async () => (await import('@/components/promo-video-section')).PromoVideoSection);
-const PortfolioSection = dynamic(async () => (await import('@/components/portfolio-section')).PortfolioSection);
-const ProcessSection = dynamic(async () => (await import('@/components/process-section')).ProcessSection);
-const TechnologySection = dynamic(async () => (await import('@/components/technology-section')).TechnologySection);
-const ContactSection = dynamic(async () => (await import('@/components/contact-section')).ContactSection);
-const Footer = dynamic(async () => (await import('@/components/footer')).Footer);
+type HomeProps = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
 
-export default function Home() {
+export default async function Home({ params }: HomeProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'faq' });
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale === 'pt' ? 'pt-PT' : 'en',
+    mainEntity: FAQ_SECTION_KEYS.map((key) => ({
+      '@type': 'Question',
+      name: t(`items.${key}.question`),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: t(`items.${key}.answer`),
+      },
+    })),
+  };
+
   return (
-    <main className="bg-black text-white overflow-hidden noise relative">
+    <main className="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-slate-950 noise">
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-black" />
-        <div className="absolute inset-0 grid-pattern opacity-50" />
+        <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div className="absolute inset-0 grid-pattern opacity-80" />
       </div>
 
       <Header />
       <HeroSection />
-      <SectionDivider />
-      <ServicesSection />
-      <SectionDivider />
+      <TrustSection />
       <PromoVideoSection />
-      <SectionDivider />
+      <ServicesSection />
       <PortfolioSection />
-      <SectionDivider />
       <ProcessSection />
-      <SectionDivider />
-      <TechnologySection />
-      <SectionDivider />
+      <FAQSection />
       <ContactSection />
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c'),
+        }}
+      />
     </main>
   );
 }

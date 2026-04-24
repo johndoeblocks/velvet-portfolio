@@ -13,58 +13,52 @@ export const Header: React.FC = () => {
   const mobileMenuId = 'mobile-navigation';
 
   const navItems = [
-    { label: t('work'), href: '#portfolio' },
     { label: t('services'), href: '#services' },
+    { label: t('work'), href: '#portfolio' },
+    { label: t('process'), href: '#process' },
     { label: t('contact'), href: '#contact' },
   ];
 
   return (
-    <header
-      className="fixed top-0 w-full z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-xl shadow-lg shadow-black/20"
-    >
+    <header className="fixed top-0 z-50 w-full border-b border-slate-900/10 bg-[#f6f1e8]/88 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3 group">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.png"
             alt=""
-            width={36}
-            height={36}
+            width={38}
+            height={38}
             aria-hidden="true"
             priority
-            className="transition-transform duration-300 group-hover:scale-110"
+            className="rounded-full ring-1 ring-slate-900/8"
           />
-          <span className="text-white font-bold text-lg tracking-tight group-hover:text-purple-300 transition-colors duration-300">
+          <span className="text-base font-semibold tracking-tight text-slate-900">
             Velvet Neuron
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-1">
+        <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="relative px-4 py-2 text-gray-400 hover:-translate-y-0.5 hover:text-white transition-all text-sm font-medium group"
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors duration-300 hover:bg-white hover:text-slate-900"
             >
               {item.label}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-3/4 transition-all duration-300" />
             </a>
           ))}
         </div>
 
-        {/* Language Switcher & CTA */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden items-center gap-3 md:flex">
           <LanguageSwitcher />
           <a
             href="#contact"
-            className="px-5 py-2 bg-white text-black rounded-full text-sm font-semibold hover:scale-[1.03] hover:bg-purple-100 transition-all duration-300"
+            className="inline-flex items-center rounded-full bg-[#0f4c5c] px-5 py-2.5 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#0c3d49]"
           >
-            {t('contact')}
+            {t('cta')}
           </a>
         </div>
 
-        {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
           <LanguageSwitcher compact />
           <button
@@ -73,41 +67,51 @@ export const Header: React.FC = () => {
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
             aria-controls={mobileMenuId}
-            className="text-white w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-slate-900/10 bg-white text-slate-900 shadow-sm"
           >
             <span
-              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${menuOpen ? 'translate-y-[7px] rotate-45' : ''
-                }`}
+              className={`block h-px w-4 origin-center bg-current transition-transform duration-300 ${
+                menuOpen ? 'translate-y-[6px] rotate-45' : ''
+              }`}
             />
             <span
-              className={`block h-px w-5 bg-white transition-all duration-200 ${menuOpen ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'
-                }`}
+              className={`block h-px w-4 bg-current transition-all duration-200 ${
+                menuOpen ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'
+              }`}
             />
             <span
-              className={`block h-px w-5 origin-center bg-white transition-transform duration-300 ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''
-                }`}
+              className={`block h-px w-4 origin-center bg-current transition-transform duration-300 ${
+                menuOpen ? '-translate-y-[6px] -rotate-45' : ''
+              }`}
             />
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         id={mobileMenuId}
-        className={`overflow-hidden border-b border-white/[0.06] bg-black/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 border-b-transparent'
-          }`}
+        className={`overflow-hidden border-b border-slate-900/10 bg-[#f6f1e8]/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${
+          menuOpen ? 'max-h-[28rem] opacity-100' : 'max-h-0 opacity-0'
+        }`}
       >
-        <div className="flex flex-col px-6 py-6 space-y-1">
+        <div className="flex flex-col gap-1 px-6 py-6">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="border-b border-white/[0.04] py-3 text-lg font-medium text-gray-300 transition-colors hover:text-white"
+              className="rounded-2xl border border-transparent px-4 py-3 text-base font-medium text-slate-700 transition-colors hover:border-slate-900/10 hover:bg-white hover:text-slate-900"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            className="mt-3 inline-flex items-center justify-center rounded-full bg-[#0f4c5c] px-5 py-3 text-sm font-semibold text-white"
+            onClick={() => setMenuOpen(false)}
+          >
+            {t('cta')}
+          </a>
         </div>
       </div>
     </header>

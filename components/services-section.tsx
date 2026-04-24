@@ -1,76 +1,58 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
+import {
+  Bot,
+  Gauge,
+  LayoutTemplate,
+  MonitorSmartphone,
+  PenSquare,
+} from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Zap, Brain, Gauge, TrendingUp, Cog } from 'lucide-react';
 
 const services = [
-  { icon: Cog, key: 'product_engineering' },
-  { icon: Brain, key: 'ai_automation' },
-  { icon: Gauge, key: 'web_platforms' },
-  { icon: TrendingUp, key: 'trading_data' },
-  { icon: Zap, key: 'performance' },
+  { icon: LayoutTemplate, key: 'websites' },
+  { icon: PenSquare, key: 'positioning' },
+  { icon: MonitorSmartphone, key: 'web_apps' },
+  { icon: Bot, key: 'ai_automation' },
+  { icon: Gauge, key: 'seo_performance' },
 ];
 
 export const ServicesSection: React.FC = () => {
   const t = useTranslations('services');
 
   return (
-    <section id="services" className="relative py-32 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="text-xs font-medium tracking-[0.3em] uppercase text-purple-400/80 mb-4 block">
-            What we do
+    <section id="services" className="px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-3xl">
+          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+            {t('eyebrow')}
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
             {t('title')}
           </h2>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-light">
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
             {t('description')}
           </p>
-        </motion.div>
+        </div>
 
-        {/* Cards – responsive grid: 1 col mobile, 2 col md, 3 on lg (first 3), then 2 centered */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, idx) => {
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          {services.map((service) => {
             const Icon = service.icon;
+
             return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
-                whileHover={{ y: -4 }}
-                className={`group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 ${
-                  idx >= 3 ? 'lg:col-span-1 lg:last:col-start-2' : ''
-                }`}
+              <article
+                key={service.key}
+                className="group rounded-[1.75rem] border border-slate-900/10 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.3)] transition-transform duration-300 hover:-translate-y-1"
               >
-                {/* Gradient glow on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/[0.06] to-blue-500/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10">
-                  {/* Icon container */}
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center mb-6 group-hover:border-purple-500/30 transition-colors duration-500">
-                    <Icon className="w-5 h-5 text-purple-400" />
-                  </div>
-
-                  <h3 className="text-lg font-semibold mb-3 text-white">
-                    {t(service.key)}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {t(`${service.key}_desc`)}
-                  </p>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3e6d7] text-[#0f4c5c]">
+                  <Icon className="h-5 w-5" />
                 </div>
-              </motion.div>
+                <h3 className="mt-5 text-lg font-semibold tracking-tight text-slate-950">
+                  {t(`items.${service.key}.title`)}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  {t(`items.${service.key}.description`)}
+                </p>
+              </article>
             );
           })}
         </div>

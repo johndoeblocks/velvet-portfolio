@@ -1,48 +1,48 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Images, ArrowUpRight } from 'lucide-react';
-import { ImageGallery } from '@/components/image-gallery';
+import { ArrowUpRight, Images } from 'lucide-react';
 import Image from 'next/image';
+import { ImageGallery } from '@/components/image-gallery';
 
 const projects = [
   {
     name: 'dominos_norway',
     slug: 'dominos',
     imageCount: 3,
-    accent: 'from-red-500/20 to-orange-500/10',
+    accent: 'from-[#c67c4e]/20 via-[#f3e5d2]/65 to-transparent',
   },
   {
     name: 'dominos_sweden',
     slug: 'dominos',
     imageCount: 3,
-    accent: 'from-yellow-500/20 to-amber-500/10',
+    accent: 'from-[#0f766e]/16 via-[#ecfaf7]/65 to-transparent',
   },
   {
     name: 'burberry',
     slug: 'burberry',
     imageCount: 0,
-    accent: 'from-neutral-400/20 to-stone-500/10',
+    accent: 'from-slate-300/35 via-white to-transparent',
   },
   {
     name: 'talho_halal',
     slug: 'talho-halal',
     imageCount: 2,
-    accent: 'from-emerald-500/20 to-green-500/10',
+    accent: 'from-emerald-200/55 via-white to-transparent',
   },
   {
     name: 'scoreplay',
     slug: 'scoreplay',
     imageCount: 3,
-    accent: 'from-blue-500/20 to-sky-500/10',
+    accent: 'from-sky-200/55 via-white to-transparent',
   },
   {
     name: 'quizflow',
     slug: 'quizflow',
     imageCount: 5,
-    accent: 'from-purple-500/20 to-violet-500/10',
+    accent: 'from-amber-200/55 via-white to-transparent',
   },
 ];
 
@@ -61,7 +61,11 @@ export const PortfolioSection: React.FC = () => {
 
   const openGallery = (project: (typeof projects)[number]) => {
     const images = getProjectImages(project.slug, project.imageCount);
-    if (images.length === 0) return;
+
+    if (images.length === 0) {
+      return;
+    }
+
     setActiveProject({
       name: t(`projects.${project.name}.name`),
       images,
@@ -71,107 +75,96 @@ export const PortfolioSection: React.FC = () => {
 
   return (
     <>
-      <section id="portfolio" className="relative py-32 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          {/* Section header */}
-          <motion.div
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-xs font-medium tracking-[0.3em] uppercase text-purple-400/80 mb-4 block">
-              Selected Work
+      <section id="portfolio" className="px-6 py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+              {t('eyebrow')}
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
               {t('title')}
             </h2>
-            <p className="text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-light">
+            <p className="mt-4 text-lg leading-relaxed text-slate-600">
               {t('description')}
             </p>
-          </motion.div>
+          </div>
 
-          {/* Project cards */}
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="mt-8 rounded-[1.75rem] border border-slate-900/10 bg-white px-5 py-4 text-sm leading-relaxed text-slate-600 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.25)] sm:px-6">
+            {t('note')}
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
             {projects.map((project, idx) => {
               const hasImages = project.imageCount > 0;
-              const firstImage = hasImages
-                ? `/gallery/${project.slug}-1.png`
-                : null;
+              const firstImage = hasImages ? `/gallery/${project.slug}-1.png` : null;
 
               return (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
+                  key={project.name}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.6, delay: idx * 0.08 }}
+                  viewport={{ once: true, margin: '-80px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
                   whileHover={{ y: -4 }}
-                  className={`group relative rounded-2xl bg-white/[0.02] border border-white/[0.06] overflow-hidden hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 ${
+                  className={`group relative overflow-hidden rounded-[1.75rem] border border-slate-900/10 bg-white p-8 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.28)] transition-all duration-300 ${
                     hasImages ? 'cursor-pointer' : 'cursor-default'
                   }`}
                   onClick={() => hasImages && openGallery(project)}
                   onMouseEnter={() => setHoveredIdx(idx)}
                   onMouseLeave={() => setHoveredIdx(null)}
                 >
-                  {/* Accent gradient on hover */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-80 transition-opacity duration-300 group-hover:opacity-100`}
                   />
 
-                  {/* Thumbnail preview on hover */}
                   {firstImage && (
                     <AnimatePresence>
                       {hoveredIdx === idx && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.95 }}
+                          initial={{ opacity: 0, scale: 0.96 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute top-4 right-4 w-24 h-16 rounded-lg overflow-hidden border border-white/10 z-20"
+                          exit={{ opacity: 0, scale: 0.96 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute right-5 top-5 z-20 h-20 w-28 overflow-hidden rounded-2xl border border-slate-900/10 shadow-lg"
                         >
                           <Image
                             src={firstImage}
                             alt=""
                             fill
                             className="object-cover"
-                            sizes="96px"
+                            sizes="112px"
                           />
                         </motion.div>
                       )}
                     </AnimatePresence>
                   )}
 
-                  <div className="relative z-10 p-8">
-                    {/* Category */}
-                    <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-gray-500 mb-4 block">
+                  <div className="relative z-10">
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
                       {t(`projects.${project.name}.category`)}
                     </span>
-
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                    <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">
                       {t(`projects.${project.name}.name`)}
                     </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
+                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600">
                       {t(`projects.${project.name}.description`)}
                     </p>
 
-                    {/* Action */}
-                    <div className="flex items-center justify-between">
+                    <div className="mt-8 flex items-center justify-between gap-4">
                       {hasImages ? (
-                        <span className="text-sm font-medium text-purple-400 flex items-center gap-2 group-hover:gap-3 transition-all">
+                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f4c5c]">
                           {t('view_project')}
-                          <ArrowUpRight className="w-4 h-4" />
+                          <ArrowUpRight className="h-4 w-4" />
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-600">Coming soon</span>
+                        <span className="text-sm font-medium text-slate-500">
+                          {t('private_work')}
+                        </span>
                       )}
+
                       {hasImages && (
-                        <div className="flex items-center gap-1.5 text-gray-600 text-xs">
-                          <Images className="w-3.5 h-3.5" />
+                        <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-900/10 bg-white/85 px-3 py-1.5 text-xs font-medium text-slate-600">
+                          <Images className="h-3.5 w-3.5" />
                           <span>{project.imageCount}</span>
                         </div>
                       )}
@@ -184,7 +177,6 @@ export const PortfolioSection: React.FC = () => {
         </div>
       </section>
 
-      {/* Gallery modal */}
       <ImageGallery
         images={activeProject?.images ?? []}
         projectName={activeProject?.name ?? ''}

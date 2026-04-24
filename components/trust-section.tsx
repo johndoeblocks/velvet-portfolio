@@ -1,0 +1,78 @@
+import React from 'react';
+import { BadgeCheck, Compass, Gauge, ShieldCheck } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+
+const trustItems = [
+  { icon: BadgeCheck, key: 'senior' },
+  { icon: Compass, key: 'clarity' },
+  { icon: Gauge, key: 'performance' },
+  { icon: ShieldCheck, key: 'conversion' },
+];
+
+const experienceBrands = ['Burberry', "Domino's", 'Scoreplay', 'Talho Halal', 'QuizFlow'];
+
+export const TrustSection: React.FC = () => {
+  const t = useTranslations('trust');
+
+  return (
+    <section className="px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div className="max-w-xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+              {t('eyebrow')}
+            </span>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
+              {t('title')}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-slate-600">
+              {t('description')}
+            </p>
+          </div>
+
+          <div className="rounded-[2rem] border border-slate-900/10 bg-white px-6 py-6 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.3)] sm:px-8">
+            <p className="text-sm font-medium text-slate-700">
+              {t('experience_label')}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {t('experience_copy')}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              {experienceBrands.map((brand) => (
+                <span
+                  key={brand}
+                  className="rounded-full border border-slate-900/10 bg-[#fffaf3] px-4 py-2 text-sm font-medium text-slate-800"
+                >
+                  {brand}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {trustItems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <article
+                key={item.key}
+                className="rounded-[1.75rem] border border-slate-900/10 bg-[#fffaf3] p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.25)]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3e6d7] text-[#0f4c5c]">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold tracking-tight text-slate-950">
+                  {t(`items.${item.key}.title`)}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  {t(`items.${item.key}.description`)}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};

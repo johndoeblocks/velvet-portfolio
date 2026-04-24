@@ -1,10 +1,15 @@
-import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/header';
 import { LandingHero } from '@/components/landing-hero';
 import { LandingSeoContent } from '@/components/landing-seo-content';
-import { SectionDivider } from '@/components/section-divider';
+import { TrustSection } from '@/components/trust-section';
+import { PromoVideoSection } from '@/components/promo-video-section';
+import { ServicesSection } from '@/components/services-section';
+import { PortfolioSection } from '@/components/portfolio-section';
+import { ProcessSection } from '@/components/process-section';
+import { FAQSection } from '@/components/faq-section';
+import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import {
   getLandingPageBySlug,
@@ -19,31 +24,102 @@ import {
   toAppLocale,
 } from '@/lib/seo';
 
-const ServicesSection = dynamic(
-  async () => (await import('@/components/services-section')).ServicesSection
-);
-const PromoVideoSection = dynamic(
-  async () => (await import('@/components/promo-video-section')).PromoVideoSection
-);
-const PortfolioSection = dynamic(
-  async () => (await import('@/components/portfolio-section')).PortfolioSection
-);
-const ProcessSection = dynamic(
-  async () => (await import('@/components/process-section')).ProcessSection
-);
-const TechnologySection = dynamic(
-  async () => (await import('@/components/technology-section')).TechnologySection
-);
-const ContactSection = dynamic(
-  async () => (await import('@/components/contact-section')).ContactSection
-);
-
 type PageProps = {
   params: Promise<{
     locale: string;
     slug: string;
   }>;
 };
+
+const serviceTranslations: Record<string, string> = {
+  'desenvolvimento de websites': 'website development',
+  'desenvolvimento de aplicações': 'app development',
+  'SEO técnico e performance web': 'technical SEO and web performance',
+};
+
+const taglineTranslations: Record<string, string> = {
+  'desenvolvimento de websites':
+    'Fast, trustworthy websites and landing pages designed to explain your offer clearly and generate better enquiries.',
+  'desenvolvimento de aplicações':
+    'Web and mobile products built for usability, speed, and a stronger customer experience.',
+  'SEO técnico e performance web':
+    'Technical SEO and performance improvements that help your website load faster, rank better, and convert with less friction.',
+};
+
+const locationTranslations: Record<string, string> = {
+  Lisboa: 'Lisbon',
+  Porto: 'Porto',
+  Braga: 'Braga',
+  Coimbra: 'Coimbra',
+  Aveiro: 'Aveiro',
+  Setúbal: 'Setubal',
+  Guimarães: 'Guimaraes',
+  Faro: 'Faro',
+  Leiria: 'Leiria',
+  Funchal: 'Funchal',
+  Évora: 'Evora',
+  Viseu: 'Viseu',
+  'Viana do Castelo': 'Viana do Castelo',
+  Santarém: 'Santarem',
+  'Castelo Branco': 'Castelo Branco',
+  Bragança: 'Braganca',
+  'Vila Real': 'Vila Real',
+  Portalegre: 'Portalegre',
+  Beja: 'Beja',
+};
+
+function capitalizeFirst(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function getLocalizedServiceLabel(locale: string, service: string) {
+  if (locale === 'pt') {
+    return service;
+  }
+
+  return serviceTranslations[service] ?? service;
+}
+
+function getLocalizedTagline(locale: string, serviceName: string, fallback: string) {
+  if (locale === 'pt') {
+    return fallback;
+  }
+
+  return taglineTranslations[serviceName] ?? fallback;
+}
+
+function getLocalizedLocationLabel(locale: string, location: string) {
+  if (locale === 'pt') {
+    return location;
+  }
+
+  return locationTranslations[location] ?? location;
+}
+
+function getLocalizedMetadata(locale: string, service: string, location: string, fallbackDescription: string) {
+  if (locale === 'pt') {
+    return {
+      title: `${capitalizeFirst(service)} em ${location} | Velvet Neuron`,
+      description: fallbackDescription,
+    };
+  }
+
+  return {
+    title: `${capitalizeFirst(service)} in ${location} | Velvet Neuron`,
+    description: `Senior-led ${service} in ${location}. Velvet Neuron combines strategy, design, development, and technical SEO to build trustworthy digital experiences that convert.`,
+  };
+}
+
+function getEnglishKeywords(service: string, location: string) {
+  return [
+    `${service} in ${location}`,
+    `${location} digital agency`,
+    `${location} website agency`,
+    `${location} web development`,
+    `${location} SEO agency`,
+    'Velvet Neuron',
+  ];
+}
 
 export async function generateStaticParams() {
   return landingPagesData.flatMap((page) =>
@@ -65,13 +141,25 @@ export async function generateMetadata({
     return {};
   }
 
+  const localizedService = getLocalizedServiceLabel(activeLocale, page.service);
+  const localizedLocation = getLocalizedLocationLabel(activeLocale, page.location);
+  const localizedMetadata = getLocalizedMetadata(
+    activeLocale,
+    localizedService,
+    localizedLocation,
+    page.metaDescription
+  );
+
   return {
-    title: page.title,
-    description: page.metaDescription,
-    keywords: getLandingPageKeywords(page),
+    title: localizedMetadata.title,
+    description: localizedMetadata.description,
+    keywords:
+      activeLocale === 'pt'
+        ? getLandingPageKeywords(page)
+        : getEnglishKeywords(localizedService, localizedLocation),
     openGraph: {
-      title: page.title,
-      description: page.metaDescription,
+      title: localizedMetadata.title,
+      description: localizedMetadata.description,
       locale: activeLocale === 'pt' ? 'pt_PT' : 'en_US',
       type: 'website',
       url: buildLocalizedUrl(activeLocale, `/${page.slug}`),
@@ -87,8 +175,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: page.title,
-      description: page.metaDescription,
+      title: localizedMetadata.title,
+      description: localizedMetadata.description,
       images: ['/logo.png'],
     },
     alternates: buildLocaleAlternates(`/${page.slug}`, activeLocale),
@@ -96,47 +184,60 @@ export async function generateMetadata({
 }
 
 export default async function LandingPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const page = getLandingPageBySlug(slug);
 
   if (!page) {
     notFound();
   }
 
+  const activeLocale = toAppLocale(locale);
   const serviceConfig = SERVICES.find((service) => service.name === page.service);
   const locationConfig = LOCATIONS.find((location) => location.name === page.location);
-  const tagline = serviceConfig?.tagline ?? '';
+
+  if (!serviceConfig || !locationConfig) {
+    notFound();
+  }
+
+  const serviceLabel = getLocalizedServiceLabel(activeLocale, page.service);
+  const locationLabel = getLocalizedLocationLabel(activeLocale, page.location);
+  const tagline = getLocalizedTagline(activeLocale, page.service, serviceConfig.tagline);
 
   return (
-    <main className="bg-black text-white overflow-hidden noise relative">
+    <main className="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-slate-950 noise">
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-black" />
-        <div className="absolute inset-0 grid-pattern opacity-50" />
+        <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div className="absolute inset-0 grid-pattern opacity-80" />
       </div>
 
       <Header />
 
       <LandingHero
-        service={page.service}
-        location={page.location}
+        locale={activeLocale}
+        service={serviceLabel}
+        location={locationLabel}
         tagline={tagline}
       />
 
-      {serviceConfig && locationConfig && (
-        <LandingSeoContent service={serviceConfig} location={locationConfig} />
+      <TrustSection />
+      <PromoVideoSection />
+
+      {activeLocale === 'pt' ? (
+        <>
+          <LandingSeoContent service={serviceConfig} location={locationConfig} />
+          <ServicesSection />
+          <PortfolioSection />
+          <ProcessSection />
+        </>
+      ) : (
+        <>
+          <ServicesSection />
+          <PortfolioSection />
+          <ProcessSection />
+          <FAQSection />
+        </>
       )}
 
-      <SectionDivider />
-      <ServicesSection />
-      <SectionDivider />
-      <PromoVideoSection />
-      <SectionDivider />
-      <PortfolioSection />
-      <SectionDivider />
-      <ProcessSection />
-      <SectionDivider />
-      <TechnologySection />
-      <SectionDivider />
       <ContactSection />
       <Footer />
     </main>

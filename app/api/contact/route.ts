@@ -26,9 +26,9 @@ export async function POST(req: NextRequest) {
     const message = toTrimmedString(body.message);
 
     // Validate required fields
-    if (!name || !email || !phone || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name, email, phone, and message are required.' },
+        { error: 'Name, email, and message are required.' },
         { status: 400 }
       );
     }

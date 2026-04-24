@@ -1,78 +1,111 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, PlayCircle } from 'lucide-react';
+import type { AppLocale } from '@/lib/seo';
 
 interface LandingHeroProps {
-  service: string;   // e.g. "desenvolvimento de websites"
-  location: string;  // e.g. "Lisboa"
-  tagline: string;   // one-line benefit from the service config
+  service: string;
+  location: string;
+  tagline: string;
+  locale: AppLocale;
 }
 
-/**
- * Drop-in replacement for <HeroSection /> on SEO landing pages.
- * Keeps the same visual language (glows, grid, scroll indicator) but
- * injects the location-specific H1 and keyword-rich sub-headline.
- */
-export const LandingHero: React.FC<LandingHeroProps> = ({ service, location, tagline }) => {
-  const serviceCapitalized = service.charAt(0).toUpperCase() + service.slice(1);
+export const LandingHero: React.FC<LandingHeroProps> = ({
+  service,
+  location,
+  tagline,
+  locale,
+}) => {
+  const copy =
+    locale === 'pt'
+      ? {
+          eyebrow: `Especialistas em ${location}`,
+          primaryCta: 'Pedir proposta',
+          secondaryCta: 'Ver trabalhos',
+          videoCta: 'Ver vídeo',
+          badge: 'Equipa sénior em Portugal',
+          note: 'Estratégia, design, desenvolvimento e SEO no mesmo projeto.',
+          direct: 'Trabalha diretamente com especialistas, sem intermediários.',
+        }
+      : {
+          eyebrow: `Specialists for teams in ${location}`,
+          primaryCta: 'Request a proposal',
+          secondaryCta: 'See selected work',
+          videoCta: 'Watch the video',
+          badge: 'Senior-led team in Portugal',
+          note: 'Strategy, design, development, and SEO in the same engagement.',
+          direct: 'You work directly with specialists, without layers of handoff.',
+        };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Ambient glows — same as HeroSection */}
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
-      <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[100px]" />
+    <section className="relative overflow-hidden px-6 pb-20 pt-32 sm:pb-24 sm:pt-36">
+      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top_left,rgba(15,76,92,0.16),transparent_36%),radial-gradient(circle_at_top_right,rgba(198,124,78,0.16),transparent_40%)]" />
 
-      {/* Grid & fade */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div>
+            <span className="inline-flex items-center rounded-full border border-slate-900/10 bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600 shadow-sm">
+              {copy.eyebrow}
+            </span>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
-        {/* Location badge */}
-        <div className="inline-flex items-center gap-2 bg-white/5 rounded-full px-4 py-1.5 text-xs sm:text-sm text-white/60 mb-8">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0 inline-block" />
-          Freelancer · {location} · Portugal
-        </div>
+            <h1 className="mt-6 text-4xl font-black leading-[1.02] tracking-tight text-slate-950 sm:text-5xl lg:text-7xl">
+              {locale === 'pt' ? `${service} em ${location}` : `${service} in ${location}`}
+            </h1>
 
-        {/* H1 — keyword-optimised */}
-        <h1 className="text-5xl sm:text-7xl md:text-[5.5rem] font-black leading-[0.95] tracking-tight mb-8 text-glow">
-          <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
-            {serviceCapitalized}
-          </span>
-          <br />
-          <span className="bg-gradient-to-b from-white/80 via-white/60 to-gray-600 bg-clip-text text-transparent">
-            em {location}
-          </span>
-        </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+              {tagline} {copy.direct}
+            </p>
 
-        {/* Tagline */}
-        <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-          {tagline}{' '}
-          Trabalho diretamente consigo — sem intermediários, do briefing à entrega.
-        </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f4c5c] px-7 py-4 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#0c3d49]"
+              >
+                <span>{copy.primaryCta}</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center justify-center rounded-full border border-slate-900/10 bg-white px-7 py-4 text-sm font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-0.5 hover:border-slate-900/20"
+              >
+                {copy.secondaryCta}
+              </a>
+            </div>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#portfolio"
-            className="group w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded-full inline-flex items-center justify-center space-x-2 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-shadow duration-500"
-          >
-            <span>Ver Portfólio</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
+            <a
+              href="#promo-video"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#0f4c5c] underline-offset-4 transition-colors hover:text-[#0c3d49] hover:underline"
+            >
+              <PlayCircle className="h-4 w-4" />
+              {copy.videoCta}
+            </a>
+          </div>
 
-          <a
-            href="#contact"
-            className="group w-full sm:w-auto px-8 py-4 bg-white/[0.06] text-white font-semibold rounded-full border border-white/[0.1] inline-flex items-center justify-center space-x-2 hover:bg-white/[0.1] hover:border-white/[0.2] transition-all duration-500"
-          >
-            <span>Solicitar Cotação</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-1.5 bg-white/40 rounded-full" />
+          <div className="rounded-[2rem] border border-slate-900/10 bg-white p-8 shadow-[0_24px_70px_-50px_rgba(15,23,42,0.28)] sm:p-10">
+            <div className="inline-flex items-center rounded-full bg-[#f3e6d7] px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#0f4c5c]">
+              {copy.badge}
+            </div>
+            <div className="mt-6 space-y-4">
+              <div className="flex items-start gap-3 rounded-2xl bg-[#fffaf3] px-4 py-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#0f4c5c]" />
+                <p className="text-sm leading-relaxed text-slate-700">{copy.note}</p>
+              </div>
+              <div className="flex items-start gap-3 rounded-2xl bg-[#fffaf3] px-4 py-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#0f4c5c]" />
+                <p className="text-sm leading-relaxed text-slate-700">
+                  {locale === 'pt'
+                    ? 'Âmbito claro, comunicação rápida e foco em resultados concretos.'
+                    : 'Clear scope, fast communication, and focus on outcomes that matter.'}
+                </p>
+              </div>
+              <div className="flex items-start gap-3 rounded-2xl bg-[#fffaf3] px-4 py-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#0f4c5c]" />
+                <p className="text-sm leading-relaxed text-slate-700">
+                  {locale === 'pt'
+                    ? 'Ideal para empresas que precisam de uma presença digital mais credível e eficaz.'
+                    : 'Ideal for teams that need a more credible and more effective digital presence.'}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

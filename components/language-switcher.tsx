@@ -25,7 +25,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        'flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] p-1 backdrop-blur-sm',
+        'flex items-center rounded-full border border-slate-900/10 bg-white/80 p-1 shadow-sm backdrop-blur-sm',
         className
       )}
       aria-label="Language switcher"
@@ -40,21 +40,17 @@ export function LanguageSwitcher({
             locale={option.locale}
             aria-current={isActive ? 'page' : undefined}
             className={cn(
-              'relative inline-flex items-center rounded-full font-semibold tracking-[0.18em] text-white/65 transition-all duration-300 hover:text-white',
+              'inline-flex items-center rounded-full font-semibold tracking-[0.18em] transition-all duration-300',
               compact ? 'gap-1 px-2.5 py-1 text-[11px]' : 'gap-1.5 px-3 py-1.5 text-xs',
-              isActive && 'bg-white/[0.08] text-white'
+              isActive
+                ? 'bg-[#0f4c5c] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
             )}
           >
             <span aria-hidden="true" className={compact ? 'text-xs' : 'text-sm'}>
               {option.flag}
             </span>
             <span>{option.label}</span>
-            <span
-              className={cn(
-                'absolute inset-x-3 bottom-1 h-px bg-gradient-to-r from-white/20 via-white to-white/20 transition-opacity duration-300',
-                isActive ? 'opacity-100' : 'opacity-0'
-              )}
-            />
           </Link>
         );
       })}

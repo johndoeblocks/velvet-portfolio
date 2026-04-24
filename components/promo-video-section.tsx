@@ -1,7 +1,7 @@
 'use client';
 
+import { ArrowRight, PlayCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
 
 declare global {
   interface Window {
@@ -17,45 +17,54 @@ export const PromoVideoSection: React.FC = () => {
       window.gtag('event', action, {
         video_title: 'VSL',
         video_url: '/videos/VSL.mp4',
-        video_provider: 'html5'
+        video_provider: 'html5',
       });
     }
   };
 
   return (
-    <section className="relative z-10 py-20 px-6" id="promo-video">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-white">{t('title')}</h3>
-        </div>
+    <section id="promo-video" className="px-6 py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div className="max-w-xl">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+              <PlayCircle className="h-4 w-4 text-[#0f4c5c]" />
+              {t('eyebrow')}
+            </span>
+            <h2 className="mt-4 text-3xl font-black tracking-normal text-slate-950 sm:text-5xl">
+              {t('title')}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-slate-600">
+              {t('description')}
+            </p>
+            <a
+              href="#contact"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#0f4c5c] px-6 py-3.5 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#0c3d49]"
+            >
+              <span>{t('cta')}</span>
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
 
-        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-3 md:p-4">
-          <video
-            className="w-full aspect-video rounded-xl bg-black/40"
-            src="/videos/VSL.mp4"
-            controls
-            preload="metadata"
-            playsInline
-            onPlay={() => trackVideoEvent('video_start')}
-            onEnded={() => trackVideoEvent('video_complete')}
-          >
-            <track
-              default
-              kind="captions"
-              label="English captions"
-              src="/videos/VSL.en.vtt"
-              srcLang="en"
-            />
-          </video>
-        </div>
-
-        <div className="mt-8 flex justify-center">
-          <Link
-            href="/cv"
-            className="inline-flex items-center rounded-full border border-white/15 bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-purple-100"
-          >
-            {t('cta')}
-          </Link>
+          <div className="overflow-hidden rounded-[1.75rem] border border-slate-900/10 bg-white p-3 shadow-[0_30px_80px_-55px_rgba(15,23,42,0.35)] sm:p-4">
+            <video
+              className="aspect-video w-full rounded-[1.25rem] bg-slate-950 object-cover"
+              src="/videos/VSL.mp4"
+              controls
+              preload="metadata"
+              playsInline
+              onPlay={() => trackVideoEvent('video_start')}
+              onEnded={() => trackVideoEvent('video_complete')}
+            >
+              <track
+                default
+                kind="captions"
+                label="English captions"
+                src="/videos/VSL.en.vtt"
+                srcLang="en"
+              />
+            </video>
+          </div>
         </div>
       </div>
     </section>

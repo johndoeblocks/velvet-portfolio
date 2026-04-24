@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-black text-white;
+    @apply bg-[#f6f1e8] text-slate-950;
   }
 
   body.has-custom-cursor,
@@ -17,16 +21,16 @@
   }
 
   ::selection {
-    background-color: rgba(139, 92, 246, 0.4);
-    color: white;
+    background-color: rgba(15, 76, 92, 0.18);
+    color: #0f172a;
   }
 }
 
-/* Noise texture overlay */
 @layer utilities {
   .noise {
     position: relative;
   }
+
   .noise::before {
     content: '';
     position: absolute;
@@ -41,13 +45,19 @@
   .gradient-border {
     position: relative;
   }
+
   .gradient-border::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), transparent, rgba(59, 130, 246, 0.3));
+    background: linear-gradient(
+      135deg,
+      rgba(15, 76, 92, 0.28),
+      transparent,
+      rgba(198, 124, 78, 0.24)
+    );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -55,11 +65,11 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
+    text-shadow: 0 0 26px rgba(15, 76, 92, 0.14);
   }
 
   .glow-purple {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 20px rgba(15, 76, 92, 0.12);
   }
 
   .animate-gradient {
@@ -68,8 +78,13 @@
   }
 
   @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
   .animate-float {
@@ -77,14 +92,19 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -94,10 +114,15 @@
   }
 }
 
-/* Smooth page transitions */
 @layer utilities {
   .section-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(15, 76, 92, 0.15),
+      rgba(198, 124, 78, 0.15),
+      transparent
+    );
   }
 }

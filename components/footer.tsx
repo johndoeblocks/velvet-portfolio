@@ -11,60 +11,95 @@ export const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/johndoeblocks', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/jo%C3%A3o-manteigas/', label: 'LinkedIn' },
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/in/jo%C3%A3o-manteigas/',
+      label: 'LinkedIn',
+    },
   ];
 
   return (
-    <footer className="relative border-t border-white/[0.06]">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
-          {/* Brand */}
+    <footer className="border-t border-slate-900/10 bg-white/70">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <div>
-            <Link href="/" className="flex items-center space-x-3 mb-4 group w-fit">
+            <Link href="/" className="inline-flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt=""
-                width={28}
-                height={28}
+                width={32}
+                height={32}
                 aria-hidden="true"
-                className="opacity-80 group-hover:opacity-100 transition-opacity"
+                className="rounded-full ring-1 ring-slate-900/8"
               />
-              <span className="text-white font-semibold text-sm group-hover:text-purple-300 transition-colors">
+              <span className="text-base font-semibold tracking-tight text-slate-900">
                 Velvet Neuron
               </span>
             </Link>
-            <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               {t('tagline')}
             </p>
           </div>
 
-          {/* Links */}
           <div>
-            <h3 className="text-xs font-medium tracking-[0.2em] uppercase text-gray-500 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               {t('navigation')}
             </h3>
-            <ul className="space-y-3 text-sm">
-              {['portfolio', 'services', 'contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link}`}
-                    className="text-gray-500 hover:text-white transition-colors duration-300"
-                  >
-                    {link === 'portfolio' ? navT('work') : link === 'services' ? navT('services') : navT('contact')}
-                  </a>
-                </li>
-              ))}
+            <ul className="mt-5 space-y-3 text-sm text-slate-600">
+              <li>
+                <a href="#services" className="transition-colors hover:text-slate-900">
+                  {navT('services')}
+                </a>
+              </li>
+              <li>
+                <a href="#portfolio" className="transition-colors hover:text-slate-900">
+                  {navT('work')}
+                </a>
+              </li>
+              <li>
+                <a href="#process" className="transition-colors hover:text-slate-900">
+                  {navT('process')}
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="transition-colors hover:text-slate-900">
+                  {navT('contact')}
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Social */}
           <div>
-            <h3 className="text-xs font-medium tracking-[0.2em] uppercase text-gray-500 mb-5">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+              {t('resources')}
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-slate-600">
+              <li>
+                <Link href="/cv" className="transition-colors hover:text-slate-900">
+                  {t('cv')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="transition-colors hover:text-slate-900">
+                  {t('privacy')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="transition-colors hover:text-slate-900">
+                  {t('terms')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               {t('follow')}
             </h3>
-            <div className="flex gap-3">
+            <div className="mt-5 flex gap-3">
               {socialLinks.map((link) => {
                 const Icon = link.icon;
+
                 return (
                   <a
                     key={link.label}
@@ -72,29 +107,24 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-gray-500 hover:text-white hover:border-white/[0.2] transition-all duration-300"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-900/10 bg-white text-slate-600 transition-colors hover:text-slate-900"
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="h-4 w-4" />
                   </a>
                 );
               })}
             </div>
+            <div className="mt-5 space-y-2 text-sm text-slate-600">
+              <a href="mailto:hello@velvetneuron.com" className="block transition-colors hover:text-slate-900">
+                {t('email')}
+              </a>
+              <p>{t('location')}</p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/[0.06] pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 gap-4">
-          <p>
-            © {currentYear} {t('company')}. {t('rights')}
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              {t('privacy')}
-            </a>
-            <a href="#" className="hover:text-gray-400 transition-colors">
-              {t('terms')}
-            </a>
-          </div>
+        <div className="mt-12 border-t border-slate-900/8 pt-6 text-sm text-slate-500">
+          © {currentYear} {t('company')}. {t('rights')}
         </div>
       </div>
     </footer>

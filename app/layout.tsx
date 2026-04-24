@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
-import '@/app/globals.css';
 import Script from 'next/script';
+import '@/app/globals.css';
 import { CookieConsent } from '@/components/cookie-consent';
 import { SITE_URL } from '@/lib/seo';
 
@@ -20,33 +20,33 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
-  description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa. Inicie o seu projeto.',
+  title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+  description:
+    'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     other: [
       {
         rel: 'mask-icon',
         url: '/logo.png',
-        color: '#8b5cf6',
+        color: '#0f4c5c',
       },
     ],
   },
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
-    locale: 'pt_PT',
+    locale: 'en_US',
     url: SITE_URL,
     siteName: 'Velvet Neuron',
-    title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
-    description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.',
+    title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+    description:
+      'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
     images: [
       {
         url: '/logo.png',
@@ -58,13 +58,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Velvet Neuron | Produtos Digitais de Alta Performance',
-    description: 'Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.',
+    title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+    description:
+      'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
     images: ['/logo.png'],
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
     title: 'Velvet Neuron',
   },
   formatDetection: {
@@ -78,80 +79,81 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const locale = await getLocale();
-  const htmlLang = locale.startsWith('pt') ? 'pt' : 'en';
+  const isPortuguese = locale.startsWith('pt');
+  const htmlLang = isPortuguese ? 'pt' : 'en';
+  const siteDescription = isPortuguese
+    ? 'Agência sénior em Portugal que cria websites, landing pages, apps e experiências digitais preparadas para SEO e focadas em gerar leads qualificados.'
+    : 'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.';
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
+    '@context': 'https://schema.org',
+    '@graph': [
       {
-        "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        "url": SITE_URL,
-        "name": "Velvet Neuron",
-        "description": "Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa.",
-        "publisher": {
-          "@id": `${SITE_URL}/#organization`
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: 'Velvet Neuron',
+        description: siteDescription,
+        publisher: {
+          '@id': `${SITE_URL}/#organization`,
         },
-        "inLanguage": "pt-PT"
+        inLanguage: isPortuguese ? 'pt-PT' : 'en',
       },
       {
-        "@type": ["Organization", "ProfessionalService"],
-        "@id": `${SITE_URL}/#organization`,
-        "name": "Velvet Neuron",
-        "url": SITE_URL,
-        "logo": {
-          "@type": "ImageObject",
-          "@id": `${SITE_URL}/#logo`,
-          "url": `${SITE_URL}/logo.png`,
-          "contentUrl": `${SITE_URL}/logo.png`,
-          "caption": "Logótipo Velvet Neuron",
-          "inLanguage": "pt-PT"
+        '@type': ['Organization', 'ProfessionalService'],
+        '@id': `${SITE_URL}/#organization`,
+        name: 'Velvet Neuron',
+        url: SITE_URL,
+        logo: {
+          '@type': 'ImageObject',
+          '@id': `${SITE_URL}/#logo`,
+          url: `${SITE_URL}/logo.png`,
+          contentUrl: `${SITE_URL}/logo.png`,
+          caption: 'Velvet Neuron logo',
+          inLanguage: isPortuguese ? 'pt-PT' : 'en',
         },
-        "image": {
-          "@id": `${SITE_URL}/#logo`
+        image: {
+          '@id': `${SITE_URL}/#logo`,
         },
-        "description": "A Velvet Neuron é uma agência especializada em Digital Product Engineering. Projetamos e construímos produtos digitais de alta performance focados em criar vantagem competitiva e fomentar a liderança de mercado para os nossos clientes.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Lisboa",
-          "addressCountry": "PT"
+        description: siteDescription,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Lisbon',
+          addressCountry: 'PT',
         },
-        "email": "hello@velvetneuron.com",
-        "priceRange": "$$$",
-        "knowsAbout": [
-          "Digital Product Engineering",
-          "Product Design",
-          "Software Development",
-          "High-performance Applications",
-          "AI & Automation",
-          "Web Platforms",
-          "Trading & Data Systems"
+        areaServed: ['Portugal', 'Europe'],
+        email: 'hello@velvetneuron.com',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'sales',
+          email: 'hello@velvetneuron.com',
+          availableLanguage: ['English', 'Portuguese'],
+          areaServed: ['PT', 'EU'],
+        },
+        priceRange: '$$',
+        availableLanguage: ['English', 'Portuguese'],
+        knowsAbout: [
+          'Website Design',
+          'Landing Pages',
+          'Digital Product Development',
+          'Technical SEO',
+          'Conversion Optimisation',
+          'AI Automations',
+          'Web Applications',
         ],
-        // "sameAs": [
-        //   "https://www.linkedin.com/company/velvetneuron",
-        //   "https://www.instagram.com/velvetneuron",
-        //   "https://www.behance.net/velvetneuron"
-        // ],
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "09:00",
-          "closes": "18:00"
-        }
-      }
-    ]
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      },
+    ],
   };
 
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <head>
-        {/* Google Consent Mode v2 - Default State (Before any other scripts) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -171,12 +173,13 @@ export default async function RootLayout({
             `,
           }}
         />
-        
-        {/* Silktide Style */}
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+        />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
-        {/* Google Analytics & Ads Integration */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WYPHX4MX4F"
           strategy="afterInteractive"
@@ -209,7 +212,6 @@ export default async function RootLayout({
           `}
         </Script>
 
-        {/* Cookie Consent Manager */}
         <CookieConsent />
 
         <script

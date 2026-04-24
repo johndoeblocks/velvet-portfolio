@@ -1,59 +1,103 @@
-import React from "react";
-import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import React from 'react';
+import { ArrowRight, CheckCircle2, PlayCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const HeroSection: React.FC = () => {
-  const t = useTranslations("hero");
+  const t = useTranslations('hero');
+
+  const stats = [
+    { value: t('stat_1_value'), label: t('stat_1_label') },
+    { value: t('stat_2_value'), label: t('stat_2_label') },
+    { value: t('stat_3_value'), label: t('stat_3_label') },
+  ];
+
+  const proofPoints = [
+    t('proof_point_1'),
+    t('proof_point_2'),
+    t('proof_point_3'),
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-purple-500/8 rounded-full blur-[80px] pointer-events-none" />
+    <section className="relative overflow-hidden px-6 pb-20 pt-32 sm:pb-24 sm:pt-36">
+      <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_top_left,rgba(198,124,78,0.18),transparent_38%),radial-gradient(circle_at_top_right,rgba(15,76,92,0.16),transparent_42%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#f6f1e8]" />
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div>
+            <span className="inline-flex items-center rounded-full border border-slate-900/10 bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600 shadow-sm">
+              {t('eyebrow')}
+            </span>
 
-      {/* Radial fade from center */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black" />
+            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.02] tracking-tight text-slate-950 sm:text-5xl lg:text-7xl">
+              {t('headline')}
+            </h1>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
-        {/* Headline */}
-        <h1 className="text-5xl sm:text-7xl md:text-[5.5rem] font-black leading-[0.95] tracking-tight mb-8 text-glow">
-          <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
-            {t("headline")}
-          </span>
-        </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+              {t('subheadline')}
+            </p>
 
-        {/* Subheadline */}
-        <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-          {t("subheadline")}
-        </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f4c5c] px-7 py-4 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#0c3d49]"
+              >
+                <span>{t('cta_primary')}</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center justify-center rounded-full border border-slate-900/10 bg-white px-7 py-4 text-sm font-semibold text-slate-900 transition-transform duration-300 hover:-translate-y-0.5 hover:border-slate-900/20"
+              >
+                {t('cta_secondary')}
+              </a>
+            </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#portfolio"
-            className="group px-8 py-4 bg-white text-black font-semibold rounded-full inline-flex items-center space-x-2 hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-shadow duration-500"
-          >
-            <span>{t("cta_work")}</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
+            <a
+              href="#promo-video"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#0f4c5c] underline-offset-4 transition-colors hover:text-[#0c3d49] hover:underline"
+            >
+              <PlayCircle className="h-4 w-4" />
+              {t('cta_video')}
+            </a>
 
-          <a
-            href="#contact"
-            className="group px-8 py-4 bg-white/[0.06] text-white font-semibold rounded-full border border-white/[0.1] inline-flex items-center space-x-2 hover:bg-white/[0.1] hover:border-white/[0.2] transition-all duration-500"
-          >
-            <span>{t("cta_project")}</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
-        </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-[1.5rem] border border-slate-900/10 bg-white/90 px-5 py-4 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)]"
+                >
+                  <p className="text-lg font-bold tracking-tight text-slate-950">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-sm text-slate-600">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-1.5 bg-white/40 rounded-full" />
+          <div className="rounded-[2rem] border border-slate-900/10 bg-[#0f4c5c] p-8 text-white shadow-[0_30px_80px_-50px_rgba(15,76,92,0.75)] sm:p-10">
+            <div className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white/80">
+              Velvet Neuron
+            </div>
+            <h2 className="mt-5 text-2xl font-semibold tracking-tight sm:text-3xl">
+              {t('proof_title')}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-white/78">
+              {t('proof_intro')}
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {proofPoints.map((point) => (
+                <div
+                  key={point}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/6 px-4 py-4"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#f6d7b8]" />
+                  <p className="text-sm leading-relaxed text-white/84">{point}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

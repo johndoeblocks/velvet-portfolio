@@ -1,130 +1,218 @@
 {
   "nav": {
-    "work": "Work",
+    "work": "Results",
     "services": "Services",
-    "about": "About",
-    "contact": "Contact"
+    "process": "Process",
+    "contact": "Contact",
+    "cta": "Book intro call"
   },
   "metadata": {
-    "title": "Velvet Neuron | High-Performance Digital Products",
-    "description": "Exceptional digital product engineering. We design high-performance technologies that grant a structural competitive advantage to your company. Start your project."
+    "title": "Velvet Neuron | Websites and Digital Products That Convert",
+    "description": "Senior-led agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready digital products that turn traffic into qualified leads."
   },
   "hero": {
-    "headline": "High-Performance Digital Products",
-    "subheadline": "Velvet Neuron doesn't just build software; we architect the future of your business. We combine sophisticated engineering, elite design, and high performance to build premium digital products focused on a single goal: your company's market leadership.",
-    "cta_work": "View Work",
-    "cta_project": "Start a Project"
-  },
-  "services": {
-    "title": "Our Services",
-    "description": "Comprehensive solutions for modern businesses",
-    "product_engineering": "Product Engineering",
-    "product_engineering_desc": "Custom web platforms and applications built for scale and performance.",
-    "ai_automation": "AI & Automation",
-    "ai_automation_desc": "Intelligent systems that streamline operations and unlock new possibilities.",
-    "web_platforms": "Web Platforms",
-    "web_platforms_desc": "High-performance applications with exceptional user experiences.",
-    "trading_data": "Trading & Data Systems",
-    "trading_data_desc": "Sophisticated infrastructure for financial and analytical workloads.",
-    "performance": "Performance Optimization",
-    "performance_desc": "Rapid-fire optimization ensuring your products run at peak efficiency."
+    "eyebrow": "Senior-led digital product agency in Portugal",
+    "headline": "Websites and digital products that earn trust and turn attention into enquiries.",
+    "subheadline": "Velvet Neuron helps ambitious teams launch clearer offers, stronger design, faster websites, and SEO-ready experiences that convert visitors into clients.",
+    "cta_primary": "Book an intro call",
+    "cta_secondary": "See selected work",
+    "cta_video": "Watch the video",
+    "proof_title": "A practical partner from strategy to launch",
+    "proof_intro": "You work directly with a senior team on the message, UX, build, and launch, without layers of handoffs or vague process.",
+    "proof_point_1": "Strategy, copy, design, development, and SEO in one flow",
+    "proof_point_2": "Bilingual delivery for Portuguese and international teams",
+    "proof_point_3": "Built for credibility, speed, and measurable lead generation",
+    "stat_1_value": "PT + EN",
+    "stat_1_label": "Bilingual delivery",
+    "stat_2_value": "Senior-led",
+    "stat_2_label": "From first call to launch",
+    "stat_3_value": "SEO-ready",
+    "stat_3_label": "Technical foundations included"
   },
   "promoVideo": {
-    "title": "Promotional Video",
-    "cta": "See CV"
+    "eyebrow": "Video overview",
+    "title": "See how we think about trust, clarity, and conversion.",
+    "description": "A short walkthrough of the Velvet Neuron approach before you book a call.",
+    "cta": "Talk after watching"
+  },
+  "trust": {
+    "eyebrow": "Why clients choose us",
+    "title": "A more credible digital presence starts with the right fundamentals.",
+    "description": "We focus on the signals that make prospects trust you faster and contact you with more confidence.",
+    "experience_label": "Selected experience includes work delivered with teams behind",
+    "experience_copy": "Relevant experience across ecommerce, product platforms, and service businesses in Portugal and Europe.",
+    "items": {
+      "senior": {
+        "title": "Senior involvement throughout",
+        "description": "No bait-and-switch. The people shaping the strategy are the same people designing and building the work."
+      },
+      "clarity": {
+        "title": "Clear offer and sharper messaging",
+        "description": "We help visitors understand what you do, why it matters, and what to do next in a few seconds."
+      },
+      "performance": {
+        "title": "Performance and SEO built in",
+        "description": "Speed, technical SEO, analytics, and structure are part of the build, not an afterthought."
+      },
+      "conversion": {
+        "title": "Designed to drive action",
+        "description": "Every section is shaped to reduce doubt, strengthen trust, and move qualified visitors toward contact."
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What we can improve for you",
+    "description": "One senior team that can clarify the offer, design the experience, build the product, and improve how it ranks and converts.",
+    "items": {
+      "websites": {
+        "title": "Websites and landing pages",
+        "description": "High-trust marketing sites built to explain your offer clearly and generate better-quality leads."
+      },
+      "positioning": {
+        "title": "Positioning and conversion copy",
+        "description": "Sharper headlines, better structure, and clearer calls to action so visitors understand the value faster."
+      },
+      "web_apps": {
+        "title": "Web apps and client portals",
+        "description": "Custom product experiences that feel polished, fast, and easy for teams and customers to use."
+      },
+      "ai_automation": {
+        "title": "AI automations and internal tools",
+        "description": "Practical systems that remove repetitive work, connect your stack, and support a faster operation."
+      },
+      "seo_performance": {
+        "title": "Technical SEO and speed",
+        "description": "Cleaner structure, stronger metadata, and faster pages that help search visibility and conversion."
+      }
+    }
   },
   "portfolio": {
-    "title": "Featured Work",
-    "description": "Recent projects showcasing our expertise",
-    "view_project": "View Project",
+    "eyebrow": "Selected work",
+    "title": "Proof across ecommerce, product, and service brands",
+    "description": "A mix of direct client delivery and technical collaboration across Portugal and Europe.",
+    "note": "Recent work spans ecommerce, sports, food service, and digital product teams.",
+    "view_project": "Open gallery",
+    "private_work": "Private case study",
     "projects": {
       "dominos_norway": {
-        "name": "Dominos Norway",
-        "category": "E-commerce Platform",
-        "description": "Work contribution / technical collaboration on complete platform redesign and performance optimization."
+        "name": "Domino's Norway",
+        "category": "Ordering platform",
+        "description": "Frontend and mobile engineering across customer ordering flows, localisation, payments, and analytics."
       },
       "dominos_sweden": {
-        "name": "Dominos Sweden",
-        "category": "E-commerce Platform",
-        "description": "Work contribution / technical collaboration on seamless ordering experience with real-time inventory management."
+        "name": "Domino's Sweden",
+        "category": "Ordering platform",
+        "description": "Technical collaboration on a smoother ordering experience with localisation and operational consistency."
       },
       "burberry": {
         "name": "Burberry",
-        "category": "Luxury E-commerce",
-        "description": "Work contribution / technical collaboration on premium digital platform showcasing latest collections."
+        "category": "Luxury ecommerce",
+        "description": "Identity and profile engineering work on secure sign-in, account flows, and internal platform tooling."
       },
       "talho_halal": {
         "name": "Talho Halal",
-        "category": "Restaurant Platform",
-        "description": "Modern restaurant platform with delivery integration and real-time updates."
+        "category": "Local commerce",
+        "description": "A clearer, more trustworthy ordering experience for a specialist retailer."
       },
       "scoreplay": {
         "name": "Scoreplay",
-        "category": "Sports Analytics",
-        "description": "Advanced sports analytics platform with live data processing."
+        "category": "Sports media platform",
+        "description": "Product interface work for a platform managing sports content, workflows, and media delivery."
       },
       "quizflow": {
         "name": "QuizFlow",
-        "category": "Educational Tech",
-        "description": "Interactive quiz platform with real-time collaboration features."
+        "category": "Education product",
+        "description": "Interactive quiz experience designed for clarity, engagement, and smooth collaboration."
       }
     }
   },
   "process": {
-    "title": "Our Process",
-    "description": "A structured approach to building exceptional digital products",
-    "step_1": {
-      "title": "Strategy",
-      "description": "We analyze your goals and define a clear digital strategy."
-    },
-    "step_2": {
-      "title": "Architecture",
-      "description": "Design scalable systems that grow with your business."
-    },
-    "step_3": {
-      "title": "Development",
-      "description": "Build production-ready applications with precision engineering."
-    },
-    "step_4": {
-      "title": "Launch",
-      "description": "Deploy with confidence and monitor every metric."
-    },
-    "step_5": {
-      "title": "Growth",
-      "description": "Optimize continuously and scale intelligently."
+    "eyebrow": "Process",
+    "title": "What working together looks like",
+    "description": "A simple process that reduces risk, keeps scope clear, and gets you to launch without confusion.",
+    "items": {
+      "step_1": {
+        "title": "Audit and alignment",
+        "description": "We review your current website, offer, and buyer journey to find the biggest trust and conversion gaps."
+      },
+      "step_2": {
+        "title": "Structure and messaging",
+        "description": "We clarify the value proposition, define the page flow, and sharpen the copy before design starts."
+      },
+      "step_3": {
+        "title": "Design and development",
+        "description": "We design the experience, build the product, and bake performance, SEO, and analytics into the foundation."
+      },
+      "step_4": {
+        "title": "Launch and improvement",
+        "description": "We launch with QA, track behaviour, and keep improving the pages that matter most."
+      }
     }
   },
-  "technology": {
-    "title": "Technology Stack",
-    "description": "We use cutting-edge tools and platforms"
-  },
-  "about": {
-    "title": "About Velvet Neuron",
-    "description": "We build digital infrastructure for companies that want to move faster and operate smarter.",
-    "mission": "Our mission is to engineer digital advantage through precision, innovation, and craftsmanship."
+  "faq": {
+    "eyebrow": "Common questions",
+    "title": "Questions we usually hear before a project starts",
+    "description": "The goal is to make the next step feel clear, not high-pressure.",
+    "items": {
+      "timeline": {
+        "question": "How quickly can we start?",
+        "answer": "Smaller website and landing page projects can usually start quickly once the scope is clear. More complex builds need a short discovery phase first so the work stays realistic and efficient."
+      },
+      "budget": {
+        "question": "Do you only work on full rebuilds?",
+        "answer": "No. We can help with focused improvements too, including clearer messaging, conversion fixes, design refreshes, performance work, or technical SEO."
+      },
+      "collaboration": {
+        "question": "Who will I actually work with?",
+        "answer": "Directly with the senior team handling strategy, design, and development. The aim is fast communication, clear ownership, and no unnecessary layers."
+      },
+      "support": {
+        "question": "Do you help after launch?",
+        "answer": "Yes. We can continue with maintenance, SEO improvements, experiments, and iterative product work once the first version is live."
+      }
+    }
   },
   "contact": {
-    "title": "Let's build something exceptional.",
-    "description": "Ready to transform your digital presence? Get in touch with our team.",
+    "eyebrow": "Start the conversation",
+    "title": "Tell us what you need, and we'll suggest the clearest next step.",
+    "description": "Share your goals, timeline, and current blockers. If there's a fit, we'll come back with a realistic approach instead of a vague pitch.",
+    "details_title": "What to expect",
+    "details_intro": "The first conversation is straightforward and practical.",
+    "detail_1": "We review your current site, offer, or product idea.",
+    "detail_2": "We identify the biggest trust, UX, and SEO gaps.",
+    "detail_3": "We recommend the best next step, even if it is not a full rebuild.",
+    "channels_title": "Prefer direct contact?",
+    "channels_description": "Email or WhatsApp both work if you want a quicker start.",
+    "privacy_note": "We only use your details to reply to your enquiry.",
     "form": {
-      "name": "Your Name",
-      "email": "Your Email",
-      "company": "Company Name",
-      "phone": "Phone Number",
-      "project": "Tell us about your project",
-      "submit": "Send Message",
-      "success": "Thank you! We'll get back to you soon.",
+      "name_label": "Name",
+      "name_placeholder": "Your name",
+      "email_label": "Work email",
+      "email_placeholder": "name@company.com",
+      "company_label": "Company",
+      "company_placeholder": "Company name",
+      "phone_label": "Phone",
+      "phone_placeholder": "Optional",
+      "project_label": "Project details",
+      "project_placeholder": "What are you trying to improve, and what is getting in the way today?",
+      "submit": "Request a proposal",
+      "success": "Thanks. Your message is on its way.",
       "error": "Something went wrong. Please try again.",
-      "whatsapp": "Message on WhatsApp"
+      "whatsapp": "Start on WhatsApp"
     }
   },
   "footer": {
     "company": "Velvet Neuron",
     "rights": "All rights reserved.",
-    "follow": "Follow us",
-    "tagline": "Digital infrastructure for companies that want to move faster.",
+    "follow": "Follow",
+    "tagline": "Trust-building digital products for ambitious teams in Portugal and Europe.",
     "navigation": "Navigation",
+    "resources": "Resources",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "cv": "Founder CV",
+    "email": "hello@velvetneuron.com",
+    "location": "Lisbon, Portugal"
   }
 }

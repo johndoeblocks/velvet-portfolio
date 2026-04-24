@@ -1,130 +1,218 @@
 {
   "nav": {
-    "work": "Trabalhos",
+    "work": "Resultados",
     "services": "Serviços",
-    "about": "Sobre",
-    "contact": "Contacto"
+    "process": "Processo",
+    "contact": "Contacto",
+    "cta": "Agendar conversa"
   },
   "metadata": {
-    "title": "Velvet Neuron | Produtos Digitais de Alta Performance",
-    "description": "Engenharia de produto digital de exceção. Desenhamos tecnologias de alta performance que garantem vantagem competitiva à sua empresa. Inicie o seu projeto."
+    "title": "Velvet Neuron | Websites e Produtos Digitais que Convertem",
+    "description": "Agência sénior em Portugal que cria websites, landing pages, apps e produtos digitais preparados para SEO e focados em transformar tráfego em leads qualificados."
   },
   "hero": {
-    "headline": "Produtos Digitais de Alta Performance",
-    "subheadline": "A Velvet Neuron não cria apenas software; arquitetamos o futuro do seu negócio. Combinamos engenharia sofisticada, design de elite e alta performance para construir produtos digitais premium focados num único objetivo: a liderança de mercado da sua empresa.",
-    "cta_work": "Ver Trabalhos",
-    "cta_project": "Iniciar Projeto"
-  },
-  "services": {
-    "title": "Nossos Serviços",
-    "description": "Soluções completas para empresas modernas",
-    "product_engineering": "Engenharia de Produtos",
-    "product_engineering_desc": "Plataformas web e aplicações personalizadas construídas para escala e desempenho.",
-    "ai_automation": "IA e Automação",
-    "ai_automation_desc": "Sistemas inteligentes que simplificam operações e desbloqueiam novas possibilidades.",
-    "web_platforms": "Plataformas Web",
-    "web_platforms_desc": "Aplicações de alto desempenho com experiências de utilizador excecionais.",
-    "trading_data": "Sistemas de Trading e Dados",
-    "trading_data_desc": "Infraestrutura sofisticada para cargas de trabalho financeiras e analíticas.",
-    "performance": "Otimização de Desempenho",
-    "performance_desc": "Otimização rápida garantindo que seus produtos funcionam no pico de eficiência."
+    "eyebrow": "Agência sénior de produto digital em Portugal",
+    "headline": "Websites e produtos digitais que transmitem confiança e transformam atenção em pedidos de contacto.",
+    "subheadline": "A Velvet Neuron ajuda equipas ambiciosas a lançar propostas mais claras, design mais forte, websites mais rápidos e experiências preparadas para SEO que convertem visitantes em clientes.",
+    "cta_primary": "Agendar conversa",
+    "cta_secondary": "Ver trabalhos",
+    "cta_video": "Ver vídeo",
+    "proof_title": "Um parceiro prático da estratégia ao lançamento",
+    "proof_intro": "Trabalha diretamente com uma equipa sénior no posicionamento, UX, desenvolvimento e lançamento, sem camadas desnecessárias nem processos vagos.",
+    "proof_point_1": "Estratégia, copy, design, desenvolvimento e SEO no mesmo fluxo",
+    "proof_point_2": "Entrega bilingue para equipas portuguesas e internacionais",
+    "proof_point_3": "Construído para credibilidade, velocidade e geração de leads",
+    "stat_1_value": "PT + EN",
+    "stat_1_label": "Entrega bilingue",
+    "stat_2_value": "Sénior",
+    "stat_2_label": "Da primeira chamada ao lançamento",
+    "stat_3_value": "SEO-ready",
+    "stat_3_label": "Base técnica incluída"
   },
   "promoVideo": {
-    "title": "Vídeo Promocional",
-    "cta": "Ver CV"
+    "eyebrow": "Vídeo de apresentação",
+    "title": "Veja como pensamos sobre confiança, clareza e conversão.",
+    "description": "Uma explicação curta da abordagem da Velvet Neuron antes de agendar uma conversa.",
+    "cta": "Falar depois de ver"
+  },
+  "trust": {
+    "eyebrow": "Porque é que os clientes nos escolhem",
+    "title": "Uma presença digital mais credível começa pelos fundamentos certos.",
+    "description": "Focamo-nos nos sinais que fazem os potenciais clientes confiar mais cedo e avançar para contacto com mais segurança.",
+    "experience_label": "Experiência relevante com trabalho desenvolvido para equipas por trás de",
+    "experience_copy": "Experiência relevante em ecommerce, plataformas digitais e negócios de serviços em Portugal e na Europa.",
+    "items": {
+      "senior": {
+        "title": "Envolvimento sénior em todo o projeto",
+        "description": "Sem troca de equipa a meio. Quem define a estratégia é também quem desenha e constrói o trabalho."
+      },
+      "clarity": {
+        "title": "Oferta mais clara e mensagem mais forte",
+        "description": "Ajudamos os visitantes a perceber o que faz, porque isso importa e qual é o próximo passo em poucos segundos."
+      },
+      "performance": {
+        "title": "Performance e SEO incluídos de raiz",
+        "description": "Velocidade, SEO técnico, analytics e estrutura entram no projeto desde o início, não no fim."
+      },
+      "conversion": {
+        "title": "Desenhado para gerar ação",
+        "description": "Cada secção é pensada para reduzir dúvida, reforçar confiança e levar visitantes qualificados até ao contacto."
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Serviços",
+    "title": "O que podemos melhorar no seu negócio",
+    "description": "Uma equipa sénior para clarificar a oferta, desenhar a experiência, construir o produto e melhorar a forma como o site é encontrado e converte.",
+    "items": {
+      "websites": {
+        "title": "Websites e landing pages",
+        "description": "Sites de elevada confiança, construídos para explicar a oferta com clareza e gerar leads com melhor qualidade."
+      },
+      "positioning": {
+        "title": "Posicionamento e copy de conversão",
+        "description": "Headlines mais fortes, melhor estrutura e CTAs mais claros para que o valor seja percebido mais depressa."
+      },
+      "web_apps": {
+        "title": "Web apps e portais de cliente",
+        "description": "Experiências digitais personalizadas, rápidas e polidas, fáceis de usar por equipas e clientes."
+      },
+      "ai_automation": {
+        "title": "Automações com IA e ferramentas internas",
+        "description": "Sistemas práticos que eliminam trabalho repetitivo, ligam a sua stack e aceleram a operação."
+      },
+      "seo_performance": {
+        "title": "SEO técnico e velocidade",
+        "description": "Estrutura mais limpa, metadata mais forte e páginas mais rápidas para melhorar visibilidade e conversão."
+      }
+    }
   },
   "portfolio": {
-    "title": "Trabalhos em Destaque",
-    "description": "Projetos recentes que mostram a nossa experiência",
-    "view_project": "Ver Projeto",
+    "eyebrow": "Trabalhos selecionados",
+    "title": "Prova de execução em ecommerce, produto e marcas de serviços",
+    "description": "Uma combinação de entrega direta a clientes e colaboração técnica em projetos em Portugal e na Europa.",
+    "note": "O trabalho recente passa por ecommerce, desporto, restauração e equipas de produto digital.",
+    "view_project": "Abrir galeria",
+    "private_work": "Caso privado",
     "projects": {
       "dominos_norway": {
-        "name": "Dominos Noruega",
-        "category": "Plataforma de E-commerce",
-        "description": "Contribuição / colaboração técnica no redesenho completo da plataforma e otimização de desempenho."
+        "name": "Domino's Noruega",
+        "category": "Plataforma de encomendas",
+        "description": "Engenharia frontend e mobile em fluxos de encomenda, localização, pagamentos e analytics."
       },
       "dominos_sweden": {
-        "name": "Dominos Suécia",
-        "category": "Plataforma de E-commerce",
-        "description": "Contribuição / colaboração técnica em experiência de encomenda perfeita com gestão de inventário em tempo real."
+        "name": "Domino's Suécia",
+        "category": "Plataforma de encomendas",
+        "description": "Colaboração técnica numa experiência de encomenda mais fluida, com localização e consistência operacional."
       },
       "burberry": {
         "name": "Burberry",
-        "category": "E-commerce de Luxo",
-        "description": "Contribuição / colaboração técnica em plataforma digital premium apresentando as últimas coleções."
+        "category": "Ecommerce de luxo",
+        "description": "Trabalho de engenharia em identidade e perfil, com foco em autenticação segura, contas e ferramentas internas."
       },
       "talho_halal": {
         "name": "Talho Halal",
-        "category": "Plataforma de Restaurante",
-        "description": "Plataforma de restaurante moderna com integração de entrega e atualizações em tempo real."
+        "category": "Comércio local",
+        "description": "Uma experiência de encomenda mais clara e credível para um retalhista de nicho."
       },
       "scoreplay": {
         "name": "Scoreplay",
-        "category": "Análise de Desportos",
-        "description": "Plataforma de análise de desportos avançada com processamento de dados ao vivo."
+        "category": "Plataforma de media desportiva",
+        "description": "Trabalho de interface de produto para uma plataforma que gere conteúdos, workflows e entrega de media."
       },
       "quizflow": {
         "name": "QuizFlow",
-        "category": "Tecnologia Educacional",
-        "description": "Plataforma de questionários interativos com recursos de colaboração em tempo real."
+        "category": "Produto educativo",
+        "description": "Experiência de quizzes interativos pensada para clareza, envolvimento e colaboração sem fricção."
       }
     }
   },
   "process": {
-    "title": "Nosso Processo",
-    "description": "Uma abordagem estruturada para construir produtos digitais excepcionais",
-    "step_1": {
-      "title": "Estratégia",
-      "description": "Analisamos seus objetivos e definimos uma estratégia digital clara."
-    },
-    "step_2": {
-      "title": "Arquitetura",
-      "description": "Desenhamos sistemas escaláveis que crescem com o seu negócio."
-    },
-    "step_3": {
-      "title": "Desenvolvimento",
-      "description": "Construímos aplicações prontas para produção com engenharia de precisão."
-    },
-    "step_4": {
-      "title": "Lançamento",
-      "description": "Implemente com confiança e monitore cada métrica."
-    },
-    "step_5": {
-      "title": "Crescimento",
-      "description": "Otimize continuamente e escale inteligentemente."
+    "eyebrow": "Processo",
+    "title": "Como funciona trabalhar connosco",
+    "description": "Um processo simples que reduz risco, mantém o âmbito claro e leva o projeto a lançamento sem confusão.",
+    "items": {
+      "step_1": {
+        "title": "Auditoria e alinhamento",
+        "description": "Analisamos o site atual, a oferta e a jornada do cliente para encontrar as maiores falhas de confiança e conversão."
+      },
+      "step_2": {
+        "title": "Estrutura e mensagem",
+        "description": "Clarificamos a proposta de valor, definimos o fluxo da página e afinamos a copy antes do design começar."
+      },
+      "step_3": {
+        "title": "Design e desenvolvimento",
+        "description": "Desenhamos a experiência, construímos o produto e integramos performance, SEO e analytics na base."
+      },
+      "step_4": {
+        "title": "Lançamento e melhoria",
+        "description": "Lançamos com QA, acompanhamos o comportamento dos utilizadores e continuamos a melhorar as páginas mais importantes."
+      }
     }
   },
-  "technology": {
-    "title": "Stack de Tecnologia",
-    "description": "Usamos ferramentas e plataformas de ponta"
-  },
-  "about": {
-    "title": "Sobre Velvet Neuron",
-    "description": "Construímos infraestrutura digital para empresas que querem avançar mais rápido e operar de forma mais inteligente.",
-    "mission": "Nossa missão é engenharia de vantagem digital através de precisão, inovação e artesanato."
+  "faq": {
+    "eyebrow": "Perguntas frequentes",
+    "title": "As perguntas que costumam surgir antes de arrancar",
+    "description": "O objetivo é tornar o próximo passo claro, não pressionar a decisão.",
+    "items": {
+      "timeline": {
+        "question": "Com que rapidez podemos começar?",
+        "answer": "Projetos mais pequenos de website ou landing page podem arrancar rapidamente assim que o âmbito estiver claro. Projetos mais complexos precisam primeiro de uma fase curta de descoberta para manter o trabalho realista e eficiente."
+      },
+      "budget": {
+        "question": "Só trabalham em rebuilds completos?",
+        "answer": "Não. Também podemos ajudar com melhorias focadas, como copy, otimização de conversão, refresh de design, performance ou SEO técnico."
+      },
+      "collaboration": {
+        "question": "Com quem vou trabalhar na prática?",
+        "answer": "Diretamente com a equipa sénior responsável pela estratégia, design e desenvolvimento. O objetivo é comunicação rápida, responsabilidade clara e zero camadas desnecessárias."
+      },
+      "support": {
+        "question": "Ajudam depois do lançamento?",
+        "answer": "Sim. Podemos continuar com manutenção, melhorias de SEO, experiências de conversão e trabalho iterativo de produto depois da primeira versão estar no ar."
+      }
+    }
   },
   "contact": {
-    "title": "Vamos construir algo excepcional.",
-    "description": "Pronto para transformar sua presença digital? Entre em contato com nossa equipa.",
+    "eyebrow": "Começar a conversa",
+    "title": "Diga-nos o que precisa e sugerimos o próximo passo mais claro.",
+    "description": "Partilhe objetivos, timing e bloqueios atuais. Se houver fit, voltamos com uma abordagem realista em vez de um discurso vago.",
+    "details_title": "O que pode esperar",
+    "details_intro": "A primeira conversa é direta e útil.",
+    "detail_1": "Revemos o seu site atual, a oferta ou a ideia de produto.",
+    "detail_2": "Identificamos as maiores falhas de confiança, UX e SEO.",
+    "detail_3": "Recomendamos o melhor próximo passo, mesmo que não seja um rebuild completo.",
+    "channels_title": "Prefere contacto direto?",
+    "channels_description": "Email ou WhatsApp funcionam bem se quiser começar de forma mais rápida.",
+    "privacy_note": "Usamos os seus dados apenas para responder ao pedido de contacto.",
     "form": {
-      "name": "Seu Nome",
-      "email": "Seu Email",
-      "company": "Nome da Empresa",
-      "phone": "Número de Telemóvel",
-      "project": "Conte-nos sobre seu projeto",
-      "submit": "Enviar Mensagem",
-      "success": "Obrigado! Entraremos em contato em breve.",
-      "error": "Algo correu mal. Por favor, tente novamente.",
-      "whatsapp": "Mensagem no WhatsApp"
+      "name_label": "Nome",
+      "name_placeholder": "O seu nome",
+      "email_label": "Email profissional",
+      "email_placeholder": "nome@empresa.com",
+      "company_label": "Empresa",
+      "company_placeholder": "Nome da empresa",
+      "phone_label": "Telefone",
+      "phone_placeholder": "Opcional",
+      "project_label": "Detalhes do projeto",
+      "project_placeholder": "O que pretende melhorar e o que está hoje a bloquear esse avanço?",
+      "submit": "Pedir proposta",
+      "success": "Obrigado. A sua mensagem foi enviada.",
+      "error": "Algo correu mal. Tente novamente.",
+      "whatsapp": "Começar no WhatsApp"
     }
   },
   "footer": {
     "company": "Velvet Neuron",
     "rights": "Todos os direitos reservados.",
-    "follow": "Siga-nos",
-    "tagline": "Infraestrutura digital para empresas que querem acelerar.",
+    "follow": "Seguir",
+    "tagline": "Produtos digitais que reforçam confiança para equipas ambiciosas em Portugal e na Europa.",
     "navigation": "Navegação",
+    "resources": "Recursos",
     "privacy": "Privacidade",
-    "terms": "Termos"
+    "terms": "Termos",
+    "cv": "CV do fundador",
+    "email": "hello@velvetneuron.com",
+    "location": "Lisboa, Portugal"
   }
 }
