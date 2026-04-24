@@ -8,6 +8,7 @@ export const Footer: React.FC = () => {
   const t = useTranslations('footer');
   const navT = useTranslations('nav');
   const currentYear = new Date().getFullYear();
+  const emailHref = ['mailto:', 'hello', '@', 'velvetneuron.com'].join('');
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/johndoeblocks', label: 'GitHub' },
@@ -125,8 +126,8 @@ export const Footer: React.FC = () => {
               })}
             </div>
             <div className="mt-5 space-y-2 text-sm text-slate-600">
-              <a href="mailto:hello@velvetneuron.com" className="block transition-colors hover:text-slate-900">
-                {t('email')}
+              <a href={emailHref} className="block transition-colors hover:text-slate-900">
+                {t('email_label')}
               </a>
               <p>{t('location')}</p>
             </div>

@@ -200,6 +200,7 @@
       "submit": "Request a proposal",
       "success": "Thanks. Your message is on its way.",
       "error": "Something went wrong. Please try again.",
+      "email_cta": "Send us an email",
       "whatsapp": "Start on WhatsApp"
     }
   },
@@ -214,7 +215,7 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "cv": "Founder CV",
-    "email": "hello@velvetneuron.com",
+    "email_label": "Email us",
     "location": "Lisbon, Portugal"
   }
 }

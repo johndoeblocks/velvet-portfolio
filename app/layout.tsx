@@ -37,7 +37,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -121,11 +120,9 @@ export default async function RootLayout({
           addressCountry: 'PT',
         },
         areaServed: ['Portugal', 'Europe'],
-        email: 'hello@velvetneuron.com',
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'sales',
-          email: 'hello@velvetneuron.com',
           availableLanguage: ['English', 'Portuguese'],
           areaServed: ['PT', 'EU'],
         },

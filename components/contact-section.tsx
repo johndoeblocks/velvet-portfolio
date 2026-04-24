@@ -78,6 +78,8 @@ export const ContactSection: React.FC = () => {
     'mt-2 w-full rounded-2xl border border-slate-900/10 bg-[#fffaf3] px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#0f4c5c]/40 focus:outline-none focus:ring-4 focus:ring-[#0f4c5c]/8';
 
   const expectationItems = [t('detail_1'), t('detail_2'), t('detail_3')];
+  const contactEmail = ['hello', '@', 'velvetneuron.com'].join('');
+  const contactEmailHref = `mailto:${contactEmail}`;
 
   return (
     <section id="contact" className="px-6 pb-24 pt-24 sm:pb-28 sm:pt-28">
@@ -117,12 +119,12 @@ export const ContactSection: React.FC = () => {
 
               <div className="mt-5 space-y-4 text-sm">
                 <a
-                  href="mailto:hello@velvetneuron.com"
-                  onClick={() => trackEvent('email_click', 'hello@velvetneuron.com')}
+                  href={contactEmailHref}
+                  onClick={() => trackEvent('email_click', contactEmail)}
                   className="flex items-center gap-3 text-white/86 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4 text-[#f6d7b8]" />
-                  <span>hello@velvetneuron.com</span>
+                  <span>{t('form.email_cta')}</span>
                 </a>
                 <a
                   href="https://wa.me/351969370801"

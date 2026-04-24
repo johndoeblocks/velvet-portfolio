@@ -102,7 +102,7 @@ export default async function PrivacyPage({ params }: PageProps) {
               <>
                 <p>
                   Pode pedir acesso, correção ou eliminação dos seus dados a qualquer momento
-                  através de <a className="text-[#0f4c5c] underline" href="mailto:hello@velvetneuron.com">hello@velvetneuron.com</a>.
+                  através do formulário de contacto no website.
                 </p>
                 <p>
                   Se tiver dúvidas sobre privacidade ou consentimento, esse é também o contacto
@@ -171,7 +171,7 @@ export default async function PrivacyPage({ params }: PageProps) {
             <>
               <p>
                 You can request access, correction, or deletion of your data at any time by
-                contacting <a className="text-[#0f4c5c] underline" href="mailto:hello@velvetneuron.com">hello@velvetneuron.com</a>.
+                using the contact form on the website.
               </p>
               <p>
                 The same address can be used for any privacy or consent-related questions.

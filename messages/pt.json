@@ -200,6 +200,7 @@
       "submit": "Pedir proposta",
       "success": "Obrigado. A sua mensagem foi enviada.",
       "error": "Algo correu mal. Tente novamente.",
+      "email_cta": "Enviar email",
       "whatsapp": "Começar no WhatsApp"
     }
   },
@@ -214,7 +215,7 @@
     "privacy": "Privacidade",
     "terms": "Termos",
     "cv": "CV do fundador",
-    "email": "hello@velvetneuron.com",
+    "email_label": "Enviar email",
     "location": "Lisboa, Portugal"
   }
 }
