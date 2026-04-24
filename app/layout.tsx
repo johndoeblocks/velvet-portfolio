@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
+import Script from 'next/script';
 import '@/app/globals.css';
 import { CookieConsent } from '@/components/cookie-consent';
 import { SITE_URL } from '@/lib/seo';
@@ -150,7 +151,9 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang} suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="gtag-consent-default"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

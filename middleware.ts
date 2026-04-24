@@ -27,5 +27,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/(pt|en)/:path*', '/blog/:path*'],
+  matcher: ['/', '/(pt|en)/:path*', '/((?!_next|api|favicon|.*\\.(?:ico|png|jpg|jpeg|gif|webp|avif|svg|mp4|webm|vtt|woff|woff2|css|js|txt|xml|json)).*)'],
 };
