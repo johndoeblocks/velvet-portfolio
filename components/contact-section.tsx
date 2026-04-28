@@ -15,7 +15,7 @@ import { Link } from '@/i18n/routing';
 
 declare global {
   interface Window {
-    gtag: any;
+    dataLayer?: unknown[];
   }
 }
 
@@ -27,8 +27,10 @@ export const ContactSection: React.FC = () => {
   const [error, setError] = useState(false);
 
   const trackEvent = (action: string, label: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, {
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: action,
         event_category: 'Contact',
         event_label: label,
       });

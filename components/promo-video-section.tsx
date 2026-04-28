@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 declare global {
   interface Window {
-    gtag: any;
+    dataLayer?: unknown[];
   }
 }
 
@@ -13,8 +13,10 @@ export const PromoVideoSection: React.FC = () => {
   const t = useTranslations('promoVideo');
 
   const trackVideoEvent = (action: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, {
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: action,
         video_title: 'VSL',
         video_url: '/videos/VSL.mp4',
         video_provider: 'html5',

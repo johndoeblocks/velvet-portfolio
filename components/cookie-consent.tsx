@@ -4,32 +4,14 @@ import { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
-    gtag: any;
-    dataLayer: any[];
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
 const CONSENT_STORAGE_KEY = 'velvet-neuron-cookie-consent';
-const GA_ID = 'G-WYPHX4MX4F';
 
 type ConsentStatus = 'granted' | 'denied';
-
-function loadGoogleAnalytics() {
-  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_ID}"]`)) {
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  document.head.appendChild(script);
-
-  window.gtag('js', new Date());
-  window.gtag('config', GA_ID, {
-    anonymize_ip: true,
-    cookie_flags: 'SameSite=None;Secure',
-  });
-}
 
 function updateConsent(status: ConsentStatus) {
   if (typeof window.gtag === 'function') {
@@ -48,10 +30,6 @@ function updateConsent(status: ConsentStatus) {
     event: 'consent_update',
     consent_status: status,
   });
-
-  if (status === 'granted') {
-    loadGoogleAnalytics();
-  }
 }
 
 export function CookieConsent() {
