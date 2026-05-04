@@ -25,14 +25,14 @@ function truncateMetaDescription(value: string) {
 }
 
 function buildLandingPageTitle(service: ServiceConfig, location: LocationConfig) {
-  return `${capitalizeFirst(service.name)} em ${location.name} | Velvet Neuron`;
+  return `${capitalizeFirst(service.name)} | Menos trabalho manual para PMEs — ${location.name}`;
 }
 
 function buildLandingPageMetaDescription(
   service: ServiceConfig,
   location: LocationConfig
 ) {
-  const description = `${capitalizeFirst(service.name)} em ${location.name}. Estratégia, design, desenvolvimento e SEO técnico para criar uma presença digital mais clara, rápida e preparada para gerar leads.`;
+  const description = `${capitalizeFirst(service.name)} para PMEs em ${location.name}. Poupe tempo, reduza erros e comece com diagnóstico gratuito.`;
 
   return truncateMetaDescription(description);
 }
@@ -59,12 +59,12 @@ export function getLandingPageKeywords(
     `${page.service} em ${page.location}`,
     `agência de ${page.service} em ${page.location}`,
     `empresa de ${page.service} em ${page.location}`,
-    `serviços digitais em ${page.location}`,
-    `desenvolvimento web ${page.location}`,
-    `web design ${page.location}`,
+    `automação de processos em ${page.location}`,
+    `agentes de IA para empresas em ${page.location}`,
+    `integração ERP CRM ${page.location}`,
     `${page.service} Portugal`,
-    'Next.js Portugal',
-    'React Portugal',
+    'automação para PMEs Portugal',
+    'agência de automação e inteligência artificial',
     'Velvet Neuron',
   ];
 }

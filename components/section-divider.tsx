@@ -5,7 +5,7 @@ export const SectionDivider: React.FC = () => (
     <div
       className="h-px w-full max-w-7xl mx-auto"
       style={{
-        background: 'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.15), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(18, 78, 70, 0.2), rgba(155, 90, 50, 0.15), transparent)',
       }}
     />
   </div>

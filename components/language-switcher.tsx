@@ -26,7 +26,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        'flex items-center rounded-full border border-slate-900/10 bg-white/80 p-1 shadow-sm backdrop-blur-sm',
+        'flex items-center rounded-full border border-brand-border bg-white/80 p-1 shadow-sm backdrop-blur-sm',
         className
       )}
       aria-label="Language switcher"
@@ -45,8 +45,8 @@ export function LanguageSwitcher({
               'inline-flex items-center rounded-full font-semibold tracking-[0.18em] transition-all duration-300',
               compact ? 'gap-1 px-2.5 py-1 text-[11px]' : 'gap-1.5 px-3 py-1.5 text-xs',
               isActive
-                ? 'bg-[#0f4c5c] text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-brand-primary text-white shadow-sm'
+                : 'text-brand-muted hover:text-brand-ink'
             )}
           >
             <span aria-hidden="true" className={compact ? 'text-xs' : 'text-sm'}>

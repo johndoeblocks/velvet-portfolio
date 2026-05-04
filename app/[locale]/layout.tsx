@@ -59,6 +59,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+import { WhatsAppButton } from '@/components/whatsapp-button';
+
 export default async function LocaleLayout({
   children,
   params,
@@ -76,6 +78,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       {enableVercelInsights ? <SpeedInsights /> : null}
       {children}
+      <WhatsAppButton />
     </NextIntlClientProvider>
   );
 }

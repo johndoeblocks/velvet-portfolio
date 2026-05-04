@@ -141,7 +141,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                   }}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                     idx === currentIndex
-                      ? 'bg-purple-500 w-6'
+                      ? 'bg-brand-tertiary w-6'
                       : 'bg-gray-600 hover:bg-gray-400'
                   }`}
                 />

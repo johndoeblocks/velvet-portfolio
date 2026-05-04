@@ -98,7 +98,7 @@ export const CustomCursor: React.FC = () => {
         className="pointer-events-none fixed left-0 top-0 z-[9998] -translate-x-1/2 -translate-y-1/2"
       >
         <div
-          className={`rounded-full border border-purple-500/30 transition-all duration-300 ease-out ${
+          className={`rounded-full border border-brand-tertiary/40 transition-all duration-300 ease-out ${
             isHovering ? 'h-16 w-16 opacity-60' : 'h-8 w-8 opacity-30'
           }`}
         />

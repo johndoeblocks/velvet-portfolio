@@ -44,20 +44,20 @@ export async function POST(req: NextRequest) {
       from: 'Contact <contact@velvetneuron.com>',
       to: ['hello@velvetneuron.com'],
       replyTo: email,
-      subject: `New inquiry from ${name}${company ? ` (${company})` : ''}`,
+      subject: `Novo pedido de diagnóstico de ${name}${company ? ` (${company})` : ''}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #8B5CF6;">New Contact Form Submission</h2>
-          <hr style="border: none; border-top: 1px solid #e5e7eb;" />
-          <p><strong>Name:</strong> ${safeName}</p>
+          <h2 style="color: #124e46;">Novo pedido de diagnóstico gratuito</h2>
+          <hr style="border: none; border-top: 1px solid #d9cec0;" />
+          <p><strong>Nome:</strong> ${safeName}</p>
           <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
-          <p><strong>Phone:</strong> ${phoneHref ? `<a href="tel:${phoneHref}">${safePhone}</a>` : safePhone}</p>
-          ${company ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
-          <hr style="border: none; border-top: 1px solid #e5e7eb;" />
-          <h3 style="color: #374151;">Message</h3>
-          <p style="white-space: pre-wrap; color: #4B5563;">${safeMessage}</p>
-          <hr style="border: none; border-top: 1px solid #e5e7eb;" />
-          <p style="color: #9CA3AF; font-size: 12px;">Sent from velvetneuron.com contact form</p>
+          <p><strong>Telefone:</strong> ${phoneHref ? `<a href="tel:${phoneHref}">${safePhone}</a>` : safePhone}</p>
+          ${company ? `<p><strong>Empresa:</strong> ${safeCompany}</p>` : ''}
+          <hr style="border: none; border-top: 1px solid #d9cec0;" />
+          <h3 style="color: #17211d;">Processo a analisar</h3>
+          <p style="white-space: pre-wrap; color: #5f675f;">${safeMessage}</p>
+          <hr style="border: none; border-top: 1px solid #d9cec0;" />
+          <p style="color: #5f675f; font-size: 12px;">Enviado pelo formulário de diagnóstico em velvetneuron.com</p>
         </div>
       `,
     });

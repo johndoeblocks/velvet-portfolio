@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Instagram, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const t = useTranslations('footer');
@@ -11,6 +11,11 @@ export const Footer: React.FC = () => {
   const emailHref = ['mailto:', 'hello', '@', 'velvetneuron.com'].join('');
 
   const socialLinks = [
+    {
+      icon: Instagram,
+      href: 'https://www.instagram.com/velvetneuron/',
+      label: 'Instagram',
+    },
     { icon: Github, href: 'https://github.com/johndoeblocks', label: 'GitHub' },
     {
       icon: Linkedin,
@@ -19,8 +24,23 @@ export const Footer: React.FC = () => {
     },
   ];
 
+  const quickLinks = [
+    { label: 'Home', href: '/' as const },
+    { label: navT('services'), href: '/#services' as const },
+    { label: navT('work'), href: '/#portfolio' as const },
+    { label: navT('contact'), href: '/#contact' as const },
+    { label: navT('blog'), href: '/blog' as const },
+  ];
+
+  const solutionLinks = [
+    { label: t('solutions_ai_agents'), href: '/agentes-ia' as const },
+    { label: t('solutions_automation'), href: '/automacao-processos' as const },
+    { label: t('solutions_web_apps'), href: '/aplicacoes-web' as const },
+    { label: t('solutions_ecommerce'), href: '/sites-ecommerce' as const },
+  ];
+
   return (
-    <footer className="border-t border-slate-900/10 bg-white/70">
+    <footer className="border-t border-brand-border bg-white/70">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <div>
@@ -31,83 +51,16 @@ export const Footer: React.FC = () => {
                 width={32}
                 height={32}
                 aria-hidden="true"
-                className="rounded-full"
+                className="h-8 w-8 rounded-full object-contain"
               />
-              <span className="text-base font-semibold tracking-tight text-slate-900">
+              <span className="text-base font-semibold tracking-tight text-brand-ink">
                 Velvet Neuron
               </span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-brand-muted">
               {t('tagline')}
             </p>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-              {t('navigation')}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm text-slate-600">
-              <li>
-                <Link href="/#services" className="transition-colors hover:text-slate-900">
-                  {navT('services')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/#portfolio" className="transition-colors hover:text-slate-900">
-                  {navT('work')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/#process" className="transition-colors hover:text-slate-900">
-                  {navT('process')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="transition-colors hover:text-slate-900">
-                  {navT('blog')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/#contact" className="transition-colors hover:text-slate-900">
-                  {navT('contact')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-              {t('resources')}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm text-slate-600">
-              <li>
-                <Link href="/blog" className="transition-colors hover:text-slate-900">
-                  {t('blog')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/cv" className="transition-colors hover:text-slate-900">
-                  {t('cv')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="transition-colors hover:text-slate-900">
-                  {t('privacy')}
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="transition-colors hover:text-slate-900">
-                  {t('terms')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-              {t('follow')}
-            </h3>
-            <div className="mt-5 flex gap-3">
+            <div className="mt-6 flex gap-3">
               {socialLinks.map((link) => {
                 const Icon = link.icon;
 
@@ -118,23 +71,74 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-900/10 bg-white text-slate-600 transition-colors hover:text-slate-900"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-border bg-white text-brand-muted transition-colors hover:text-brand-ink"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
                 );
               })}
             </div>
-            <div className="mt-5 space-y-2 text-sm text-slate-600">
-              <a href={emailHref} className="block transition-colors hover:text-slate-900">
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-muted">
+              {t('quick_links')}
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-brand-muted">
+              {quickLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors hover:text-brand-ink">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-muted">
+              {t('solutions')}
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-brand-muted">
+              {solutionLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors hover:text-brand-ink">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-muted">
+              {t('contact_title')}
+            </h3>
+            <div className="mt-5 space-y-3 text-sm text-brand-muted">
+              <p>{t('location')}</p>
+              <a href={emailHref} className="block transition-colors hover:text-brand-ink">
                 {t('email_label')}
               </a>
-              <p>{t('location')}</p>
+              <div className="mt-4 flex gap-3">
+                <Link
+                  href="/privacy"
+                  className="text-xs transition-colors hover:text-brand-ink"
+                >
+                  {t('privacy')}
+                </Link>
+                <span className="text-xs text-brand-border">·</span>
+                <Link
+                  href="/terms"
+                  className="text-xs transition-colors hover:text-brand-ink"
+                >
+                  {t('terms')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-900/8 pt-6 text-sm text-slate-500">
+        <div className="mt-12 border-t border-brand-border pt-6 text-sm text-brand-muted">
           © {currentYear} {t('company')}. {t('rights')}
         </div>
       </div>

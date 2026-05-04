@@ -1,6 +1,6 @@
 import '@/app/globals.css';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { DM_Mono, DM_Sans, Syne } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/cookie-consent';
@@ -8,23 +8,32 @@ import { SITE_URL } from '@/lib/seo';
 
 const GTM_ID = 'GTM-5HWH5NMR';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const dmSans = DM_Sans({
+  variable: '--font-body',
+  weight: ['400', '500'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const syne = Syne({
+  variable: '--font-display',
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const dmMono = DM_Mono({
+  variable: '--font-mono',
+  weight: ['400'],
   subsets: ['latin'],
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+  title: 'Velvet Neuron | Automação Prática para PMEs em Portugal',
   description:
-    'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
+    'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -36,7 +45,7 @@ export const metadata: Metadata = {
       {
         rel: 'mask-icon',
         url: '/logo.png',
-        color: '#0f4c5c',
+        color: '#124e46',
       },
     ],
   },
@@ -45,9 +54,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: SITE_URL,
     siteName: 'Velvet Neuron',
-    title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+    title: 'Velvet Neuron | Automação Prática para PMEs em Portugal',
     description:
-      'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
+      'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
     images: [
       {
         url: '/logo.png',
@@ -59,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Velvet Neuron | Trustworthy Websites and Digital Products',
+    title: 'Velvet Neuron | Automação Prática para PMEs em Portugal',
     description:
-      'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.',
+      'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
     images: ['/logo.png'],
   },
   appleWebApp: {
@@ -83,8 +92,8 @@ export default async function RootLayout({
   const isPortuguese = locale.startsWith('pt');
   const htmlLang = isPortuguese ? 'pt-PT' : 'en';
   const siteDescription = isPortuguese
-    ? 'Agência sénior em Portugal que cria websites, landing pages, apps e experiências digitais preparadas para SEO e focadas em gerar leads qualificados.'
-    : 'Senior-led digital agency in Portugal building trustworthy websites, landing pages, apps, and SEO-ready experiences that turn traffic into qualified leads.';
+    ? 'Agência de automação em Portugal que cria processos automáticos, agentes de IA e aplicações à medida para PMEs sem equipa técnica interna.'
+    : 'Automation agency in Portugal building process automation, AI agents, and custom applications for SMEs without internal IT teams.';
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -132,10 +141,12 @@ export default async function RootLayout({
         priceRange: '$$',
         availableLanguage: ['English', 'Portuguese'],
         knowsAbout: [
-          'Website Design',
-          'Landing Pages',
+          'Process Automation',
+          'AI Agents',
+          'WhatsApp Business API',
+          'ERP Integrations',
+          'CRM Integrations',
           'Digital Product Development',
-          'Technical SEO',
           'Conversion Optimisation',
           'AI Automations',
           'Web Applications',
@@ -176,7 +187,7 @@ export default async function RootLayout({
         />
         <Script
           id="google-tag-manager"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -188,7 +199,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${syne.variable} ${dmMono.variable} antialiased`}>
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

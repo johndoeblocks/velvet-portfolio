@@ -46,26 +46,26 @@ export function BlogSearch({ posts, categories, locale, labels }: BlogSearchProp
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0f4c5c]">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-primary">
               Blog
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-brand-ink md:text-5xl">
               {labels.title}
             </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-brand-muted">
               {labels.description}
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-slate-900/10 bg-white p-3 shadow-sm">
-            <label className="flex items-center gap-3 rounded-[1.5rem] bg-[#f6f1e8] px-5 py-4 text-slate-700">
-              <Search className="h-5 w-5 text-[#0f4c5c]" aria-hidden="true" />
+          <div className="rounded-[2rem] border border-brand-border bg-white p-3 shadow-sm">
+            <label className="flex items-center gap-3 rounded-[1.5rem] bg-brand-paper px-5 py-4 text-brand-muted">
+              <Search className="h-5 w-5 text-brand-primary" aria-hidden="true" />
               <span className="sr-only">{labels.searchPlaceholder}</span>
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={labels.searchPlaceholder}
-                className="w-full bg-transparent text-base outline-none placeholder:text-slate-500"
+                className="w-full bg-transparent text-base outline-none placeholder:text-brand-muted"
                 type="search"
               />
             </label>
@@ -83,8 +83,8 @@ export function BlogSearch({ posts, categories, locale, labels }: BlogSearchProp
                 onClick={() => setActiveCategory(category)}
                 className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
                   isActive
-                    ? 'border-[#0f4c5c] bg-[#0f4c5c] text-white'
-                    : 'border-slate-900/10 bg-white text-slate-600 hover:border-[#0f4c5c]/40 hover:text-slate-950'
+                    ? 'border-brand-primary bg-brand-primary text-white'
+                    : 'border-brand-border bg-white text-brand-muted hover:border-brand-primary/40 hover:text-brand-ink'
                 }`}
               >
                 {category}
@@ -97,27 +97,27 @@ export function BlogSearch({ posts, categories, locale, labels }: BlogSearchProp
           {filteredPosts.map((post) => (
             <article
               key={post.id}
-              className="group flex min-h-[24rem] flex-col rounded-[2rem] border border-slate-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/8"
+              className="group flex min-h-[24rem] flex-col rounded-[2rem] border border-brand-border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-level-2)]"
             >
-              <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand-muted">
                 <span>{post.category}</span>
                 <time dateTime={post.updatedAt}>
                   {labels.updated} {formatDate(post.updatedAt, locale)}
                 </time>
               </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-950">
-                <Link href={post.href} className="transition-colors group-hover:text-[#0f4c5c]">
+              <h3 className="mt-6 text-2xl font-semibold tracking-tight text-brand-ink">
+                <Link href={post.href} className="transition-colors group-hover:text-brand-primary">
                   {post.title}
                 </Link>
               </h3>
-              <p className="mt-4 flex-1 text-base leading-7 text-slate-600">
+              <p className="mt-4 flex-1 text-base leading-7 text-brand-muted">
                 {post.excerpt}
               </p>
-              <div className="mt-8 flex items-center justify-between gap-4 border-t border-slate-900/8 pt-5">
-                <span className="text-sm text-slate-500">{post.readingTime}</span>
+              <div className="mt-8 flex items-center justify-between gap-4 border-t border-brand-border pt-5">
+                <span className="text-sm text-brand-muted">{post.readingTime}</span>
                 <Link
                   href={post.href}
-                  className="rounded-full bg-[#0f4c5c] px-4 py-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:-translate-y-0.5"
+                  className="rounded-full bg-brand-primary px-4 py-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:-translate-y-0.5"
                 >
                   {labels.readArticle}
                 </Link>
@@ -127,7 +127,7 @@ export function BlogSearch({ posts, categories, locale, labels }: BlogSearchProp
         </div>
 
         {filteredPosts.length === 0 ? (
-          <div className="mt-10 rounded-[2rem] border border-dashed border-slate-900/20 bg-white/70 p-8 text-center text-slate-600">
+          <div className="mt-10 rounded-[2rem] border border-dashed border-brand-primary/20 bg-white/70 p-8 text-center text-brand-muted">
             {labels.noResults}
           </div>
         ) : null}

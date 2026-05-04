@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { ArrowRight, BookOpen, Search, ShieldCheck } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -163,9 +164,9 @@ export default async function BlogIndexPage({ params }: PageProps) {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-slate-950 noise">
+    <main className="relative min-h-screen overflow-hidden bg-brand-paper text-brand-ink noise">
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div className="absolute inset-0 bg-brand-paper" />
         <div className="absolute inset-0 grid-pattern opacity-80" />
       </div>
 
@@ -174,32 +175,32 @@ export default async function BlogIndexPage({ params }: PageProps) {
       <section className="px-6 pb-16 pt-36">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0f4c5c]">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-primary">
               {t.eyebrow}
             </p>
-            <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 md:text-7xl">
+            <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[0.98] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
               {t.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">
               {t.intro}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#0f4c5c] px-6 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#0c3d49]"
+                className="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-brand-primaryHover"
               >
                 {t.primaryCta}
               </a>
               <a
                 href="#blog-search"
-                className="inline-flex items-center justify-center rounded-full border border-slate-900/10 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:border-[#0f4c5c]/40 hover:text-[#0f4c5c]"
+                className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-6 py-3 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-primary/40 hover:text-brand-primary"
               >
                 {t.secondaryCta}
               </a>
             </div>
           </div>
 
-          <div className="rounded-[2.5rem] border border-slate-900/10 bg-white/80 p-6 shadow-xl shadow-slate-900/8 backdrop-blur">
+          <div className="rounded-[2.5rem] border border-brand-border bg-white/80 p-6 shadow-[var(--shadow-level-2)] backdrop-blur">
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
               {[
                 { icon: BookOpen, title: `${BLOG_POSTS.length} ${t.articlesLabel}`, body: t.featured },
@@ -211,13 +212,13 @@ export default async function BlogIndexPage({ params }: PageProps) {
                 return (
                   <div
                     key={item.title}
-                    className="rounded-[2rem] border border-slate-900/8 bg-[#f6f1e8] p-5"
+                    className="rounded-[2rem] border border-brand-border bg-brand-paper p-5"
                   >
-                    <Icon className="h-5 w-5 text-[#0f4c5c]" aria-hidden="true" />
-                    <h2 className="mt-4 text-lg font-semibold text-slate-950">
+                    <Icon className="h-5 w-5 text-brand-primary" aria-hidden="true" />
+                    <h2 className="mt-4 text-lg font-semibold leading-tight text-brand-ink">
                       {item.title}
                     </h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
+                    <p className="mt-2 text-sm leading-6 text-brand-muted">{item.body}</p>
                   </div>
                 );
               })}
@@ -230,10 +231,10 @@ export default async function BlogIndexPage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0f4c5c]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-primary">
                 {t.featured}
               </p>
-              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+              <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
                 {t.featuredDescription}
               </h2>
             </div>
@@ -243,25 +244,36 @@ export default async function BlogIndexPage({ params }: PageProps) {
             {featuredPosts.map((post) => (
               <article
                 key={post.id}
-                className="group rounded-[2rem] border border-slate-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/8"
+                className="group overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-level-2)]"
               >
-                <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  <span>{post.category}</span>
-                  <span>{post.readingTime}</span>
+                <div className="relative aspect-[16/9] overflow-hidden bg-brand-primary/10">
+                  <Image
+                    src={post.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-950">
-                  <Link href={post.href} className="transition-colors group-hover:text-[#0f4c5c]">
-                    {post.title}
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand-muted">
+                    <span>{post.category}</span>
+                    <span>{post.readingTime}</span>
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold leading-tight tracking-tight text-brand-ink">
+                    <Link href={post.href} className="transition-colors group-hover:text-brand-primary">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-brand-muted">{post.excerpt}</p>
+                  <Link
+                    href={post.href}
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary"
+                  >
+                    {t.readArticle}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
-                </h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">{post.excerpt}</p>
-                <Link
-                  href={post.href}
-                  className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#0f4c5c]"
-                >
-                  {t.readArticle}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </div>
               </article>
             ))}
           </div>
@@ -272,26 +284,26 @@ export default async function BlogIndexPage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0f4c5c]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-primary">
                 Blog
               </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
                 {t.searchTitle}
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-brand-muted">
                 {t.searchDescription}
               </p>
             </div>
 
-            <div className="rounded-[2rem] border border-slate-900/10 bg-white p-5 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <div className="rounded-[2rem] border border-brand-border bg-white p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-muted">
                 {t.topicsLabel}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <span
                     key={category}
-                    className="rounded-full border border-slate-900/10 bg-[#f6f1e8] px-3 py-1.5 text-sm font-semibold text-slate-700"
+                    className="rounded-full border border-brand-border bg-brand-paper px-3 py-1.5 text-sm font-semibold text-brand-muted"
                   >
                     {category}
                   </span>
@@ -304,30 +316,41 @@ export default async function BlogIndexPage({ params }: PageProps) {
             {posts.map((post) => (
               <article
                 key={post.id}
-                className="group flex min-h-[24rem] flex-col rounded-[2rem] border border-slate-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/8"
+                className="group flex min-h-[24rem] flex-col overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-level-2)]"
               >
-                <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  <span>{post.category}</span>
-                  <time dateTime={post.updatedAt}>
-                    {t.updated} {formatDate(post.updatedAt, activeLocale)}
-                  </time>
+                <div className="relative aspect-[16/9] overflow-hidden bg-brand-primary/10">
+                  <Image
+                    src={post.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight text-slate-950">
-                  <Link href={post.href} className="transition-colors group-hover:text-[#0f4c5c]">
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="mt-4 flex-1 text-base leading-7 text-slate-600">
-                  {post.excerpt}
-                </p>
-                <div className="mt-8 flex items-center justify-between gap-4 border-t border-slate-900/8 pt-5">
-                  <span className="text-sm text-slate-500">{post.readingTime}</span>
-                  <Link
-                    href={post.href}
-                    className="rounded-full bg-[#0f4c5c] px-4 py-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:-translate-y-0.5"
-                  >
-                    {t.readArticle}
-                  </Link>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-brand-muted">
+                    <span>{post.category}</span>
+                    <time dateTime={post.updatedAt}>
+                      {t.updated} {formatDate(post.updatedAt, activeLocale)}
+                    </time>
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold leading-tight tracking-tight text-brand-ink">
+                    <Link href={post.href} className="transition-colors group-hover:text-brand-primary">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-4 flex-1 text-base leading-7 text-brand-muted">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-8 flex items-center justify-between gap-4 border-t border-brand-border pt-5">
+                    <span className="text-sm text-brand-muted">{post.readingTime}</span>
+                    <Link
+                      href={post.href}
+                      className="rounded-full bg-brand-primary px-4 py-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:-translate-y-0.5"
+                    >
+                      {t.readArticle}
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -337,26 +360,26 @@ export default async function BlogIndexPage({ params }: PageProps) {
 
       <section className="px-6 pb-20">
         <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
-          <div className="rounded-[2rem] border border-slate-900/10 bg-white p-8">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
+          <div className="rounded-[2rem] border border-brand-border bg-white p-8">
+            <h2 className="text-2xl font-semibold leading-tight tracking-tight text-brand-ink">
               {t.pillarTitle}
             </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">{t.pillarBody}</p>
+            <p className="mt-4 text-base leading-7 text-brand-muted">{t.pillarBody}</p>
           </div>
           <div
-            className="rounded-[2rem] border border-[#0f4c5c]/20 bg-[#0f4c5c] p-8 text-white"
+            className="rounded-[2rem] border border-brand-primary/20 bg-brand-primary p-8 text-white"
             id="contact"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/70">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/90">
               CTA
             </p>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight">
+            <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-white">
               {t.trustTitle}
             </h2>
-            <p className="mt-4 text-base leading-7 text-white/80">{t.trustBody}</p>
+            <p className="mt-4 text-base leading-7 text-white/90">{t.trustBody}</p>
             <Link
               href="/#contact"
-              className="mt-7 inline-flex items-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#0f4c5c] transition-transform duration-300 hover:-translate-y-0.5"
+              className="mt-7 inline-flex items-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand-primary transition-transform duration-300 hover:-translate-y-0.5"
             >
               {t.primaryCta}
             </Link>

@@ -100,7 +100,7 @@ export function CvPage() {
       </div>
 
       <motion.div
-        className="absolute left-[-10%] top-[-12%] h-[520px] w-[520px] rounded-full bg-purple-600/12 blur-[120px]"
+        className="absolute left-[-10%] top-[-12%] h-[520px] w-[520px] rounded-full bg-brand-secondary/14 blur-[120px]"
         animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.08, 1] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -143,13 +143,13 @@ export function CvPage() {
             className="rounded-[2rem] border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-xl md:p-12"
           >
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 backdrop-blur-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
+              <div className="h-1.5 w-1.5 rounded-full bg-brand-tertiary animate-pulse" />
               <span className="text-xs font-medium uppercase tracking-[0.28em] text-gray-400">
                 Curriculum Vitae
               </span>
             </div>
 
-            <h1 className="mb-3 text-5xl font-black leading-[0.95] tracking-tight text-glow sm:text-7xl">
+            <h1 className="mb-3 text-5xl font-bold leading-[0.95] tracking-tight text-glow sm:text-7xl">
               <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
                 João Manteigas
               </span>
@@ -200,7 +200,7 @@ export function CvPage() {
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-sm text-gray-300 transition-all duration-300 hover:border-purple-400/40 hover:bg-white/[0.07] hover:text-white"
+                    className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-sm text-gray-300 transition-all duration-300 hover:border-brand-tertiary/40 hover:bg-white/[0.07] hover:text-white"
                   >
                     {skill}
                   </span>
@@ -223,7 +223,7 @@ export function CvPage() {
                       <h3 className="text-lg font-semibold text-white">
                         {experience.role}
                       </h3>
-                      <p className="mb-2 text-sm text-purple-300">{experience.company}</p>
+                      <p className="mb-2 text-sm text-brand-tertiary">{experience.company}</p>
                       <p className="text-sm leading-relaxed text-gray-300 md:text-base">
                         {experience.description}
                       </p>
@@ -246,7 +246,7 @@ export function CvPage() {
                     </span>
                     <div>
                       <h3 className="font-semibold text-white">{item.institution}</h3>
-                      <p className="text-sm text-purple-300 md:text-base">{item.degree}</p>
+                      <p className="text-sm text-brand-tertiary md:text-base">{item.degree}</p>
                       {item.note && <p className="mt-1 text-sm text-gray-400">{item.note}</p>}
                     </div>
                   </div>
@@ -311,7 +311,7 @@ const ContactPill = ({
 
 const SectionTitle = ({ icon, title }: { icon: ReactNode; title: string }) => (
   <div className="flex items-center gap-3">
-    <span className="text-purple-300">{icon}</span>
+    <span className="text-brand-tertiary">{icon}</span>
     <h2 className="text-2xl tracking-tight text-white">{title}</h2>
   </div>
 );

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Header } from '@/components/header';
@@ -7,6 +8,7 @@ import { Link } from '@/i18n/routing';
 import {
   BLOG_POSTS,
   buildBlogAlternates,
+  getBlogImagePath,
   getBlogPostBySlug,
   getBlogUrl,
   getRelatedBlogPosts,
@@ -66,6 +68,7 @@ export async function generateMetadata({
   }
 
   const content = post.content[activeLocale];
+  const image = getBlogImagePath(post.id);
 
   return {
     title: content.metaTitle,
@@ -85,10 +88,10 @@ export async function generateMetadata({
       tags: content.keywords,
       images: [
         {
-          url: '/logo.png',
+          url: image,
           width: 1200,
-          height: 630,
-          alt: 'Velvet Neuron',
+          height: 675,
+          alt: content.title,
         },
       ],
     },
@@ -96,7 +99,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: content.metaTitle,
       description: content.description,
-      images: ['/logo.png'],
+      images: [image],
     },
     alternates: buildBlogAlternates(post, activeLocale),
   };
@@ -115,6 +118,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const t = articleCopy[activeLocale];
   const relatedPosts = getRelatedBlogPosts(post, activeLocale);
   const articleUrl = getBlogUrl(activeLocale, post);
+  const image = getBlogImagePath(post.id);
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -138,6 +142,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     },
     mainEntityOfPage: articleUrl,
     url: articleUrl,
+    image: buildAbsoluteBlogImageUrl(image),
     inLanguage: activeLocale === 'pt' ? 'pt-PT' : 'en',
     keywords: content.keywords.join(', '),
   };
@@ -182,9 +187,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-slate-950 noise">
+    <main className="relative min-h-screen overflow-hidden bg-brand-paper text-brand-ink noise">
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div className="absolute inset-0 bg-brand-paper" />
         <div className="absolute inset-0 grid-pattern opacity-80" />
       </div>
 
@@ -194,7 +199,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-[#0f4c5c]/40 hover:text-[#0f4c5c]"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-white px-4 py-2 text-sm font-semibold text-brand-muted transition-colors hover:border-brand-primary/40 hover:text-brand-primary"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             {t.back}
@@ -202,8 +207,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
           <header className="mt-10 grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
             <div>
-              <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-slate-500">
-                <span className="rounded-full bg-white px-3 py-1 text-[#0f4c5c]">
+              <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-brand-muted">
+                <span className="rounded-full bg-white px-3 py-1 text-brand-primary">
                   {post.category[activeLocale]}
                 </span>
                 <span>{post.readingTime[activeLocale]}</span>
@@ -211,38 +216,48 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   {t.updated} {formatDate(post.updatedAt, activeLocale)}
                 </time>
               </div>
-              <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight text-slate-950 md:text-7xl">
+              <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.98] tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
                 {content.title}
               </h1>
-              <p className="mt-7 max-w-3xl text-xl leading-9 text-slate-600">
+              <p className="mt-7 max-w-3xl text-xl leading-9 text-brand-muted">
                 {content.excerpt}
               </p>
+              <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-[2rem] border border-brand-border bg-brand-primary/10 shadow-[var(--shadow-level-1)]">
+                <Image
+                  src={image}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) calc(100vw - 30rem), 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
 
-            <aside className="rounded-[2rem] border border-slate-900/10 bg-white p-6 shadow-xl shadow-slate-900/8 lg:sticky lg:top-28">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0f4c5c]">
+            <aside className="rounded-[2rem] border border-brand-border bg-white p-6 shadow-[var(--shadow-level-2)] lg:sticky lg:top-28">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-primary">
                 {t.tableOfContents}
               </p>
-              <ol className="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+              <ol className="mt-5 space-y-3 text-sm leading-6 text-brand-muted">
                 {content.sections.map((section, index) => (
                   <li key={section.title}>
-                    <a href={`#section-${index + 1}`} className="hover:text-slate-950">
+                    <a href={`#section-${index + 1}`} className="hover:text-brand-ink">
                       {section.title}
                     </a>
                   </li>
                 ))}
               </ol>
-              <div className="mt-6 rounded-[1.5rem] bg-[#0f4c5c] p-5 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/65">
+              <div className="mt-6 rounded-[1.5rem] bg-brand-primary p-5 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
                   {t.ctaLabel}
                 </p>
-                <h2 className="mt-3 text-xl font-semibold tracking-tight">
+                <h2 className="mt-3 text-xl font-semibold leading-tight tracking-tight text-white">
                   {content.cta.title}
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-white/80">{content.cta.body}</p>
+                <p className="mt-3 text-sm leading-6 text-white/90">{content.cta.body}</p>
                 <Link
                   href="/#contact"
-                  className="mt-5 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#0f4c5c]"
+                  className="mt-5 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand-primary"
                 >
                   {content.cta.button}
                 </Link>
@@ -256,25 +271,25 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 <section
                   key={section.title}
                   id={`section-${index + 1}`}
-                  className="scroll-mt-28 rounded-[2rem] border border-slate-900/10 bg-white p-7 shadow-sm md:p-10"
+                  className="scroll-mt-28 rounded-[2rem] border border-brand-border bg-white p-7 shadow-sm md:p-10"
                 >
-                  <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+                  <h2 className="text-3xl font-semibold tracking-tight text-brand-ink">
                     {section.title}
                   </h2>
                   {section.intro ? (
-                    <p className="mt-5 text-lg leading-8 text-slate-600">{section.intro}</p>
+                    <p className="mt-5 text-lg leading-8 text-brand-muted">{section.intro}</p>
                   ) : null}
                   {section.body?.map((paragraph) => (
-                    <p key={paragraph} className="mt-5 text-lg leading-8 text-slate-600">
+                    <p key={paragraph} className="mt-5 text-lg leading-8 text-brand-muted">
                       {paragraph}
                     </p>
                   ))}
                   {section.bullets ? (
                     <ul className="mt-6 space-y-3">
                       {section.bullets.map((item) => (
-                        <li key={item} className="flex gap-3 text-base leading-7 text-slate-700">
+                        <li key={item} className="flex gap-3 text-base leading-7 text-brand-muted">
                           <CheckCircle2
-                            className="mt-1 h-5 w-5 flex-none text-[#0f4c5c]"
+                            className="mt-1 h-5 w-5 flex-none text-brand-primary"
                             aria-hidden="true"
                           />
                           <span>{item}</span>
@@ -285,13 +300,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
                   {section.subsections?.map((subsection) => (
                     <div
                       key={subsection.title}
-                      className="mt-7 rounded-[1.5rem] bg-[#f6f1e8] p-6"
+                      className="mt-7 rounded-[1.5rem] bg-brand-paper p-6"
                     >
-                      <h3 className="text-xl font-semibold text-slate-950">
+                      <h3 className="text-xl font-semibold text-brand-ink">
                         {subsection.title}
                       </h3>
                       {subsection.body.map((paragraph) => (
-                        <p key={paragraph} className="mt-3 text-base leading-7 text-slate-600">
+                        <p key={paragraph} className="mt-3 text-base leading-7 text-brand-muted">
                           {paragraph}
                         </p>
                       ))}
@@ -300,17 +315,17 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 </section>
               ))}
 
-              <section className="rounded-[2rem] border border-slate-900/10 bg-white p-7 shadow-sm md:p-10">
-                <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+              <section className="rounded-[2rem] border border-brand-border bg-white p-7 shadow-sm md:p-10">
+                <h2 className="text-3xl font-semibold leading-tight tracking-tight text-brand-ink">
                   {t.faqTitle}
                 </h2>
-                <div className="mt-6 divide-y divide-slate-900/10">
+                <div className="mt-6 divide-y divide-brand-border">
                   {content.faqs.map((faq) => (
                     <div key={faq.question} className="py-6 first:pt-0 last:pb-0">
-                      <h3 className="text-xl font-semibold text-slate-950">
+                      <h3 className="text-xl font-semibold text-brand-ink">
                         {faq.question}
                       </h3>
-                      <p className="mt-3 text-base leading-7 text-slate-600">
+                      <p className="mt-3 text-base leading-7 text-brand-muted">
                         {faq.answer}
                       </p>
                     </div>
@@ -320,17 +335,17 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </div>
 
             <aside className="space-y-5">
-              <div className="rounded-[2rem] border border-slate-900/10 bg-white p-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0f4c5c]">
+              <div className="rounded-[2rem] border border-brand-border bg-white p-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-primary">
                   {content.cta.eyebrow}
                 </p>
-                <h2 className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">
+                <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-brand-ink">
                   {content.cta.title}
                 </h2>
-                <p className="mt-4 text-sm leading-6 text-slate-600">{content.cta.body}</p>
+                <p className="mt-4 text-sm leading-6 text-brand-muted">{content.cta.body}</p>
                 <Link
                   href="/#contact"
-                  className="mt-6 inline-flex items-center rounded-full bg-[#0f4c5c] px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
+                  className="mt-6 inline-flex items-center rounded-full bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   {t.contact}
                 </Link>
@@ -343,39 +358,50 @@ export default async function BlogArticlePage({ params }: PageProps) {
       {relatedPosts.length > 0 ? (
         <section className="px-6 pb-24">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+            <h2 className="text-3xl font-semibold tracking-tight text-brand-ink">
               {t.relatedTitle}
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {relatedPosts.map((relatedPost) => (
                 <article
                   key={relatedPost.id}
-                  className="group rounded-[2rem] border border-slate-900/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/8"
+                  className="group overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-level-2)]"
                 >
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0f4c5c]">
-                    {relatedPost.category}
-                  </p>
-                  <h3 className="mt-5 text-2xl font-semibold tracking-tight text-slate-950">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-brand-primary/10">
+                    <Image
+                      src={relatedPost.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-primary">
+                      {relatedPost.category}
+                    </p>
+                    <h3 className="mt-5 text-2xl font-semibold leading-tight tracking-tight text-brand-ink">
+                      <Link
+                        href={relatedPost.href}
+                        className="transition-colors group-hover:text-brand-primary"
+                      >
+                        {relatedPost.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-4 text-base leading-7 text-brand-muted">
+                      {relatedPost.excerpt}
+                    </p>
                     <Link
                       href={relatedPost.href}
-                      className="transition-colors group-hover:text-[#0f4c5c]"
+                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary"
                     >
-                      {relatedPost.title}
+                      {t.readNext}
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
                     </Link>
-                  </h3>
-                  <p className="mt-4 text-base leading-7 text-slate-600">
-                    {relatedPost.excerpt}
-                  </p>
-                  <Link
-                    href={relatedPost.href}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#0f4c5c]"
-                  >
-                    {t.readNext}
-                    <ArrowRight
-                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </Link>
+                  </div>
                 </article>
               ))}
             </div>
@@ -396,6 +422,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
       </script>
     </main>
   );
+}
+
+function buildAbsoluteBlogImageUrl(path: string) {
+  return `https://velvetneuron.com${path}`;
 }
 
 function formatDate(value: string, locale: 'en' | 'pt') {

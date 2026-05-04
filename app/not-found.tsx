@@ -14,7 +14,7 @@ export default function NotFound() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none -z-10"
         style={{
           background:
-            'radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)',
+            'radial-gradient(circle, rgba(166,242,77,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -22,7 +22,7 @@ export default function NotFound() {
         {/* 404 number */}
         <div className="relative mb-6 select-none">
           <span
-            className="text-[160px] md:text-[220px] font-black leading-none tracking-tighter"
+            className="text-[160px] md:text-[220px] font-bold leading-none tracking-tighter"
             style={{
               background:
                 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
@@ -37,10 +37,10 @@ export default function NotFound() {
           </span>
           {/* Overlay visible number */}
           <span
-            className="absolute inset-0 flex items-center justify-center text-[160px] md:text-[220px] font-black leading-none tracking-tighter text-glow"
+            className="absolute inset-0 flex items-center justify-center text-[160px] md:text-[220px] font-bold leading-none tracking-tighter text-glow"
             style={{
               background:
-                'linear-gradient(135deg, #ffffff 0%, rgba(139,92,246,0.6) 50%, rgba(255,255,255,0.3) 100%)',
+                'linear-gradient(135deg, #ffffff 0%, rgba(166,242,77,0.62) 50%, rgba(255,255,255,0.3) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -78,7 +78,7 @@ export default function NotFound() {
 
         {/* Brand badge */}
         <div className="mt-16 inline-flex items-center gap-2 text-white/20 text-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-500/50 inline-block" />
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand-tertiary/60" />
           Velvet Neuron · Digital Product Engineering
         </div>
       </div>

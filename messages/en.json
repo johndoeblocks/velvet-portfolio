@@ -1,100 +1,95 @@
 {
   "nav": {
     "work": "Results",
-    "services": "Services",
-    "process": "Process",
+    "services": "Automation",
+    "process": "How it works",
     "blog": "Blog",
     "contact": "Contact",
-    "cta": "Book intro call"
+    "cta": "Free diagnosis"
   },
   "metadata": {
-    "title": "Velvet Neuron | Websites, Apps and Automation",
-    "description": "Senior-led agency in Portugal building websites, automations, apps, and digital experiences for teams that want to operate better and grow with more confidence."
+    "title": "Velvet Neuron | Practical Automation for SMEs in Portugal",
+    "description": "Process automation for SMEs without internal IT teams. Save hours every week, reduce errors, and start with a free diagnosis."
   },
   "hero": {
-    "eyebrow": "Senior-led digital product agency in Portugal",
-    "headline": "We build digital systems that work.",
-    "subheadline": "Websites, apps, and automations for SMEs that need to sell better, operate with less friction, and create more credible experiences.",
-    "cta_primary": "Book an intro call",
-    "cta_secondary": "See selected work",
-    "cta_video": "Watch the video",
-    "proof_title": "Strategy, product, and execution.",
-    "proof_intro": "You work directly with a senior team on the message, UX, build, and launch, without layers of handoffs or vague process.",
-    "proof_point_1": "Strategy, copy, design, development, and SEO in one flow",
-    "proof_point_2": "Bilingual delivery for Portuguese and international teams",
-    "proof_point_3": "Built for trust, speed, and real operations",
-    "stat_1_value": "PT + EN",
-    "stat_1_label": "Bilingual delivery",
-    "stat_2_value": "Senior-led",
-    "stat_2_label": "From first call to launch",
-    "stat_3_value": "SEO-ready",
-    "stat_3_label": "Technical foundations included"
+    "eyebrow": "Automation and artificial intelligence agency for SMEs",
+    "headline": "Is your company losing time, leads, and money to manual processes?",
+    "subheadline": "We automate customer support, follow-up, internal tasks, and integrations with the tools you already use, without requiring an internal technical team.",
+    "cta_primary": "Book a free diagnosis",
+    "cta_secondary": "See how it works",
+    "cta_video": "Watch the 2-minute overview",
+    "proof_title": "Practical automation, without overwhelming your team.",
+    "proof_intro": "We start by mapping where your team loses time and build a simple solution connected to what already exists in the business.",
+    "proof_point_1": "Works with tools like PHC, Moloni, Primavera, Gmail, CRM, and WhatsApp",
+    "proof_point_2": "First prototype validated in 2-4 weeks before a bigger investment",
+    "proof_point_3": "Focused on saved hours, fewer errors, and faster responses",
+    "stat_1_value": "4-8h/week",
+    "stat_1_label": "saved in repetitive work",
+    "stat_2_value": "2-4 weeks",
+    "stat_2_label": "to validate the first prototype",
+    "stat_3_value": "3-6 months",
+    "stat_3_label": "typical return window"
   },
   "promoVideo": {
-    "eyebrow": "Video overview",
-    "title": "How we think about digital product.",
-    "description": "A short walkthrough of the Velvet Neuron approach before you book a call.",
-    "cta": "Talk after watching"
+    "eyebrow": "BEFORE REQUESTING A QUOTE",
+    "title": "Get a high-converting website in 48 hours.",
+    "description": "I build your website and online presence fast, backed by real case studies of businesses already getting clients.",
+    "cta": "I want my website in 2 days",
+    "videoOverlay": "Sites launched in 2 days"
   },
   "trust": {
-    "eyebrow": "Why clients choose us",
-    "title": "Clearer digital. Stronger operations.",
-    "description": "We focus on the signals that make prospects trust you faster and contact you with more confidence.",
+    "eyebrow": "For SMEs without internal technical teams",
+    "title": "A local partner to automate without making things complicated.",
+    "description": "We do not sell generic AI packages. We design solutions around how your team works today, with clear language, close support, and numbers that make sense.",
     "experience_label": "Selected experience includes work delivered with teams behind",
-    "experience_copy": "Relevant experience across ecommerce, product platforms, and service businesses in Portugal and Europe.",
+    "experience_copy": "Relevant experience across e-commerce, product platforms, and service businesses in Portugal and Europe.",
     "items": {
       "senior": {
-        "title": "Senior execution throughout",
-        "description": "No bait-and-switch. The people shaping the strategy are the same people designing and building the work."
+        "title": "You speak with the builders",
+        "description": "No sales layers. The same team that diagnoses the problem designs, integrates, and supports the solution."
       },
       "clarity": {
-        "title": "Clear offer. Faster decision.",
-        "description": "We help visitors understand what you do, why it matters, and what to do next in a few seconds."
+        "title": "No need to replace everything",
+        "description": "We connect automation to the systems you already use to avoid expensive change and team resistance."
       },
       "performance": {
-        "title": "SEO and speed built in",
-        "description": "Speed, technical SEO, analytics, and structure are part of the build, not an afterthought."
+        "title": "Impact measured from day one",
+        "description": "We define saved hours, fewer errors, and response-time targets before building."
       },
       "conversion": {
-        "title": "Designed to drive action",
-        "description": "Every section is shaped to reduce doubt, strengthen trust, and move qualified visitors toward contact."
+        "title": "Simple in daily use",
+        "description": "If your team can use WhatsApp or email, they should be able to use the solution without heavy training."
       }
     }
   },
   "services": {
     "eyebrow": "Services",
-    "title": "What we build with you.",
-    "description": "One senior team for websites, apps, automations, and digital foundations that make the business clearer, more efficient, and ready to grow.",
+    "title": "We automate the work slowing your team down.",
+    "description": "We start with the processes that cost the most time: support, leads, documents, reports, orders, ERP, and repeated daily tasks.",
+    "learn_more": "Learn More",
     "items": {
-      "websites": {
-        "title": "Websites that explain and sell",
-        "description": "High-trust marketing sites built to explain your offer clearly and generate better-quality leads."
+      "ai_agents": {
+        "description": "Intelligent agents for customer service, support, and 24/7 automation, with fast answers and human handoff when needed."
       },
-      "positioning": {
-        "title": "Messaging that sells",
-        "description": "Sharper headlines, better structure, and clearer calls to action so visitors understand the value faster."
+      "automation": {
+        "description": "We remove repetitive tasks, forgotten follow-ups, and manual processes that consume hours every week."
       },
       "web_apps": {
-        "title": "Custom apps and portals",
-        "description": "Custom product experiences that feel polished, fast, and easy for teams and customers to use."
+        "description": "Custom portals, dashboards, and internal tools to organise operations, customers, data, and teams in one place."
       },
-      "ai_automation": {
-        "title": "Automation that saves time",
-        "description": "Practical systems that remove repetitive work, connect your stack, and support a faster operation."
-      },
-      "seo_performance": {
-        "title": "Speed, SEO, and technical foundations",
-        "description": "Cleaner structure, stronger metadata, and faster pages that help search visibility and conversion."
+      "ecommerce": {
+        "description": "Websites and online stores focused on trust, clarity, and conversion to turn visits into enquiries and sales."
       }
     }
   },
   "portfolio": {
-    "eyebrow": "Selected work",
-    "title": "Websites, apps, and real operations.",
-    "description": "A mix of direct client delivery and technical collaboration across Portugal and Europe.",
-    "note": "Recent work spans ecommerce, sports, food service, and digital product teams.",
+    "eyebrow": "Selected experience",
+    "title": "Companies I worked with.",
+    "description": "A selection of brands, platforms, and teams where we contributed engineering, digital product, and automation work.",
+    "note": "Recent work spans e-commerce, sports, food service, and digital product teams.",
     "view_project": "Open gallery",
     "private_work": "Private case study",
+    "company_label": "Company / product",
     "projects": {
       "dominos_norway": {
         "name": "Domino's Norway",
@@ -108,7 +103,7 @@
       },
       "burberry": {
         "name": "Burberry",
-        "category": "Luxury ecommerce",
+        "category": "Luxury e-commerce",
         "description": "Identity and profile engineering work on secure sign-in, account flows, and internal platform tooling."
       },
       "talho_halal": {
@@ -118,8 +113,8 @@
       },
       "scoreplay": {
         "name": "Scoreplay",
-        "category": "Sports media platform",
-        "description": "Product interface work for a platform managing sports content, workflows, and media delivery."
+        "category": "Web3 & Prediction Platform",
+        "description": "Full-stack web3 prediction platform built with Next.js and Prisma. Integrated wallet authentication, smart contracts (testnet USDC), and real-time ranking mechanics, ensuring frictionless onboarding and multi-chain scalability."
       },
       "quizflow": {
         "name": "QuizFlow",
@@ -130,59 +125,58 @@
   },
   "process": {
     "eyebrow": "Process",
-    "title": "From diagnosis to launch.",
-    "description": "A simple process to understand the right problem, design the right solution, and launch without noise.",
+    "title": "From free diagnosis to automation in daily use.",
+    "description": "A simple process to decide what is worth automating, validate early, and launch without stopping operations.",
+    "image_alt": "Workspace with laptop, monitor, phone, and process map for business automation.",
+    "image_label": "Diagnosis in context",
+    "image_caption": "We analyse real processes, existing tools, and where the team loses time before proposing any solution.",
     "items": {
       "step_1": {
         "title": "Map the problem",
-        "description": "We review your current website, offer, and buyer journey to find the biggest trust and conversion gaps."
+        "description": "We map manual tasks, lost time, frequent errors, and systems that do not communicate."
       },
       "step_2": {
-        "title": "Clarify the offer",
-        "description": "We clarify the value proposition, define the page flow, and sharpen the copy before design starts."
+        "title": "Design the first prototype",
+        "description": "We create a simple flow to validate with your team before investing in a full implementation."
       },
       "step_3": {
         "title": "Build the solution",
-        "description": "We design the experience, build the product, and bake performance, SEO, and analytics into the foundation."
+        "description": "We connect forms, CRM, ERP, email, WhatsApp, or internal tools according to what the operation needs."
       },
       "step_4": {
-        "title": "Launch and improve",
-        "description": "We launch with QA, track behaviour, and keep improving the pages that matter most."
+        "title": "Train and support",
+        "description": "Your team learns to use the solution day to day, and we monitor the first results to adjust."
       }
     }
   },
   "faq": {
     "eyebrow": "Common questions",
-    "title": "Before we start.",
-    "description": "The goal is to make the next step feel clear, not high-pressure.",
+    "title": "Normal questions before automating.",
+    "description": "Direct answers for SMEs that want to save time without creating a heavy technical project.",
     "items": {
       "timeline": {
-        "question": "How quickly can we start?",
-        "answer": "Smaller website and landing page projects can usually start quickly once the scope is clear. More complex builds need a short discovery phase first so the work stays realistic and efficient."
+        "question": "Is this too advanced for my business?",
+        "answer": "No. We start with simple, repetitive processes. If your team can use email or WhatsApp, the solution should be easy to adopt."
       },
       "budget": {
-        "question": "Do you only work on full rebuilds?",
-        "answer": "No. We can help with focused improvements too, including clearer messaging, conversion fixes, design refreshes, performance work, or technical SEO."
+        "question": "How much does automation cost for an SME?",
+        "answer": "It depends on the process and integrations. That is why we start with a free diagnosis and a phased proposal to reduce risk."
       },
       "collaboration": {
-        "question": "Who will I actually work with?",
-        "answer": "Directly with the senior team handling strategy, design, and development. The aim is fast communication, clear ownership, and no unnecessary layers."
-      },
-      "support": {
-        "question": "Do you help after launch?",
-        "answer": "Yes. We can continue with maintenance, SEO improvements, experiments, and iterative product work once the first version is live."
+        "question": "Do I need to change ERP or CRM?",
+        "answer": "Usually not. The priority is to connect automation to tools you already use, such as PHC, Primavera, Moloni, Salesforce, Gmail, or WhatsApp."
       }
     }
   },
   "contact": {
-    "eyebrow": "Start the conversation",
-    "title": "Let’s decide what to build.",
-    "description": "Share your goals, timeline, and current blockers. If there is a fit, we will come back with a realistic approach for a website, app, automation, or digital improvement.",
+    "eyebrow": "Free diagnosis",
+    "title": "Let’s find the process costing your team the most time.",
+    "description": "Tell us where the team is losing hours, leads, or control. If there is a fit, we will come back with a realistic phased proposal.",
     "details_title": "What to expect",
     "details_intro": "The first conversation is straightforward and practical.",
-    "detail_1": "We review your current site, offer, or product idea.",
-    "detail_2": "We identify the biggest trust, UX, and SEO gaps.",
-    "detail_3": "We recommend the best next step, even if it is not a full rebuild.",
+    "detail_1": "We map repetitive tasks, delays, and points where leads get lost.",
+    "detail_2": "We identify possible integrations with the tools you already use.",
+    "detail_3": "We recommend the first process to automate, even if it is small.",
     "channels_title": "Prefer direct contact?",
     "channels_description": "Email or WhatsApp both work if you want a quicker start.",
     "privacy_note": "We only use your details to reply to your enquiry.",
@@ -195,11 +189,11 @@
       "company_placeholder": "Company name",
       "phone_label": "Phone",
       "phone_placeholder": "Optional",
-      "project_label": "Project details",
-      "project_placeholder": "What are you trying to improve, and what is getting in the way today?",
-      "submit": "Request a proposal",
-      "success": "Thanks. Your message is on its way.",
-      "error": "Something went wrong. Please try again.",
+      "project_label": "Which process do you want to automate?",
+      "project_placeholder": "Example: unanswered leads, manual reports, duplicate data, WhatsApp requests...",
+      "submit": "Book a free diagnosis",
+      "success": "Thank you. We received your request and will reply with the next step.",
+      "error": "Something went wrong. Please try again or email us directly.",
       "email_cta": "Send us an email",
       "whatsapp": "Start on WhatsApp"
     }
@@ -208,14 +202,242 @@
     "company": "Velvet Neuron",
     "rights": "All rights reserved.",
     "follow": "Follow",
-    "tagline": "Trust-building digital products for ambitious teams in Portugal and Europe.",
-    "navigation": "Navigation",
-    "resources": "Resources",
-    "blog": "Blog",
+    "tagline": "Automation and artificial intelligence agency. Experience that drives intelligent transformation.",
+    "quick_links": "Quick Links",
+    "solutions": "Our Solutions",
+    "solutions_ai_agents": "AI Agents",
+    "solutions_automation": "Process Automation",
+    "solutions_web_apps": "Web Apps",
+    "solutions_ecommerce": "Sites & Ecommerce",
+    "contact_title": "Get in Touch",
     "privacy": "Privacy",
     "terms": "Terms",
-    "cv": "Founder CV",
     "email_label": "Email us",
     "location": "Lisbon, Portugal"
+  },
+  "servicePage": {
+    "back": "Back to home",
+    "home": "Home",
+    "faq_title": "Got questions? We have answers",
+    "cta_title": "Can't find what you're looking for?",
+    "cta_description": "Want a custom solution for your problem? Talk to us.",
+    "cta_button": "Request contact"
+  },
+  "agentesIA": {
+    "breadcrumb": "Intelligent AI Agents",
+    "hero_title": "Intelligent AI Agents",
+    "hero_description": "Intelligent AI agents for customer service, support, and 24/7 automation. Secure solutions adapted to your business. Unlike traditional chatbots, they use Natural Language Processing to understand what your customer says in real time.",
+    "stat_1_value": "24/7",
+    "stat_1_label": "Availability without breaks or absences",
+    "stat_2_value": "80-90%",
+    "stat_2_label": "Of customers can't distinguish from human interaction",
+    "stat_3_value": "70-85%",
+    "stat_3_label": "Of interactions resolved autonomously",
+    "section_title": "Sectors that can automate their processes",
+    "section_description": "Discover how different sectors benefit from our intelligent AI agents.",
+    "card_1_title": "Services",
+    "card_1_f1": "24h automatic quotes",
+    "card_1_f2": "Customer support",
+    "card_1_f3": "Technical Support",
+    "card_1_f4": "Instant answers to frequent questions",
+    "card_2_title": "Real Estate",
+    "card_2_f1": "Automatic lead capture and qualification",
+    "card_2_f2": "Automatic visit scheduling",
+    "card_2_f3": "60% reduction in commercial time",
+    "card_2_f4": "Intelligent post-visit follow-up",
+    "card_3_title": "Retail",
+    "card_3_f1": "Automatic abandoned cart recovery",
+    "card_3_f2": "+42% cart conversion",
+    "card_3_f3": "24/7 humanised chat",
+    "card_3_f4": "Automatic order confirmation via WhatsApp",
+    "card_4_title": "Healthcare",
+    "card_4_f1": "Appointment confirmation",
+    "card_4_f2": "89% reduction in no-shows",
+    "card_4_f3": "Autonomous humanised scheduling",
+    "card_4_f4": "Booking, rescheduling, and cancellation",
+    "card_5_title": "Education / Training",
+    "card_5_f1": "Student capture and qualification",
+    "card_5_f2": "Automated enrolments",
+    "card_5_f3": "Payment and fee management",
+    "card_5_f4": "Intelligent enrolment follow-ups",
+    "roi_title": "Typical ROI",
+    "roi_1": "4-8 hours/day recovered per employee",
+    "roi_2": "65% reduction in human errors",
+    "roi_3": "30-50% operational cost reduction",
+    "roi_4": "100% traceability and audit",
+    "roi_5": "Return on investment: 4-6 months",
+    "faq_1_q": "What's the difference between WhatsApp Business App and the API?",
+    "faq_1_a": "The free WhatsApp Business App is limited to 256 contacts. The WhatsApp Business API we use is Meta's official enterprise solution, enabling unlimited 24/7 support, multiple users, and intelligent automation.",
+    "faq_2_q": "Can my number be banned if I use automation?",
+    "faq_2_a": "Only if you use unofficial solutions. We exclusively use the official WhatsApp Business API, ensuring full compliance. The risk of banning is virtually zero.",
+    "faq_3_q": "Does the agent understand European Portuguese?",
+    "faq_3_a": "Yes. We use models specifically trained for PT-PT, capable of understanding colloquial expressions, regionalisms, and common spelling errors.",
+    "faq_4_q": "What if the bot can't answer?",
+    "faq_4_a": "We implement intelligent handoff. The agent resolves 70-85% of interactions. When it detects frustration or complex issues, it transfers to a human with full context preserved."
+  },
+  "automacaoProcessos": {
+    "breadcrumb": "Process Automation",
+    "hero_title": "Operational Process Automation",
+    "hero_description": "We automate critical processes, reducing costs and errors. Fast implementation, robust integrations, and local support in Portugal.",
+    "stat_1_value": "51%",
+    "stat_1_label": "Of SMEs have outdated processes",
+    "stat_2_value": "40-60%",
+    "stat_2_label": "Of productive time consumed by repetitive tasks",
+    "stat_3_value": "4-6 months",
+    "stat_3_label": "Typical return on investment",
+    "section_title": "What we can automate",
+    "section_description": "Mapping and digitising workflows with automation for different areas of your business.",
+    "card_1_title": "Sales & Commercial",
+    "card_1_f1": "Behaviour-based intelligent follow-ups",
+    "card_1_f2": "Automatic proposal and contract dispatch",
+    "card_1_f3": "Hot opportunity alerts",
+    "card_1_f4": "Automatic CRM pipeline updates",
+    "card_2_title": "Finance",
+    "card_2_f1": "Recurring automatic invoicing",
+    "card_2_f2": "Automatic escalation collections",
+    "card_2_f3": "Automatic bank reconciliation",
+    "card_2_f4": "Automatically prepared tax reports",
+    "card_3_title": "Operations",
+    "card_3_f1": "Document management with OCR",
+    "card_3_f2": "Approval workflows (holidays, expenses, purchases)",
+    "card_3_f3": "Periodic automatic reports",
+    "card_3_f4": "System synchronisation (ERP ↔ CRM)",
+    "card_4_title": "Native Integrations",
+    "card_4_f1": "CRMs: Salesforce, Pipedrive, HubSpot, Zoho",
+    "card_4_f2": "ERPs: SAP, PHC, Primavera, Sage",
+    "card_4_f3": "Communication: Gmail, Outlook, WhatsApp, Slack, Teams",
+    "card_4_f4": "Payments: Stripe, PayPal, Multibanco, MB WAY",
+    "card_5_title": "Marketing",
+    "card_5_f1": "Campaign segmentation and dispatch",
+    "card_5_f2": "Lead nurturing with personalised content",
+    "card_5_f3": "Performance analysis and reports",
+    "card_5_f4": "Automated social media management",
+    "process_title": "How we work",
+    "process_description": "A structured process to ensure predictable results.",
+    "step_1_title": "Mapping",
+    "step_1_desc": "We identify current manual processes in your business.",
+    "step_2_title": "Design",
+    "step_2_desc": "We create an optimised automated flow.",
+    "step_3_title": "Connectors",
+    "step_3_desc": "We integrate all systems (API, webhooks, Zapier, Make, N8N).",
+    "step_4_title": "Testing",
+    "step_4_desc": "We validate with real scenarios that everything is correct and secure.",
+    "step_5_title": "Deploy",
+    "step_5_desc": "Implementation without operational disruption.",
+    "step_6_title": "Monitoring",
+    "step_6_desc": "Real-time dashboards + alerts.",
+    "roi_title": "Typical ROI",
+    "roi_1": "4-8 hours/day recovered per employee",
+    "roi_2": "65% reduction in human errors",
+    "roi_3": "30-50% operational cost reduction",
+    "roi_4": "100% traceability and audit",
+    "roi_5": "Return on investment: 4-6 months",
+    "faq_1_q": "How long until I see results?",
+    "faq_1_a": "Quick wins in 2-4 weeks. Complex automations in 6-8 weeks. 80% of clients achieve positive return in 4-6 months.",
+    "faq_2_q": "Do I need to replace current systems?",
+    "faq_2_a": "No. We integrate with what already exists: SAP, PHC, Primavera, Sage, HubSpot, Pipedrive, Moloni, InvoiceXpress, and more.",
+    "faq_3_q": "Does the team need technical skills?",
+    "faq_3_a": "No. If they can use WhatsApp and Excel, they can use the automations. We include simple interfaces, practical training, and direct support.",
+    "faq_4_q": "Can I adapt automations if the business changes?",
+    "faq_4_a": "Yes. Subscription model: changes included. Fixed project: changes quoted. 90-day guarantee: adjustments at no extra cost."
+  },
+  "aplicacoesWeb": {
+    "breadcrumb": "Web Applications",
+    "hero_title": "Professional Web Applications",
+    "hero_description": "We develop enterprise-grade web applications that are secure, scalable, and integrated with your systems. From discovery to production.",
+    "stat_1_value": "75%",
+    "stat_1_label": "Of SMEs cite lack of internal digital skills",
+    "stat_2_value": "70%",
+    "stat_2_label": "Cost reduction vs traditional development",
+    "stat_3_value": "4x",
+    "stat_3_label": "Faster time-to-market",
+    "section_title": "Types of applications we build",
+    "section_description": "Professional web applications with enterprise-grade technology for different needs.",
+    "card_1_title": "Internal Management",
+    "card_1_f1": "Custom CRMs with automations",
+    "card_1_f2": "Employee portals",
+    "card_1_f3": "Project management (kanban, timelines)",
+    "card_1_f4": "Inventory and asset management systems",
+    "card_2_title": "Client Portals",
+    "card_2_f1": "Secure login areas",
+    "card_2_f2": "Real-time service tracking",
+    "card_2_f3": "Self-service (invoices, contracts, support)",
+    "card_2_f4": "Document upload and bilateral communication",
+    "card_3_title": "Marketplaces & Platforms",
+    "card_3_f1": "Multi-vendor marketplaces",
+    "card_3_f2": "Booking platforms",
+    "card_3_f3": "Subscription and membership systems",
+    "card_3_f4": "Training/e-learning platforms",
+    "card_4_title": "SaaS Products",
+    "card_4_f1": "Testable MVPs in 30-60 days",
+    "card_4_f2": "Idea validation before major investment",
+    "card_4_f3": "Fast pivot based on feedback",
+    "card_4_f4": "Scalable to thousands of users",
+    "roi_title": "Typical ROI",
+    "roi_1": "70% cost reduction vs traditional development",
+    "roi_2": "4x faster to launch",
+    "roi_3": "10x more agile changes",
+    "roi_4": "Scalable from 10 to 10,000+ users",
+    "roi_5": "Return on investment: 6-9 months",
+    "faq_1_q": "Is it professional or just for prototypes?",
+    "faq_1_a": "It's enterprise-grade when properly implemented. Ideal for CRMs, B2B SaaS, marketplaces, and management systems.",
+    "faq_2_q": "Is there a lock-in risk?",
+    "faq_2_a": "Data is always exportable. For most SMEs, the benefits outweigh the risk.",
+    "faq_3_q": "Is it scalable?",
+    "faq_3_a": "Yes. Applications with 100k+ users work smoothly when optimised.",
+    "faq_4_q": "Development time?",
+    "faq_4_a": "3-5x faster than traditional programming. MVP: 3-4 weeks vs 3-4 months."
+  },
+  "sitesEcommerce": {
+    "breadcrumb": "Sites & E-commerce",
+    "hero_title": "E‑commerce & High-Performance Sites",
+    "hero_description": "We build fast e-commerce sites and websites optimised for conversion and SEO. Complete digital ecosystems for your business in Portugal.",
+    "stat_1_value": "68%",
+    "stat_1_label": "Average cart abandonment rate in Portugal",
+    "stat_2_value": "53%",
+    "stat_2_label": "Of visitors leave if loading > 3s",
+    "stat_3_value": "< 2s",
+    "stat_3_label": "Our sites' loading time",
+    "section_title": "Project types",
+    "section_description": "Complete digital ecosystems optimised for conversion and sales.",
+    "card_1_title": "Corporate Sites",
+    "card_1_f1": "High-conversion landing pages",
+    "card_1_f2": "Multi-page corporate sites",
+    "card_1_f3": "SEO-optimised blogs",
+    "card_1_f4": "Service pages with strategic CTAs",
+    "card_2_title": "Full E-commerce",
+    "card_2_f1": "Unlimited product catalogue",
+    "card_2_f2": "Automatic stock management",
+    "card_2_f3": "Payment (MB, MB WAY, Card, PayPal, Stripe)",
+    "card_2_f4": "Multi-language and multi-currency",
+    "card_3_title": "Performance & SEO",
+    "card_3_f1": "Optimised Core Web Vitals",
+    "card_3_f2": "Global CDN and smart caching",
+    "card_3_f3": "Optimised images (WebP, lazy loading)",
+    "card_3_f4": "Schema markup and optimised meta tags",
+    "card_4_title": "Conversion Optimisation",
+    "card_4_f1": "UX tested with heatmaps and A/B testing",
+    "card_4_f2": "Simplified checkout",
+    "card_4_f3": "Abandoned cart recovery",
+    "card_4_f4": "Intelligent upsell and cross-sell",
+    "card_5_title": "Security & Compliance",
+    "card_5_f1": "Mandatory SSL/HTTPS",
+    "card_5_f2": "GDPR compliant",
+    "card_5_f3": "Daily automatic backups",
+    "card_5_f4": "Anti-spam and DDoS protection",
+    "roi_title": "Typical ROI",
+    "roi_1": "30% increase in conversion rate",
+    "roi_2": "45% reduction in cart abandonment",
+    "roi_3": "28% increase in average ticket (cross-sell)",
+    "roi_4": "70% reduction in support time (AI)",
+    "roi_5": "Return on investment: 4-8 months",
+    "faq_1_q": "Will my site look generic?",
+    "faq_1_a": "No. Each project is custom-developed, respecting the identity and specific goals of each business.",
+    "faq_2_q": "Can it handle high volume?",
+    "faq_2_a": "Yes, when properly optimised. WordPress is used by 38% of e-commerces worldwide, including organisations like the White House and NASA.",
+    "faq_3_q": "Can I sell on multiple channels?",
+    "faq_3_a": "Yes. We create omnichannel ecosystems with automatic stock and order synchronisation.",
+    "faq_4_q": "Does it integrate with Portuguese invoicing?",
+    "faq_4_a": "Yes: Moloni, Vendus, PHC, Primavera, Sage, InvoiceXpress, and more."
   }
 }

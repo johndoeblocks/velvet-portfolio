@@ -55,6 +55,7 @@ export type BlogPost = {
 export type BlogPostPreview = {
   id: string;
   href: string;
+  image: string;
   title: string;
   description: string;
   excerpt: string;
@@ -1098,52 +1099,89 @@ type GrowthBlogConfig = {
   content: Record<AppLocale, GrowthBlogContent>;
 };
 
-function buildGrowthBlogContent(content: GrowthBlogContent): LocalizedBlogPost {
-  return {
-    title: content.title,
-    metaTitle: content.metaTitle,
-    description: content.description,
-    excerpt: content.excerpt,
-    keywords: content.keywords,
-    searchIntent:
-      'The reader has a specific revenue leak, operational bottleneck, or lead follow-up problem and is looking for a practical system they can implement or outsource.',
-    angle: content.angle,
-    cta: content.cta,
-    sections: [
-      {
-        title: 'The specific business problem',
-        body: [
-          content.problem,
-          content.impact,
+function buildGrowthBlogContent(
+  content: GrowthBlogContent,
+  locale: AppLocale
+): LocalizedBlogPost {
+  const copy = locale === 'pt'
+    ? {
+        searchIntent:
+          'O leitor tem uma fuga de receita, bloqueio operacional ou problema de follow-up e procura um sistema prático que possa implementar ou delegar.',
+        problemTitle: 'O problema específico do negócio',
+        systemTitle: 'O sistema que resolve',
+        stepsTitle: 'Passos de implementação',
+        measureTitle: 'O que medir depois do lançamento',
+        measureIntro:
+          'O objetivo não é acrescentar mais ferramentas. O objetivo é provar que o sistema recupera receita, poupa tempo ou aumenta leads qualificadas.',
+        measureBullets: [
+          'Receita recuperada ou leads reativadas.',
+          'Tempo de resposta antes e depois da automação.',
+          'Horas administrativas removidas do processo.',
+          'Taxa de conversão no checkout, formulário ou passo de follow-up afetado.',
+          'Perguntas de suporte reduzidas depois de o workflow ficar mais claro.',
         ],
-      },
-      {
-        title: 'The system that fixes it',
-        body: [content.solution],
-        bullets: content.tools,
-        subsections: [
-          {
-            title: 'Implementation steps',
-            body: content.steps,
-          },
-        ],
-      },
-      {
-        title: 'What to measure after launch',
-        intro:
+        paidTitle: 'Quando isto se torna um projeto de implementação',
+        paidBody:
+          'Se o processo depende de várias ferramentas, dados de clientes, pagamentos, faturas ou estados de CRM, o caminho mais seguro é um sprint de implementação pequeno. Mapeie o fluxo atual, remova passos desnecessários, ligue os sistemas certos e depois meça o resultado.',
+      }
+    : {
+        searchIntent:
+          'The reader has a specific revenue leak, operational bottleneck, or lead follow-up problem and is looking for a practical system they can implement or outsource.',
+        problemTitle: 'The specific business problem',
+        systemTitle: 'The system that fixes it',
+        stepsTitle: 'Implementation steps',
+        measureTitle: 'What to measure after launch',
+        measureIntro:
           'The goal is not to add more tools. The goal is to prove that the system recovers revenue, saves time, or increases qualified leads.',
-        bullets: [
+        measureBullets: [
           'Revenue recovered or leads reactivated.',
           'Response time before and after automation.',
           'Manual admin hours removed from the process.',
           'Conversion rate at the affected checkout, form, or follow-up step.',
           'Support questions reduced after the workflow is clearer.',
         ],
+        paidTitle: 'When this becomes a paid implementation project',
+        paidBody:
+          'If the process depends on several tools, customer data, payments, invoices, or CRM stages, the safest route is a small implementation sprint. Map the current flow, remove unnecessary steps, connect the right systems, then measure the result.',
+      };
+
+  return {
+    title: content.title,
+    metaTitle: content.metaTitle,
+    description: content.description,
+    excerpt: content.excerpt,
+    keywords: content.keywords,
+    searchIntent: copy.searchIntent,
+    angle: content.angle,
+    cta: content.cta,
+    sections: [
+      {
+        title: copy.problemTitle,
+        body: [
+          content.problem,
+          content.impact,
+        ],
       },
       {
-        title: 'When this becomes a paid implementation project',
+        title: copy.systemTitle,
+        body: [content.solution],
+        bullets: content.tools,
+        subsections: [
+          {
+            title: copy.stepsTitle,
+            body: content.steps,
+          },
+        ],
+      },
+      {
+        title: copy.measureTitle,
+        intro: copy.measureIntro,
+        bullets: copy.measureBullets,
+      },
+      {
+        title: copy.paidTitle,
         body: [
-          'If the process depends on several tools, customer data, payments, invoices, or CRM stages, the safest route is a small implementation sprint. Map the current flow, remove unnecessary steps, connect the right systems, then measure the result.',
+          copy.paidBody,
           content.cta.body,
         ],
       },
@@ -2433,8 +2471,8 @@ const GROWTH_BLOG_POSTS: BlogPost[] = GROWTH_BLOG_CONFIGS.map((post) => ({
   ...post,
   slugs: BLOG_SLUGS[post.id],
   content: {
-    en: buildGrowthBlogContent(post.content.en),
-    pt: buildGrowthBlogContent(post.content.pt),
+    en: buildGrowthBlogContent(post.content.en, 'en'),
+    pt: buildGrowthBlogContent(post.content.pt, 'pt'),
   },
 }));
 
@@ -2446,6 +2484,10 @@ export function getBlogPath(locale: AppLocale, post: BlogPost) {
 
 export function getBlogUrl(locale: AppLocale, post: BlogPost) {
   return buildAbsoluteUrl(getBlogPath(locale, post));
+}
+
+export function getBlogImagePath(postId: string) {
+  return `/blog/${postId}.webp`;
 }
 
 export function getBlogIndexPath(locale: AppLocale) {
@@ -2485,6 +2527,7 @@ export function getBlogPosts(locale: AppLocale): BlogPostPreview[] {
   return BLOG_POSTS.map((post) => ({
     id: post.id,
     href: `/blog/${post.slugs[locale]}`,
+    image: getBlogImagePath(post.id),
     title: post.content[locale].title,
     description: post.content[locale].description,
     excerpt: post.content[locale].excerpt,

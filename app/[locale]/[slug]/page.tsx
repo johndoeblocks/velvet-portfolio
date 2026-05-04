@@ -212,9 +212,9 @@ export default async function LandingPage({ params }: PageProps) {
   const tagline = getLocalizedTagline(activeLocale, page.service, serviceConfig.tagline);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f6f1e8] text-slate-950 noise">
+    <main className="relative min-h-screen overflow-hidden bg-brand-paper text-brand-ink noise">
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-[#f6f1e8]" />
+        <div className="absolute inset-0 bg-brand-paper" />
         <div className="absolute inset-0 grid-pattern opacity-80" />
       </div>
 
@@ -227,7 +227,7 @@ export default async function LandingPage({ params }: PageProps) {
         tagline={tagline}
       />
 
-      <TrustSection />
+      {/* <TrustSection /> */}
       <PromoVideoSection />
 
       {activeLocale === 'pt' ? (

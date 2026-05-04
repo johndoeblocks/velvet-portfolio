@@ -7,6 +7,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  compress: true,
+  poweredByHeader: false,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
+  },
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },

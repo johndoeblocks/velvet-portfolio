@@ -301,10 +301,10 @@ const Index = () => {
       <article
         id="cv-content"
         ref={cvRef}
-        className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-slate-200/70 bg-white text-slate-900 shadow-2xl shadow-black/30 print:max-w-none print:rounded-none print:border-0 print:shadow-none"
+        className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-slate-200/70 bg-white text-brand-ink shadow-2xl shadow-black/30 print:max-w-none print:rounded-none print:border-0 print:shadow-none"
       >
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr]">
-          <aside className="bg-slate-900 px-8 py-10 text-slate-100 print:bg-slate-900 print:text-slate-100">
+          <aside className="bg-brand-dark px-8 py-10 text-brand-inverse print:bg-brand-dark print:text-brand-inverse">
             <header className="mb-10">
               <img
                 src={"/profile-picture.png"}
@@ -352,7 +352,7 @@ const Index = () => {
               </a>
             </section>
 
-            <div className="my-8 h-px bg-slate-700" />
+            <div className="my-8 h-px bg-white/14" />
 
             <section className="mb-8">
               <SectionTitle
@@ -391,7 +391,7 @@ const Index = () => {
 
           <main className="px-8 py-10 sm:px-10">
             <section className="mb-10 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
-              <p className="leading-relaxed text-slate-700">
+              <p className="leading-relaxed text-brand-muted">
                 Curious and passionate about technology, graduated in Computer
                 Science and Business Management at ISCTE-IUL. Focused on full
                 stack web development and applying knowledge to reach and
@@ -423,20 +423,20 @@ const Index = () => {
                       ).map((period) => (
                         <span
                           key={`${period}-${i}`}
-                          className="inline-flex w-fit self-start whitespace-nowrap rounded-md bg-slate-100 px-2 py-1 text-xs font-medium uppercase tracking-wide text-slate-500"
+                          className="inline-flex w-fit self-start whitespace-nowrap rounded-md bg-slate-100 px-2 py-1 text-xs font-medium uppercase tracking-wide text-brand-muted"
                         >
                           {period}
                         </span>
                       ))}
                     </div>
                     <div className="border-l-2 border-slate-200 pl-4">
-                      <h3 className="text-lg font-semibold text-slate-900">
+                      <h3 className="text-lg font-semibold text-brand-ink">
                         {exp.role}
                       </h3>
                       <p className="mb-2 text-sm font-medium text-cyan-700">
                         {exp.company}
                       </p>
-                      <p className="text-sm leading-relaxed text-slate-600">
+                      <p className="text-sm leading-relaxed text-brand-muted">
                         {exp.description}
                       </p>
                     </div>
@@ -457,18 +457,18 @@ const Index = () => {
                     data-pdf-keep="true"
                     className="grid grid-cols-1 gap-2 sm:grid-cols-[150px_1fr] sm:gap-5"
                   >
-                    <span className="inline-flex w-fit self-start whitespace-nowrap rounded-md bg-slate-100 px-2 py-1 text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <span className="inline-flex w-fit self-start whitespace-nowrap rounded-md bg-slate-100 px-2 py-1 text-xs font-medium uppercase tracking-wide text-brand-muted">
                       {edu.period}
                     </span>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900">
+                      <h3 className="text-base font-semibold text-brand-ink">
                         {edu.institution}
                       </h3>
                       <p className="text-sm font-medium text-cyan-700">
                         {edu.degree}
                       </p>
                       {edu.note && (
-                        <p className="mt-1 text-sm text-slate-500">
+                        <p className="mt-1 text-sm text-brand-muted">
                           {edu.note}
                         </p>
                       )}
@@ -489,10 +489,10 @@ const Index = () => {
                     key={i}
                     className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
                   >
-                    <h3 className="mb-1 text-sm font-semibold text-slate-900">
+                    <h3 className="mb-1 text-sm font-semibold text-brand-ink">
                       {certificate.title}
                     </h3>
-                    <p className="text-xs uppercase tracking-wide text-slate-500">
+                    <p className="text-xs uppercase tracking-wide text-brand-muted">
                       {certificate.period}
                     </p>
                   </div>
@@ -524,14 +524,14 @@ const SectionTitle = ({
     <h2
       className={
         dark
-          ? "text-sm font-semibold uppercase tracking-[0.14em] text-slate-100"
-          : "text-lg font-semibold uppercase tracking-[0.14em] text-slate-900"
+          ? "text-sm font-semibold uppercase tracking-[0.14em] text-brand-inverse"
+          : "text-lg font-semibold uppercase tracking-[0.14em] text-brand-ink"
       }
     >
       {title}
     </h2>
     <span
-      className={dark ? "h-px flex-1 bg-slate-700" : "h-px flex-1 bg-slate-200"}
+      className={dark ? "h-px flex-1 bg-white/14" : "h-px flex-1 bg-brand-border"}
     />
   </div>
 );

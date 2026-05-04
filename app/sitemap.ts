@@ -12,6 +12,10 @@ const STATIC_PATHS: {
 }[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/agentes-ia', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/automacao-processos', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/aplicacoes-web', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/sites-ecommerce', priority: 0.85, changeFrequency: 'monthly' },
   { path: '/cv', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/privacy', priority: 0.4, changeFrequency: 'yearly' },
   { path: '/terms', priority: 0.4, changeFrequency: 'yearly' },

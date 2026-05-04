@@ -179,10 +179,10 @@ export interface ServiceConfig {
 
 export const SERVICES: ServiceConfig[] = [
   {
-    name: "desenvolvimento de websites",
-    slug: "desenvolvimento-de-websites",
-    headline: "Websites de Alta Performance",
-    tagline: "Websites rápidos, bonitos e otimizados que convertem visitantes em clientes — 24 horas por dia, 7 dias por semana.",
+    name: "automação de processos",
+    slug: "automacao-de-processos",
+    headline: "Automação de Processos para PMEs",
+    tagline: "Elimine tarefas repetitivas, reduza erros e recupere horas por semana sem precisar de equipa técnica interna.",
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "Vercel"],
     benefits: [
       "Carregamento em menos de 1 segundo — Core Web Vitals no verde",
@@ -242,10 +242,10 @@ export const SERVICES: ServiceConfig[] = [
     ],
   },
   {
-    name: "desenvolvimento de aplicações",
-    slug: "desenvolvimento-de-aplicacoes",
-    headline: "Aplicações Móveis & Web Apps",
-    tagline: "Aplicações iOS, Android e web com UX premium — construídas para reter utilizadores e escalar o seu negócio.",
+    name: "agentes inteligentes com IA",
+    slug: "agentes-inteligentes-com-ia",
+    headline: "Agentes Inteligentes com IA",
+    tagline: "Agentes que respondem, classificam, encaminham e fazem follow-up para que nenhum pedido fique esquecido.",
     techStack: ["React Native", "Flutter", "Swift", "Kotlin", "Next.js", "Node.js", "Firebase", "AWS"],
     benefits: [
       "Aplicação disponível no App Store e Google Play em simultâneo",
@@ -301,10 +301,10 @@ export const SERVICES: ServiceConfig[] = [
     ],
   },
   {
-    name: "SEO técnico e performance web",
-    slug: "seo-tecnico-e-performance-web",
-    headline: "SEO Técnico & Performance Web",
-    tagline: "Websites que carregam em menos de 1 segundo, dominam o Google e convertem mais — com engenharia SEO de raiz e Core Web Vitals no verde.",
+    name: "automação WhatsApp Business API",
+    slug: "automacao-whatsapp-business-api",
+    headline: "Automação WhatsApp Business API",
+    tagline: "Atendimento e follow-up automático 24/7, com passagem para humanos quando o assunto precisa de contexto.",
     techStack: ["Next.js", "Lighthouse", "Google Search Console", "Schema.org", "Core Web Vitals", "Vercel Analytics", "Ahrefs"],
     benefits: [
       "Auditoria técnica completa com plano de ação prioritizado",
@@ -360,10 +360,10 @@ export const SERVICES: ServiceConfig[] = [
     ],
   },
   {
-    name: "loja online",
-    slug: "loja-online",
-    headline: "Lojas Online que Vendem",
-    tagline: "E-commerce de alto desempenho que transforma o seu catálogo digital num motor de vendas contínuo.",
+    name: "aplicações web à medida",
+    slug: "aplicacoes-web-a-medida",
+    headline: "Aplicações Web à Medida",
+    tagline: "Portais, dashboards e ferramentas internas que substituem folhas de Excel e reduzem erros operacionais.",
     techStack: ["Next.js", "Shopify", "WooCommerce", "Stripe", "MB WAY", "Vercel", "Cloudflare"],
     benefits: [
       "Experiência de compra fluida que reduz abandono de carrinho",
@@ -419,10 +419,10 @@ export const SERVICES: ServiceConfig[] = [
     ],
   },
   {
-    name: "aplicações desktop",
-    slug: "aplicacoes-desktop",
-    headline: "Aplicações Desktop à Medida",
-    tagline: "Software desktop profissional para Windows e macOS — rápido, intuitivo e construído especificamente para o fluxo de trabalho do seu negócio.",
+    name: "integração de sistemas ERP",
+    slug: "integracao-de-sistemas-erp",
+    headline: "Integração de Sistemas ERP e CRM",
+    tagline: "Ligamos PHC, Primavera, Moloni, Salesforce, Gmail e outras ferramentas para evitar dupla introdução de dados.",
     techStack: ["Electron", "Tauri", "React", "TypeScript", "Rust", "SQLite", "Node.js"],
     benefits: [
       "Interface intuitiva desenhada para a realidade do seu negócio",

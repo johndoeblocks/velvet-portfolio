@@ -59,7 +59,7 @@ export function CookieConsent() {
   return (
     <section
       aria-label="Cookie preferences"
-      className="fixed bottom-4 right-4 z-[60] w-[calc(100%-2rem)] max-w-sm rounded-2xl border border-white/10 bg-slate-950 p-5 text-white shadow-2xl"
+      className="fixed bottom-4 right-4 z-[60] w-[calc(100%-2rem)] max-w-sm rounded-2xl border border-white/10 bg-brand-dark p-5 text-white shadow-2xl"
     >
       <h2 className="text-sm font-semibold">Cookies no site</h2>
       <p className="mt-2 text-sm leading-relaxed text-white/75">
@@ -78,7 +78,7 @@ export function CookieConsent() {
         <button
           type="button"
           onClick={() => chooseConsent('granted')}
-          className="inline-flex flex-1 items-center justify-center rounded-full bg-[#f6d7b8] px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-white"
+          className="inline-flex flex-1 items-center justify-center rounded-full bg-brand-secondary/18 px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-white"
         >
           Aceitar
         </button>
