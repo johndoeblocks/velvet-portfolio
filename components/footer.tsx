@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { Github, Instagram, Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const t = useTranslations('footer');
@@ -13,15 +13,15 @@ export const Footer: React.FC = () => {
   const socialLinks = [
     {
       icon: Instagram,
-      href: 'https://www.instagram.com/velvetneuron/',
+      href: 'https://www.instagram.com/buildwithvelvet/',
       label: 'Instagram',
     },
-    { icon: Github, href: 'https://github.com/johndoeblocks', label: 'GitHub' },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/jo%C3%A3o-manteigas/',
-      label: 'LinkedIn',
-    },
+    // { icon: Github, href: 'https://github.com/johndoeblocks', label: 'GitHub' },
+    // {
+    //   icon: Linkedin,
+    //   href: 'https://www.linkedin.com/in/jo%C3%A3o-manteigas/',
+    //   label: 'LinkedIn',
+    // },
   ];
 
   const quickLinks = [
