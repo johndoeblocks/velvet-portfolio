@@ -78,7 +78,7 @@ export function CookieConsent() {
         <button
           type="button"
           onClick={() => chooseConsent('granted')}
-          className="inline-flex flex-1 items-center justify-center rounded-full bg-brand-secondary/18 px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-white"
+          className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary shadow-sm transition-colors hover:bg-brand-paper"
         >
           Aceitar
         </button>
