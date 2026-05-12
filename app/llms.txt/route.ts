@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL).replace(/\/$/, '');
+const BASE_URL = SITE_URL.replace(/\/$/, '');
 
 function groupByService(
   pages: typeof landingPagesData

@@ -13,7 +13,7 @@ import {
   getBlogUrl,
   getRelatedBlogPosts,
 } from '@/lib/blog-data';
-import { LOCALES, toAppLocale } from '@/lib/seo';
+import { LOCALES, SITE_NAME, buildAbsoluteUrl, buildLocalizedUrl, toAppLocale } from '@/lib/seo';
 
 type PageProps = {
   params: Promise<{
@@ -74,14 +74,14 @@ export async function generateMetadata({
     title: content.metaTitle,
     description: content.description,
     keywords: content.keywords,
-    authors: [{ name: 'Velvet Neuron', url: 'https://velvetneuron.com' }],
+    authors: [{ name: SITE_NAME, url: buildAbsoluteUrl('/') }],
     openGraph: {
       title: content.metaTitle,
       description: content.description,
       locale: activeLocale === 'pt' ? 'pt_PT' : 'en_US',
       type: 'article',
       url: getBlogUrl(activeLocale, post),
-      siteName: 'Velvet Neuron',
+      siteName: SITE_NAME,
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
       authors: ['Velvet Neuron'],
@@ -129,15 +129,15 @@ export default async function BlogArticlePage({ params }: PageProps) {
     dateModified: post.updatedAt,
     author: {
       '@type': 'Organization',
-      name: 'Velvet Neuron',
-      url: 'https://velvetneuron.com',
+      name: SITE_NAME,
+      url: buildAbsoluteUrl('/'),
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Velvet Neuron',
+      name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://velvetneuron.com/logo.png',
+        url: buildAbsoluteUrl('/logo.png'),
       },
     },
     mainEntityOfPage: articleUrl,
@@ -169,13 +169,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: `https://velvetneuron.com/${activeLocale}`,
+        item: buildLocalizedUrl(activeLocale, '/'),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: `https://velvetneuron.com/${activeLocale}/blog`,
+        item: buildLocalizedUrl(activeLocale, '/blog'),
       },
       {
         '@type': 'ListItem',
@@ -425,7 +425,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
 }
 
 function buildAbsoluteBlogImageUrl(path: string) {
-  return `https://velvetneuron.com${path}`;
+  return buildAbsoluteUrl(path);
 }
 
 function formatDate(value: string, locale: 'en' | 'pt') {

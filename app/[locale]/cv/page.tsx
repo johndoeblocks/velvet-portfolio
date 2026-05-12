@@ -20,10 +20,10 @@ export async function generateMetadata({
   const isPortuguese = activeLocale === 'pt';
   const title = isPortuguese
     ? 'CV de João Manteigas | Velvet Neuron'
-    : 'Joao Manteigas CV | Velvet Neuron';
+    : 'Joao Manteigas CV | Full-Stack Engineer (FE Heavy)';
   const description = isPortuguese
-    ? 'Curriculum Vitae de João Manteigas, cofundador da Velvet Neuron e Full Stack Web Developer especializado em Next.js, React, TypeScript e produtos digitais de alta performance.'
-    : 'Curriculum Vitae of Joao Manteigas, Velvet Neuron co-founder and Full Stack Web Developer specialised in Next.js, React, TypeScript, and high-performance digital products.';
+    ? 'Curriculum Vitae de João Manteigas, cofundador da Velvet Neuron e Full-Stack Engineer FE-heavy especializado em Next.js, React, TypeScript, React Native, automação, analytics, AWS e produtos Web3.'
+    : 'Curriculum Vitae of Joao Manteigas, Velvet Neuron co-founder and FE-heavy full-stack engineer specialised in Next.js, React, TypeScript, React Native, automation, analytics, AWS, and Web3 products.';
 
   return {
     title,
@@ -31,10 +31,15 @@ export async function generateMetadata({
     keywords: [
       'Joao Manteigas',
       'Velvet Neuron',
-      'Full Stack Web Developer',
+      'Full-Stack Engineer',
+      'FE Heavy Engineer',
+      'Product Engineer',
       'Next.js developer',
       'React developer',
+      'React Native developer',
       'TypeScript developer',
+      'Web3 engineer',
+      'Frontend architect',
       'Curriculum Vitae',
       'CV',
     ],

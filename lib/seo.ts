@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
-export const SITE_URL = 'https://velvetneuron.com';
+export const SITE_URL = 'https://www.velvetneuron.com';
+export const SITE_NAME = 'Velvet Neuron';
 export const LOCALES = ['en', 'pt'] as const;
 
 export type AppLocale = (typeof LOCALES)[number];

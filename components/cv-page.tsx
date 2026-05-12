@@ -11,80 +11,18 @@ import {
   GraduationCap,
   Languages,
   Linkedin,
+  Mail,
   Phone,
 } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { LanguageSwitcher } from '@/components/language-switcher';
-
-const skills = [
-  'React',
-  'NextJS',
-  'JavaScript',
-  'TypeScript',
-  'NodeJS',
-  'Java',
-  'SQL',
-  'Microsoft Azure',
-  'Electron',
-  'React Native',
-  'Redux',
-  'Styled Components',
-  'Vitest',
-  'CI/CD',
-];
-
-const experiences = [
-  {
-    period: 'Jul 2025 – Present',
-    role: 'Freelance Developer',
-    company: 'Velvet Neuron',
-    description:
-      'Co-founded a development company building digital products for Web2 and Web3 clients. Designing and developing full-stack applications, dApps, and modern web platforms — from architecture to deployment.',
-  },
-  {
-    period: 'Dec 2024 – Jul 2025',
-    role: 'Freelance Full Stack Developer',
-    company: 'Human IT · Burberry',
-    description:
-      'Contributed to the Identity and Authorization team at Burberry, building authentication, access control, and user management systems across internal and customer-facing platforms.',
-  },
-  {
-    period: 'Feb 2024 – Nov 2024',
-    role: 'Freelancer',
-    company: 'Boost IT',
-    description:
-      'Developed frontend device configuration application using Electron for cross-platform desktop. Daily use of React, Redux, Styled Components, and Vitest. Azure CI/CD.',
-  },
-  {
-    period: 'Oct 2020 – Feb 2024',
-    role: 'Consultant',
-    company: 'Syone',
-    description:
-      'Developed & maintained frontend e-commerce applications, CMS & backoffice systems. Daily use of React, React Native and NextJS with Azure CI/CD.',
-  },
-  {
-    period: 'Apr 2019 – Oct 2020',
-    role: 'Full Stack Developer',
-    company: 'Upbeater',
-    description:
-      'UI implementation and improving client-developer communication. Worked with React across multiple projects.',
-  },
-];
-
-const education = [
-  {
-    period: 'Sep 2017 – Jun 2021',
-    institution: 'ISCTE - Instituto Universitário de Lisboa',
-    degree: 'Computer Science and Business Management',
-    note: 'GPA 4',
-  },
-  {
-    period: 'Feb 2020 – Jun 2020',
-    institution: 'Silesian University of Technology, Gliwice',
-    degree: 'Erasmus Exchange',
-    note: null,
-  },
-];
+import {
+  cvProfile,
+  education,
+  experiences,
+  featuredProjects,
+  skillGroups,
+} from '@/lib/cv-data';
 
 export function CvPage() {
   return (
@@ -156,18 +94,33 @@ export function CvPage() {
             </h1>
 
             <p className="mb-8 text-lg font-light uppercase tracking-[0.24em] text-gray-400 md:text-xl">
-              Full Stack Web Developer
+              {cvProfile.title}
             </p>
 
             <p className="max-w-3xl text-base leading-relaxed text-gray-300 md:text-lg">
-              Curious and passionate about technology, graduated in Computer Science and
-              Business Management at ISCTE-IUL. Focused on full stack web development and
-              applying knowledge to reach and fulfill clients&apos; needs.
+              {cvProfile.summary}
             </p>
+
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              {cvProfile.signals.map((signal) => (
+                <div
+                  key={signal}
+                  className="rounded-2xl border border-white/[0.08] bg-white/[0.035] px-4 py-3 text-sm leading-relaxed text-gray-300"
+                >
+                  {signal}
+                </div>
+              ))}
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-gray-300">
               <ContactPill href="tel:969370801" icon={<Phone className="h-3.5 w-3.5" />}>
                 969 370 801
+              </ContactPill>
+              <ContactPill
+                href="mailto:joaooliveiramanteigas@gmail.com"
+                icon={<Mail className="h-3.5 w-3.5" />}
+              >
+                Email
               </ContactPill>
               <ContactPill
                 href="https://velvetneuron.com"
@@ -196,14 +149,14 @@ export function CvPage() {
           <div className="mt-8 grid gap-8">
             <SectionCard>
               <SectionTitle icon={<Code className="h-5 w-5" />} title="Skills" />
-              <div className="mt-5 flex flex-wrap gap-2.5">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-sm text-gray-300 transition-all duration-300 hover:border-brand-tertiary/40 hover:bg-white/[0.07] hover:text-white"
-                  >
-                    {skill}
-                  </span>
+              <div className="mt-6 grid gap-6 md:grid-cols-2">
+                {skillGroups.map((group) => (
+                  <div key={group.label}>
+                    <h3 className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-gray-500">
+                      {group.label}
+                    </h3>
+                    <SkillChipList items={group.skills} />
+                  </div>
                 ))}
               </div>
             </SectionCard>
@@ -216,17 +169,75 @@ export function CvPage() {
                     key={`${experience.period}-${experience.company}`}
                     className="grid grid-cols-1 gap-2 border-b border-white/[0.06] pb-8 last:border-b-0 last:pb-0 sm:grid-cols-[190px_1fr] sm:gap-8"
                   >
-                    <span className="font-mono text-sm tracking-tight text-gray-500">
-                      {experience.period}
-                    </span>
+                    <div className="space-y-2">
+                      {(experience.periodDetails ??
+                        experience.period.map((period) => ({ date: period, label: null }))).map((period) => (
+                        <div
+                          key={period.date}
+                          className="rounded-xl border border-white/[0.06] bg-white/[0.025] px-3 py-2"
+                        >
+                          <span className="block font-mono text-sm tracking-tight text-gray-400">
+                            {period.date}
+                          </span>
+                          {period.label && (
+                            <span className="mt-1 block text-xs leading-snug text-gray-600">
+                              {period.label}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white">
                         {experience.role}
                       </h3>
                       <p className="mb-2 text-sm text-brand-tertiary">{experience.company}</p>
-                      <p className="text-sm leading-relaxed text-gray-300 md:text-base">
-                        {experience.description}
+                      <p className="mb-3 text-sm leading-relaxed text-gray-300 md:text-base">
+                        {experience.summary}
                       </p>
+                      <ul className="space-y-2 text-sm leading-relaxed text-gray-400">
+                        {experience.highlights.map((highlight) => (
+                          <li key={highlight} className="flex gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-brand-tertiary/80" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <SkillChipList
+                        items={experience.stack}
+                        outerClassName="mt-4"
+                        chipClassName="border-white/[0.07] bg-transparent px-2.5 py-1 text-xs text-gray-500 hover:border-white/[0.07] hover:bg-transparent hover:text-gray-500"
+                      />
+                      {experience.company === 'Velvet Neuron' && (
+                        <div className="mt-6">
+                          <h4 className="text-sm font-medium uppercase tracking-[0.18em] text-gray-500">
+                            Selected systems delivered through Velvet Neuron
+                          </h4>
+                          <div className="mt-4 grid gap-4 md:grid-cols-2">
+                            {featuredProjects.map((project) => (
+                              <article
+                                key={project.name}
+                                className="rounded-2xl border border-white/[0.08] bg-black/20 p-4"
+                              >
+                                <p className="text-xs font-medium uppercase tracking-[0.16em] text-brand-tertiary">
+                                  {project.label}
+                                </p>
+                                <h5 className="mt-2 text-base font-semibold text-white">
+                                  {project.name}
+                                </h5>
+                                <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                                  {project.summary}
+                                </p>
+                                <SkillChipList
+                                  items={project.stack}
+                                  outerClassName="mt-3"
+                                  chipClassName="bg-transparent px-2.5 py-1 text-xs text-gray-500 hover:border-white/[0.08] hover:bg-transparent hover:text-gray-500"
+                                />
+                              </article>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -309,9 +320,48 @@ const ContactPill = ({
   </a>
 );
 
+const SkillChipList = ({
+  items,
+  outerClassName,
+  chipClassName,
+}: {
+  items: string[];
+  outerClassName?: string;
+  chipClassName?: string;
+}) => (
+  <div className={cx('flex w-full justify-center', outerClassName)} style={{ width: '100%' }}>
+    <div
+      className="flex w-full flex-wrap content-center items-center justify-center gap-2.5"
+      style={{
+        alignContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        width: '100%',
+      }}
+    >
+      {items.map((item) => (
+        <span
+          key={item}
+          className={cx(
+            'inline-flex max-w-full shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-center text-sm text-gray-300 transition-all duration-300 hover:border-brand-tertiary/40 hover:bg-white/[0.07] hover:text-white',
+            chipClassName,
+          )}
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
 const SectionTitle = ({ icon, title }: { icon: ReactNode; title: string }) => (
   <div className="flex items-center gap-3">
     <span className="text-brand-tertiary">{icon}</span>
     <h2 className="text-2xl tracking-tight text-white">{title}</h2>
   </div>
 );
+
+const cx = (...classes: Array<string | false | null | undefined>) =>
+  classes.filter(Boolean).join(' ');

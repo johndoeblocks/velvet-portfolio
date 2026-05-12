@@ -4,7 +4,7 @@ import { DM_Mono, DM_Sans, Syne } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/cookie-consent';
-import { SITE_URL } from '@/lib/seo';
+import { SITE_NAME, SITE_URL } from '@/lib/seo';
 
 const GTM_ID = 'GTM-5HWH5NMR';
 
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: SITE_URL,
-    siteName: 'Velvet Neuron',
+    siteName: SITE_NAME,
     title: 'Velvet Neuron | Automação Prática para PMEs em Portugal',
     description:
       'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
@@ -102,7 +102,8 @@ export default async function RootLayout({
         '@type': 'WebSite',
         '@id': `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: 'Velvet Neuron',
+        name: SITE_NAME,
+        alternateName: SITE_NAME,
         description: siteDescription,
         publisher: {
           '@id': `${SITE_URL}/#organization`,
@@ -112,7 +113,8 @@ export default async function RootLayout({
       {
         '@type': ['Organization', 'ProfessionalService'],
         '@id': `${SITE_URL}/#organization`,
-        name: 'Velvet Neuron',
+        name: SITE_NAME,
+        alternateName: SITE_NAME,
         url: SITE_URL,
         logo: {
           '@type': 'ImageObject',

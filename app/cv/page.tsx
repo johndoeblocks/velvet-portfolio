@@ -16,108 +16,23 @@ import {
   Download,
   Award,
 } from "lucide-react";
-
-const skills = [
-  "React",
-  "NextJS",
-  "JavaScript",
-  "TypeScript",
-  "NodeJS",
-  "Java",
-  "SQL",
-  "Microsoft Azure",
-  "Electron",
-  "React Native",
-  "Redux",
-  "Styled Components",
-  "Vitest",
-  "Azure DevOps",
-];
-
-const experiences = [
-  {
-    period: "Dec 2024 – Jul 2025",
-    role: "Frontend Developer",
-    company: "Human IT | Burberry",
-    description:
-      "Member of Burberry’s Identity & Profile team, improving authentication (login/signup flows) and user profile experiences across a large-scale platform. Enhanced performance and scalability through codebase refactoring and improvements to shared internal libraries used across teams. Delivered UI and UX improvements on critical user flows (forms, validation, error handling) with a strong focus on mobile responsiveness. Collaborated closely with cross-functional teams to ensure reliable, secure, and high-quality user experiences.",
-    //   "Joined the Identity & Profile team at Burberry, maintaining and enhancing the authentication and user profile systems. Worked on the central Identity repository (microservices architecture) and the customer-facing Profile pages. Implemented new UI features, performed extensive code refactoring to improve return patterns and reduce unnecessary data, maintained security by keeping dependencies up-to-date, and ensured full mobile responsiveness across all components. Heavily used Next.js server capabilities, writing API routes, middleware, and token validation logic.",
-    //   "Contributed to the Identity and Authorization team at Burberry, implementing authentication flows, access control policies, and user management features across customer-facing platforms using Next.js, React, and Node.js all within a microservice architecture.",
-  },
-  {
-    period: ["Jul 2025 – Oct 2025", "Feb 2024 – Nov 2024"],
-    role: "Frontend & Full Stack Developer",
-    company: "Boost IT | Made",
-    description:
-      "Contributed to the development of BeJobs, a job marketplace platform, as a full stack developer. Built and maintained RESTful APIs with NestJS and developed web and mobile applications using Next.js and React Native (TypeScript). Implemented authentication flows and application forms, and integrated push notifications across platforms. Collaborated within a cross-functional team to deliver a production-ready product used by end users." +
-      "Developed a cross-platform desktop application for IoT device management using Electron, React, Node.js, and TypeScript. Built user interfaces and core logic to configure and connect devices over network, including inter-process communication (IPC) and device interaction handling. Delivered a reliable internal tool used for configuring and managing IoT devices.",
-
-    //   "Developed the Bejobs platform, building RESTful APIs with Nest.js, a cross-platform mobile application with React Native, and the web interfaces with Next.js. Also built a cross-platform desktop application for IoT device configuration using Electron, delivering production-ready interfaces with React, Redux, and Styled Components, supported by testing with Vitest and Azure CI/CD pipelines.",
-  },
-  //   {
-  //     period: "Jan 2024 – Present",
-  //     role: "Freelancer",
-  //     company: "Velvet Neuron",
-  //     description:
-  //       "Founded a B2B development company working directly with clients to build digital products for Web2 and Web3. Designing and developing full-stack applications, dApps, and modern web platforms while handling everything from architecture and client communication to deployment and iteration.",
-  //   },
-  {
-    period: ["Oct 2025", "Oct 2020 – Feb 2024"],
-    role: "Frontend & React Native Developer",
-    company: "Syone",
-    description:
-      "Worked on Domino's Pizza (Norway & Sweden) as the main frontend and React Native developer across 3 repositories: Back-office (React + TypeScript + Material UI), customer-facing mobile apps (React Native), and web frontend (Next.js). Implemented key features including Google Tag Manager integration, native payment flows, full app internationalization, and led the migration of the entire frontend from Norway to Sweden. Handled daily communication with the marketing team and stakeholders for analytics and requirements. In Oct 2025, returned for a 2-week contract to revive the React Native app that had been untouched for years, and successfully restored it to a stable version.",
-    //   "Developed and maintained e-commerce applications, content management systems, and backoffice platforms using React, React Native, and Next.js with Azure CI/CD. Also contracted to stabilize and restore critical e-commerce mobile applications, diagnosing issues and implementing fixes to ensure platform continuity and operational reliability.",
-  },
-  {
-    period: "Apr 2019 – Oct 2020",
-    role: "Frontend Developer",
-    company: "Upbeater",
-    description:
-      "Sole frontend developer for an e-learning platform. Implemented course catalog, video player, quiz system, progress tracking, user & admin dashboards from Figma designs using React and Bootstrap with a mobile-first approach. Collaborated with backend colleague to deliver the project successfully.",
-  },
-];
-
-const education = [
-  {
-    period: "Sep 2017 – Jun 2021",
-    institution: "ISCTE - Instituto Universitário de Lisboa",
-    degree: "Computer Science and Business Management",
-    note: "GPA 4",
-  },
-  {
-    period: "Feb 2020 – Jun 2020",
-    institution: "Silesian University of Technology, Gliwice",
-    degree: "Erasmus Exchange",
-    note: null,
-  },
-];
-
-const certificates = [
-  {
-    title: "Merit Diploma (Bachelor's Degree Finalist) — ISCTE",
-    period: "March 2026",
-  },
-  {
-    title: "Microsoft Azure Administrator Associate",
-    period: "June 2021 — June 2022",
-  },
-  {
-    title: "Microsoft Certified Azure Fundamentals, Microsoft",
-    period: "December 2020",
-  },
-  {
-    title: "Introduction to Cybersecurity, Cisco",
-    period: "November 2019",
-  },
-];
+import {
+  certificates,
+  cvProfile,
+  education,
+  experiences,
+  featuredProjects,
+  flatSkills,
+  skillGroups,
+} from "@/lib/cv-data";
 
 const Index = () => {
   const cvRef = useRef<HTMLDivElement>(null);
+  const pdfPagesRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadPdf = async () => {
-    if (!cvRef.current || isDownloading) {
+    if (!pdfPagesRef.current || isDownloading) {
       return;
     }
 
@@ -130,152 +45,31 @@ const Index = () => {
 
       await new Promise((resolve) => requestAnimationFrame(resolve));
 
-      const canvas = await html2canvas(cvRef.current, {
-        scale: Math.min(2, Math.max(1.5, window.devicePixelRatio || 1)),
-        useCORS: true,
-        allowTaint: false,
-        backgroundColor: "#ffffff",
-        logging: false,
-        scrollX: 0,
-        scrollY: -window.scrollY,
-        onclone: (clonedDoc) => {
-          clonedDoc.documentElement.classList.remove("dark");
-          clonedDoc.body.classList.remove("dark");
-          clonedDoc.body.style.backgroundColor = "#ffffff";
-          clonedDoc.body.style.color = "#111827";
-          clonedDoc.body.style.cursor = "auto";
-
-          const rootStyle = clonedDoc.documentElement.style;
-          rootStyle.setProperty("--background", "0 0% 100%");
-          rootStyle.setProperty("--foreground", "0 0% 3.9%");
-          rootStyle.setProperty("--primary", "0 0% 9%");
-          rootStyle.setProperty("--primary-foreground", "0 0% 98%");
-          rootStyle.setProperty("--secondary", "0 0% 96.1%");
-          rootStyle.setProperty("--secondary-foreground", "0 0% 9%");
-          rootStyle.setProperty("--muted", "0 0% 96.1%");
-          rootStyle.setProperty("--muted-foreground", "0 0% 45.1%");
-          rootStyle.setProperty("--border", "0 0% 89.8%");
-
-          const clonedCv = clonedDoc.getElementById("cv-content");
-          if (clonedCv) {
-            clonedCv.setAttribute(
-              "style",
-              `${clonedCv.getAttribute("style") || ""};color:#111827;background:#ffffff;`,
-            );
-          }
-        },
-      });
-
-      const cvRect = cvRef.current.getBoundingClientRect();
-      const scaleFactor = canvas.width / cvRect.width;
-      const keepTogetherBlocks = Array.from(
-        cvRef.current.querySelectorAll<HTMLElement>("[data-pdf-keep='true']"),
-      )
-        .map((element) => {
-          const rect = element.getBoundingClientRect();
-          const top = Math.floor((rect.top - cvRect.top) * scaleFactor);
-          const bottom = Math.ceil((rect.bottom - cvRect.top) * scaleFactor);
-          return { top, bottom };
-        })
-        .sort((a, b) => a.top - b.top);
-
-      const forcedBreakPoints = Array.from(
-        cvRef.current.querySelectorAll<HTMLElement>(
-          "[data-pdf-break-before='true']",
-        ),
-      )
-        .map((element) => {
-          const rect = element.getBoundingClientRect();
-          return Math.floor((rect.top - cvRect.top) * scaleFactor);
-        })
-        .sort((a, b) => a - b);
-
+      const pages = Array.from(
+        pdfPagesRef.current?.querySelectorAll<HTMLElement>("[data-pdf-page='true']") ?? [],
+      );
       const pdf = new jsPDF("p", "mm", "a4");
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 10;
-      const printableWidth = pageWidth - margin * 2;
-      const printableHeight = pageHeight - margin * 2;
-      const pageHeightPx = Math.floor(
-        (canvas.width * printableHeight) / printableWidth,
-      );
 
-      let renderedHeight = 0;
-      let pageIndex = 0;
-
-      while (renderedHeight < canvas.height) {
-        const remainingHeight = canvas.height - renderedHeight;
-        let currentSliceHeight = Math.min(pageHeightPx, remainingHeight);
-        const proposedCut = renderedHeight + currentSliceHeight;
-
-        if (remainingHeight > pageHeightPx && forcedBreakPoints.length > 0) {
-          const forcedBreak = forcedBreakPoints.find(
-            (point) => point > renderedHeight + 80 && point < proposedCut,
-          );
-
-          if (forcedBreak) {
-            currentSliceHeight = Math.max(80, forcedBreak - renderedHeight);
-          }
-        }
-
-        if (remainingHeight > pageHeightPx && keepTogetherBlocks.length > 0) {
-          const updatedProposedCut = renderedHeight + currentSliceHeight;
-          const overlappingBlock = keepTogetherBlocks.find(
-            (block) =>
-              updatedProposedCut > block.top &&
-              updatedProposedCut < block.bottom,
-          );
-
-          if (overlappingBlock) {
-            const adjustedCut = overlappingBlock.top;
-            const adjustedSliceHeight = adjustedCut - renderedHeight;
-
-            if (adjustedSliceHeight > 80) {
-              currentSliceHeight = adjustedSliceHeight;
-            }
-          }
-        }
-
-        const pageCanvas = document.createElement("canvas");
-        pageCanvas.width = canvas.width;
-        pageCanvas.height = currentSliceHeight;
-
-        const pageContext = pageCanvas.getContext("2d");
-        if (!pageContext) {
-          break;
-        }
-
-        pageContext.drawImage(
-          canvas,
-          0,
-          renderedHeight,
-          canvas.width,
-          pageCanvas.height,
-          0,
-          0,
-          canvas.width,
-          pageCanvas.height,
-        );
-
-        const imgData = pageCanvas.toDataURL("image/jpeg", 0.98);
-        const imgHeightMm =
-          (pageCanvas.height * printableWidth) / pageCanvas.width;
+      for (const [pageIndex, page] of pages.entries()) {
+        const canvas = await html2canvas(page, {
+          scale: 2,
+          useCORS: true,
+          allowTaint: false,
+          backgroundColor: "#ffffff",
+          logging: false,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: page.scrollWidth,
+          windowHeight: page.scrollHeight,
+        });
 
         if (pageIndex > 0) {
           pdf.addPage();
         }
 
-        pdf.addImage(
-          imgData,
-          "JPEG",
-          margin,
-          margin,
-          printableWidth,
-          imgHeightMm,
-        );
-
-        renderedHeight += pageCanvas.height;
-        pageIndex += 1;
+        pdf.addImage(canvas.toDataURL("image/jpeg", 0.98), "JPEG", 0, 0, pageWidth, pageHeight);
       }
 
       pdf.save("joao-manteigas-cv.pdf");
@@ -316,7 +110,10 @@ const Index = () => {
                 João Manteigas
               </h1>
               <p className="mt-2 text-sm uppercase tracking-[0.2em] text-cyan-200/90">
-                Full Stack Web Developer
+                {cvProfile.title}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300">
+                {cvProfile.subtitle}
               </p>
             </header>
 
@@ -357,19 +154,14 @@ const Index = () => {
             <section className="mb-8">
               <SectionTitle
                 icon={<Code className="h-4 w-4" />}
-                title="Skills"
+                title="Core Stack"
                 dark
               />
-              <div className="mx-auto mt-4 flex max-w-[290px] flex-wrap justify-center gap-2">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex min-h-10 items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 text-center text-sm leading-none text-cyan-100"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <SkillChipList
+                items={flatSkills.slice(0, 34)}
+                tone="dark"
+                outerClassName="mx-auto mt-4 max-w-[290px]"
+              />
             </section>
 
             <section>
@@ -390,16 +182,38 @@ const Index = () => {
           </aside>
 
           <main className="px-8 py-10 sm:px-10">
-            <section className="mb-10 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
-              <p className="leading-relaxed text-brand-muted">
-                Curious and passionate about technology, graduated in Computer
-                Science and Business Management at ISCTE-IUL. Focused on full
-                stack web development and applying knowledge to reach and
-                fulfill clients' needs.
-              </p>
+            <section className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
+              <p className="leading-relaxed text-brand-muted">{cvProfile.summary}</p>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {cvProfile.signals.map((signal) => (
+                  <span
+                    key={signal}
+                    className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium leading-relaxed text-brand-ink"
+                  >
+                    {signal}
+                  </span>
+                ))}
+              </div>
             </section>
 
             <section className="mb-10">
+              <SectionTitle
+                icon={<Code className="h-4 w-4" />}
+                title="Technical Scope"
+              />
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {skillGroups.map((group) => (
+                  <div key={group.label} className="rounded-xl border border-slate-200 bg-white p-4">
+                    <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-700">
+                      {group.label}
+                    </h3>
+                    <SkillChipList items={group.skills} tone="light" />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="mb-10" data-pdf-break-before="true">
               <SectionTitle
                 icon={<Briefcase className="h-4 w-4" />}
                 title="Experience"
@@ -407,26 +221,26 @@ const Index = () => {
               <div className="mt-6 space-y-7">
                 {experiences.map((exp, i) => (
                   <div
-                    key={i}
+                    key={`${exp.company}-${i}`}
                     data-pdf-keep="true"
-                    data-pdf-break-before={
-                      exp.period === "Apr 2019 – Oct 2020" ? "true" : undefined
-                    }
-                    className={`grid grid-cols-1 gap-2 sm:grid-cols-[150px_1fr] sm:gap-5 ${
-                      exp.company === "Syone" ? "mb-12 print:mb-16" : ""
-                    }`}
+                    className="grid grid-cols-1 gap-2 sm:grid-cols-[150px_1fr] sm:gap-5"
                   >
-                    <div className="flex w-fit flex-col gap-1 self-start">
-                      {(Array.isArray(exp.period)
-                        ? exp.period
-                        : [exp.period]
-                      ).map((period) => (
-                        <span
-                          key={`${period}-${i}`}
-                          className="inline-flex w-fit self-start whitespace-nowrap rounded-md bg-slate-100 px-2 py-1 text-xs font-medium uppercase tracking-wide text-brand-muted"
+                    <div className="flex w-full max-w-[150px] flex-col gap-2 self-start">
+                      {(exp.periodDetails ??
+                        exp.period.map((period) => ({ date: period, label: null }))).map((period) => (
+                        <div
+                          key={`${period.date}-${i}`}
+                          className="w-full rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-2"
                         >
-                          {period}
-                        </span>
+                          <span className="block whitespace-nowrap text-xs font-semibold uppercase tracking-wide text-brand-ink">
+                            {period.date}
+                          </span>
+                          {period.label && (
+                            <span className="mt-1 block text-[11px] font-medium leading-snug text-brand-muted">
+                              {period.label}
+                            </span>
+                          )}
+                        </div>
                       ))}
                     </div>
                     <div className="border-l-2 border-slate-200 pl-4">
@@ -436,9 +250,57 @@ const Index = () => {
                       <p className="mb-2 text-sm font-medium text-cyan-700">
                         {exp.company}
                       </p>
-                      <p className="text-sm leading-relaxed text-brand-muted">
-                        {exp.description}
+                      <p className="mb-3 text-sm leading-relaxed text-brand-muted">
+                        {exp.summary}
                       </p>
+                      <ul className="space-y-2 text-sm leading-relaxed text-brand-muted">
+                        {exp.highlights.map((highlight) => (
+                          <li key={highlight} className="flex gap-2.5">
+                            <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-cyan-700" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <SkillChipList
+                        items={exp.stack}
+                        tone="light"
+                        outerClassName="mt-3"
+                        chipClassName="font-normal"
+                      />
+                      {exp.company === "Velvet Neuron" && (
+                        <div className="mt-5">
+                          <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-700">
+                            Selected systems delivered through Velvet Neuron
+                          </h4>
+                          <div className="mt-4 grid gap-4">
+                            {featuredProjects.map((project) => (
+                              <article
+                                key={project.name}
+                                data-pdf-keep="true"
+                                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                              >
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                                  <h5 className="text-base font-semibold text-brand-ink">
+                                    {project.name}
+                                  </h5>
+                                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan-700">
+                                    {project.label}
+                                  </p>
+                                </div>
+                                <p className="mt-2 text-sm leading-relaxed text-brand-muted">
+                                  {project.summary}
+                                </p>
+                                <SkillChipList
+                                  items={project.stack}
+                                  tone="light"
+                                  outerClassName="mt-3"
+                                  chipClassName="font-normal"
+                                />
+                              </article>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -506,9 +368,350 @@ const Index = () => {
           </main>
         </div>
       </article>
+      <PdfExportLayout refNode={pdfPagesRef} />
     </div>
   );
 };
+
+const PdfExportLayout = ({
+  refNode,
+}: {
+  refNode: React.RefObject<HTMLDivElement | null>;
+}) => {
+  const velvetNeuron = experiences[0];
+  const middleExperiences = experiences.slice(1, 3);
+  const finalExperiences = experiences.slice(3);
+
+  return (
+    <div
+      ref={refNode}
+      aria-hidden="true"
+      className="pointer-events-none absolute left-[-10000px] top-0 flex flex-col gap-6 bg-white"
+    >
+      <PdfPage>
+        <div className="grid h-full grid-cols-[228px_1fr] bg-white text-[#17211d]">
+          <PdfSidebar />
+          <main className="px-8 py-8">
+            <PdfSummary />
+            <PdfSectionTitle icon={<Code className="h-3.5 w-3.5" />} title="Technical Scope" />
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              {skillGroups.map((group) => (
+                <div key={group.label} className="rounded-lg border border-slate-200 p-3">
+                  <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-700">
+                    {group.label}
+                  </h3>
+                  <PdfTags items={group.skills} />
+                </div>
+              ))}
+            </div>
+          </main>
+        </div>
+      </PdfPage>
+
+      <PdfPage>
+        <div className="h-full bg-white px-10 py-9 text-[#17211d]">
+          <PdfSectionTitle icon={<Briefcase className="h-3.5 w-3.5" />} title="Experience" />
+          <div className="mt-5">
+            <PdfExperience experience={velvetNeuron} />
+            <div className="mt-5">
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-700">
+                Selected systems delivered through Velvet Neuron
+              </h4>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {featuredProjects.map((project) => (
+                  <article key={project.name} className="rounded-lg border border-slate-200 p-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <h5 className="text-[13px] font-bold leading-tight text-[#17211d]">
+                        {project.name}
+                      </h5>
+                      <p className="max-w-[120px] text-right text-[8px] font-bold uppercase leading-tight tracking-[0.1em] text-cyan-700">
+                        {project.label}
+                      </p>
+                    </div>
+                    <p className="mt-2 text-[10px] leading-relaxed text-[#5f675f]">
+                      {project.summary}
+                    </p>
+                    <div className="mt-2">
+                      <PdfTags items={project.stack} small />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </PdfPage>
+
+      <PdfPage>
+        <div className="h-full bg-white px-10 py-9 text-[#17211d]">
+          <PdfSectionTitle icon={<Briefcase className="h-3.5 w-3.5" />} title="Experience" />
+          <div className="mt-5 space-y-5">
+            {middleExperiences.map((experience) => (
+              <PdfExperience key={experience.company} experience={experience} />
+            ))}
+          </div>
+        </div>
+      </PdfPage>
+
+      <PdfPage>
+        <div className="h-full bg-white px-10 py-9 text-[#17211d]">
+          <PdfSectionTitle icon={<Briefcase className="h-3.5 w-3.5" />} title="Experience" />
+          <div className="mt-5 space-y-5">
+            {finalExperiences.map((experience) => (
+              <PdfExperience key={experience.company} experience={experience} />
+            ))}
+          </div>
+          <div className="mt-7 grid grid-cols-2 gap-6">
+            <section>
+              <PdfSectionTitle
+                icon={<GraduationCap className="h-3.5 w-3.5" />}
+                title="Education"
+              />
+              <div className="mt-4 space-y-3">
+                {education.map((edu) => (
+                  <div key={edu.institution} className="rounded-lg border border-slate-200 p-3">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#5f675f]">
+                      {edu.period}
+                    </p>
+                    <h3 className="mt-1 text-[12px] font-bold leading-tight text-[#17211d]">
+                      {edu.institution}
+                    </h3>
+                    <p className="mt-1 text-[10px] font-semibold text-cyan-700">{edu.degree}</p>
+                    {edu.note && <p className="mt-1 text-[10px] text-[#5f675f]">{edu.note}</p>}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section>
+              <PdfSectionTitle icon={<Award className="h-3.5 w-3.5" />} title="Certificates" />
+              <div className="mt-4 space-y-3">
+                {certificates.map((certificate) => (
+                  <div key={certificate.title} className="rounded-lg border border-slate-200 p-3">
+                    <h3 className="text-[11px] font-bold leading-tight text-[#17211d]">
+                      {certificate.title}
+                    </h3>
+                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#5f675f]">
+                      {certificate.period}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </PdfPage>
+    </div>
+  );
+};
+
+const PdfPage = ({ children }: { children: React.ReactNode }) => (
+  <section data-pdf-page="true" className="h-[1123px] w-[794px] overflow-hidden bg-white">
+    {children}
+  </section>
+);
+
+const PdfSidebar = () => (
+  <aside className="h-full bg-brand-dark px-7 py-8 text-white">
+    <img
+      src="/profile-picture.png"
+      alt="João Manteigas"
+      className="mb-5 h-20 w-20 rounded-xl object-cover ring-2 ring-cyan-300/60"
+    />
+    <h1 className="text-[30px] font-semibold leading-[0.96] tracking-tight text-white">
+      João
+      <br />
+      Manteigas
+    </h1>
+    <p className="mt-3 text-[10px] font-bold uppercase leading-snug tracking-[0.16em] text-cyan-200">
+      {cvProfile.title}
+    </p>
+    <p className="mt-3 text-[11px] leading-relaxed text-slate-300">{cvProfile.subtitle}</p>
+
+    <div className="my-6 h-px bg-white/15" />
+
+    <div className="space-y-2.5 text-[10px] leading-snug text-slate-200">
+      <p>969 370 801</p>
+      <p className="break-all">joaooliveiramanteigas@gmail.com</p>
+      <p className="break-all">github.com/johndoeblocks</p>
+      <p className="break-all">linkedin.com/in/joão-manteigas</p>
+    </div>
+
+    <div className="my-6 h-px bg-white/15" />
+
+    <PdfSectionTitle icon={<Code className="h-3 w-3" />} title="Core Stack" dark />
+    <div className="mt-3">
+      <PdfTags items={flatSkills.slice(0, 30)} dark small />
+    </div>
+
+    <div className="my-6 h-px bg-white/15" />
+
+    <PdfSectionTitle icon={<Languages className="h-3 w-3" />} title="Languages" dark />
+    <div className="mt-3 space-y-1.5 text-[10px] text-slate-200">
+      <p>Portuguese · Native</p>
+      <p>English · Fluent</p>
+    </div>
+  </aside>
+);
+
+const PdfSummary = () => (
+  <section className="mb-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
+    <p className="text-[12px] leading-relaxed text-[#5f675f]">{cvProfile.summary}</p>
+    <div className="mt-3 grid grid-cols-2 gap-2">
+      {cvProfile.signals.map((signal) => (
+        <p
+          key={signal}
+          className="rounded-md border border-slate-200 bg-white px-2.5 py-2 text-[9px] font-semibold leading-relaxed text-[#17211d]"
+        >
+          {signal}
+        </p>
+      ))}
+    </div>
+  </section>
+);
+
+const PdfExperience = ({ experience }: { experience: (typeof experiences)[number] }) => (
+  <article className="grid grid-cols-[128px_1fr] gap-4">
+    <div className="space-y-2">
+      {(experience.periodDetails ??
+        experience.period.map((period) => ({ date: period, label: null }))).map((period) => (
+        <div key={period.date} className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1.5">
+          <p className="whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.08em] text-[#17211d]">
+            {period.date}
+          </p>
+          {period.label && (
+            <p className="mt-1 text-[8px] font-semibold leading-snug text-[#5f675f]">
+              {period.label}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+    <div className="border-l-2 border-slate-200 pl-4">
+      <h3 className="text-[15px] font-bold leading-tight text-[#17211d]">{experience.role}</h3>
+      <p className="mt-1 text-[11px] font-semibold text-cyan-700">{experience.company}</p>
+      <p className="mt-2 text-[11px] leading-relaxed text-[#5f675f]">{experience.summary}</p>
+      <ul className="mt-2 space-y-1.5 text-[10px] leading-relaxed text-[#5f675f]">
+        {experience.highlights.map((highlight) => (
+          <li key={highlight} className="flex gap-2">
+            <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-cyan-700" />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-2">
+        <PdfTags items={experience.stack} small />
+      </div>
+    </div>
+  </article>
+);
+
+const PdfTags = ({
+  items,
+  dark,
+  small,
+}: {
+  items: string[];
+  dark?: boolean;
+  small?: boolean;
+}) => (
+  <SkillChipList
+    items={items}
+    tone={dark ? "dark" : "light"}
+    size="pdf"
+    small={small}
+  />
+);
+
+const SkillChipList = ({
+  items,
+  tone = "light",
+  size = "web",
+  small,
+  outerClassName,
+  innerClassName,
+  chipClassName,
+}: {
+  items: string[];
+  tone?: "dark" | "light";
+  size?: "web" | "pdf";
+  small?: boolean;
+  outerClassName?: string;
+  innerClassName?: string;
+  chipClassName?: string;
+}) => {
+  const isPdf = size === "pdf";
+  const chipBase = isPdf
+    ? "inline-flex min-h-[16px] max-w-full shrink-0 items-center justify-center rounded-full px-2 text-center font-medium leading-[1.15]"
+    : "inline-flex min-h-9 max-w-full shrink-0 items-center justify-center rounded-full px-3 text-center text-xs font-medium leading-[1.15]";
+  const chipTone =
+    tone === "dark"
+      ? isPdf
+        ? "border border-cyan-300/30 bg-cyan-300/10 text-[8px] text-cyan-100"
+        : "border border-cyan-300/30 bg-cyan-300/10 text-cyan-100"
+      : isPdf
+        ? cx("bg-slate-100 text-[#5f675f]", small ? "text-[8px]" : "text-[9px]")
+        : "bg-slate-100 text-brand-muted";
+
+  return (
+    <div
+      className={cx("flex w-full justify-center", outerClassName)}
+      style={{ width: "100%" }}
+    >
+      <div
+        className={cx(
+          "flex w-full flex-wrap content-center items-center justify-center",
+          isPdf ? "gap-0" : "gap-2",
+          innerClassName,
+        )}
+        style={{
+          alignContent: "center",
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        {items.map((item) => (
+          <span
+            key={item}
+            className={cx(chipBase, chipTone, isPdf && "m-[3px]", chipClassName)}
+            style={isPdf ? { boxSizing: "border-box" } : undefined}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const cx = (...classes: Array<string | false | null | undefined>) =>
+  classes.filter(Boolean).join(" ");
+
+const PdfSectionTitle = ({
+  icon,
+  title,
+  dark,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  dark?: boolean;
+}) => (
+  <div className="flex items-center gap-2">
+    <span className={dark ? "text-cyan-300" : "text-cyan-700"}>{icon}</span>
+    <h2
+      className={
+        dark
+          ? "text-[10px] font-bold uppercase tracking-[0.16em] text-white"
+          : "text-[12px] font-bold uppercase tracking-[0.16em] text-[#17211d]"
+      }
+    >
+      {title}
+    </h2>
+    <span className={dark ? "h-px flex-1 bg-white/15" : "h-px flex-1 bg-slate-200"} />
+  </div>
+);
 
 const SectionTitle = ({
   icon,
