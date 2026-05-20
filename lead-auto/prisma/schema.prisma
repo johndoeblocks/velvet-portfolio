@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WebsiteStatus {
+  missing
+  weak
+  ok
+  unknown
+}
+
+enum Priority {
+  high
+  medium
+  low
+}
+
+enum OutreachStatus {
+  not_contacted
+  contacted
+  meeting_booked
+  not_interested
+}
+
+model Lead {
+  id             String         @id @default(cuid())
+  businessName   String
+  category       String
+  location       String
+  phone          String?
+  email          String?
+  website        String?
+  googleMapsUrl  String?
+  source         String         @default("google-places")
+  sourceId       String?
+  mapsUrl        String?
+  instagramUrl   String?
+  linkedinUrl    String?
+  rating         Float?
+  reviewCount    Int?
+  latitude       Float?
+  longitude      Float?
+  notes          String?
+  enrichmentJson Json?
+  scoringReasons String[]
+  websiteStatus  WebsiteStatus @default(unknown)
+  score          Int            @default(0)
+  priority       Priority       @default(low)
+  outreachStatus OutreachStatus @default(not_contacted)
+  lastImportedAt DateTime?
+  lastEnrichedAt DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@unique([source, sourceId])
+  @@index([location])
+  @@index([category])
+  @@index([priority])
+  @@index([outreachStatus])
+  @@index([source])
+}
