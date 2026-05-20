@@ -1,11 +1,12 @@
 "use client";
 
-import { CalendarCheck, CheckCircle2, Download, ExternalLink, Mail, MapPin, MessageSquare, Phone, RefreshCw, Search, Users } from "lucide-react";
+import { CalendarCheck, CheckCircle2, Download, ExternalLink, KeyRound, LogOut, Mail, MapPin, MessageSquare, Phone, RefreshCw, Save, Search, Trash2, Users } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import type { OutreachStatus } from "@prisma/client";
 import { generateColdMessage } from "@/lib/cold-message";
+import { signOut } from "@/lib/auth-client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,9 +26,26 @@ type Filters = {
 };
 
 type Props = {
+  user: DashboardUser;
   leads: LeadRecord[];
   filters: Filters;
+  settings: UserSettings;
   outreachSummary: OutreachSummary;
+};
+
+type DashboardUser = {
+  name: string;
+  email: string;
+};
+
+type UserSettings = {
+  leadProvider: string;
+  googlePlacesApiKeyConfigured: boolean;
+  enrichWithPlaywright: boolean;
+  defaultCountry: string;
+  defaultLocation: string;
+  defaultBusinessType: string;
+  defaultLimit: string;
 };
 
 type OutreachSummary = Record<"all" | OutreachStatus, number>;
@@ -66,10 +84,15 @@ type CountrySuggestion = Suggestion & {
   flag?: string;
 };
 
-export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
+export function LeadDashboard({ user, leads, filters, settings, outreachSummary }: Props) {
   const router = useRouter();
   const [form, setForm] = useState(filters);
+  const [settingsForm, setSettingsForm] = useState({
+    ...settings,
+    googlePlacesApiKey: ""
+  });
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isSavingSettings, setIsSavingSettings] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [locationSuggestions, setLocationSuggestions] = useState<Suggestion[]>([]);
   const [categorySuggestions, setCategorySuggestions] = useState<Suggestion[]>([]);
@@ -89,6 +112,10 @@ export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
 
   function updateForm(key: keyof Filters, value: string) {
     setForm((current) => ({ ...current, [key]: value }));
+  }
+
+  function updateSettingsForm(key: keyof typeof settingsForm, value: string | boolean) {
+    setSettingsForm((current) => ({ ...current, [key]: value }));
   }
 
   function buildParams(nextForm = form) {
@@ -188,6 +215,11 @@ export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
   }
 
   async function generateList() {
+    if (form.provider === "google-places" && !settingsForm.googlePlacesApiKeyConfigured) {
+      window.alert("Adiciona e guarda a tua Google Places API key antes de gerar leads reais.");
+      return;
+    }
+
     setIsGenerating(true);
     const response = await fetch("/api/leads/generate", {
       method: "POST",
@@ -202,6 +234,66 @@ export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
     }
     applyFilters();
     router.refresh();
+  }
+
+  async function saveSettings() {
+    setIsSavingSettings(true);
+    const response = await fetch("/api/settings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        leadProvider: settingsForm.leadProvider,
+        googlePlacesApiKey: settingsForm.googlePlacesApiKey,
+        enrichWithPlaywright: settingsForm.enrichWithPlaywright,
+        defaultCountry: form.country,
+        defaultLocation: form.location,
+        defaultBusinessType: form.businessType,
+        defaultLimit: Number(form.limit || 20)
+      })
+    });
+    setIsSavingSettings(false);
+
+    if (!response.ok) {
+      window.alert("Não foi possível guardar a configuração.");
+      return;
+    }
+
+    const payload = (await response.json()) as UserSettings;
+    setSettingsForm((current) => ({
+      ...current,
+      ...payload,
+      defaultLimit: String(payload.defaultLimit),
+      googlePlacesApiKey: ""
+    }));
+    router.refresh();
+  }
+
+  async function clearGoogleKey() {
+    setIsSavingSettings(true);
+    const response = await fetch("/api/settings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clearGooglePlacesApiKey: true })
+    });
+    setIsSavingSettings(false);
+
+    if (!response.ok) {
+      window.alert("Não foi possível remover a chave.");
+      return;
+    }
+
+    setSettingsForm((current) => ({ ...current, googlePlacesApiKeyConfigured: false, googlePlacesApiKey: "" }));
+  }
+
+  async function handleSignOut() {
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/sign-in");
+          router.refresh();
+        }
+      }
+    });
   }
 
   async function updateStatus(id: string, outreachStatus: OutreachStatus) {
@@ -231,6 +323,15 @@ export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
             <div>
               <p className="text-sm font-medium text-muted-foreground">Velvet Neuron</p>
               <h1 className="mt-1 text-3xl font-semibold tracking-normal">Prospeção local em {form.location || "Portugal"}</h1>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                <span>{user.name}</span>
+                <span>·</span>
+                <span>{user.email}</span>
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <LogOut />
+                  Sair
+                </Button>
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               <Stat label="Leads" value={stats.total} icon={<Users />} />
@@ -241,6 +342,50 @@ export function LeadDashboard({ leads, filters, outreachSummary }: Props) {
           </div>
 
           <div className="rounded-md border bg-muted/45 p-4">
+            <div className="mb-4 grid gap-3 border-b pb-4 xl:grid-cols-[minmax(260px,1fr)_180px_180px_auto_auto] xl:items-end">
+              <div>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Google Places API key</label>
+                <div className="relative">
+                  <KeyRound className="pointer-events-none absolute left-3 top-2.5 size-4 text-muted-foreground" />
+                  <Input
+                    className="pl-9"
+                    type="password"
+                    value={settingsForm.googlePlacesApiKey}
+                    onChange={(event) => updateSettingsForm("googlePlacesApiKey", event.target.value)}
+                    placeholder={settingsForm.googlePlacesApiKeyConfigured ? "Chave guardada. Escreve para substituir." : "Adiciona a tua chave Google Places"}
+                    autoComplete="off"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-muted-foreground">Provider</label>
+                <Select
+                  value={settingsForm.leadProvider}
+                  onChange={(event) => {
+                    updateSettingsForm("leadProvider", event.target.value);
+                    updateForm("provider", event.target.value);
+                  }}
+                >
+                  <option value="google-places">Google Places</option>
+                </Select>
+              </div>
+              <label className="flex h-9 items-center gap-2 rounded-md border bg-white px-3 text-sm">
+                <input
+                  type="checkbox"
+                  checked={settingsForm.enrichWithPlaywright}
+                  onChange={(event) => updateSettingsForm("enrichWithPlaywright", event.target.checked)}
+                />
+                Enriquecer websites
+              </label>
+              <Button onClick={saveSettings} disabled={isSavingSettings}>
+                <Save />
+                {isSavingSettings ? "A guardar" : "Guardar config"}
+              </Button>
+              <Button variant="outline" onClick={clearGoogleKey} disabled={isSavingSettings || !settingsForm.googlePlacesApiKeyConfigured}>
+                <Trash2 />
+                Remover chave
+              </Button>
+            </div>
             <div className="grid gap-3 lg:grid-cols-[180px_minmax(220px,1fr)_minmax(240px,1.1fr)_140px_auto_auto]">
               <AutocompleteInput
                 value={form.countryName}

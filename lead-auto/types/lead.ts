@@ -10,6 +10,7 @@ export type LeadSearchParams = {
   limit?: number;
   language?: string;
   country?: string;
+  apiKey?: string | null;
 };
 
 export type RawLead = {

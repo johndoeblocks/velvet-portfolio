@@ -60,8 +60,8 @@ export function includesSearchText(value: string | null | undefined, query: stri
   return normalizeSearchText(value).includes(normalizedQuery);
 }
 
-export function buildStructuredLeadWhere(filters: LeadFilters): Prisma.LeadWhereInput {
-  const where: Prisma.LeadWhereInput = {};
+export function buildStructuredLeadWhere(userId: string, filters: LeadFilters): Prisma.LeadWhereInput {
+  const where: Prisma.LeadWhereInput = { userId };
 
   if (filters.priority) where.priority = filters.priority as Prisma.EnumPriorityFilter["equals"];
   if (filters.outreachStatus) where.outreachStatus = filters.outreachStatus as Prisma.EnumOutreachStatusFilter["equals"];
@@ -79,17 +79,18 @@ export function matchesLeadSearch(lead: LeadRecord, filters: LeadFilters) {
   return matchesLocation && matchesBusinessType;
 }
 
-export async function findLeads(filters: LeadFilters) {
+export async function findLeads(userId: string, filters: LeadFilters) {
   const leads = await prisma.lead.findMany({
-    where: buildStructuredLeadWhere(filters),
+    where: buildStructuredLeadWhere(userId, filters),
     orderBy: [{ priority: "asc" }, { score: "desc" }, { createdAt: "desc" }]
   });
 
   return leads.filter((lead) => matchesLeadSearch(lead, filters));
 }
 
-export async function getCategorySuggestions(query: string, limit = 12) {
+export async function getCategorySuggestions(userId: string, query: string, limit = 12) {
   const dbCategories = await prisma.lead.findMany({
+    where: { userId },
     distinct: ["category"],
     select: { category: true },
     orderBy: { category: "asc" },

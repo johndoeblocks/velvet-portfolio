@@ -35,10 +35,10 @@ const DETAILS_FIELD_MASK = [
 export const googlePlacesProvider: LeadProvider = {
   name: "google-places",
   async search(params) {
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    const apiKey = params.apiKey || process.env.GOOGLE_PLACES_API_KEY;
 
     if (!apiKey) {
-      throw new Error("Missing GOOGLE_PLACES_API_KEY. Set it in .env before generating real leads.");
+      throw new Error("Missing Google Places API key. Add one in your user settings before generating real leads.");
     }
 
     const limit = Math.max(1, Math.min(params.limit ?? 20, 60));

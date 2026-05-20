@@ -2,7 +2,7 @@ import type { Prisma, WebsiteStatus } from "@prisma/client";
 import type { LeadInput, RawLead, WebsiteEnrichment } from "@/types/lead";
 import { scoreLead } from "./scoring";
 
-export function buildLeadData(rawLead: RawLead, fallbackLocation: string, enrichment?: WebsiteEnrichment | null): Prisma.LeadCreateInput {
+export function buildLeadData(userId: string, rawLead: RawLead, fallbackLocation: string, enrichment?: WebsiteEnrichment | null): Prisma.LeadUncheckedCreateInput {
   const websiteStatus = getWebsiteStatus(rawLead, enrichment);
   const scoring = scoreLead({
     ...rawLead,
@@ -11,6 +11,7 @@ export function buildLeadData(rawLead: RawLead, fallbackLocation: string, enrich
   } satisfies LeadInput);
 
   return {
+    userId,
     businessName: rawLead.name,
     category: rawLead.category ?? "unknown",
     location: rawLead.address ?? fallbackLocation,
@@ -36,7 +37,7 @@ export function buildLeadData(rawLead: RawLead, fallbackLocation: string, enrich
   };
 }
 
-export function findDuplicateWhere(rawLead: RawLead): Prisma.LeadWhereInput {
+export function findDuplicateWhere(userId: string, rawLead: RawLead): Prisma.LeadWhereInput {
   const normalizedPhone = normalizePhone(rawLead.phone);
   const website = normalizeWebsite(rawLead.website);
   const sourceId = rawLead.sourceId?.trim();
@@ -52,12 +53,13 @@ export function findDuplicateWhere(rawLead: RawLead): Prisma.LeadWhereInput {
 
   if (OR.length === 0) {
     return {
+      userId,
       businessName: { equals: rawLead.name, mode: "insensitive" },
       location: { contains: rawLead.address ?? "", mode: "insensitive" }
     };
   }
 
-  return { OR };
+  return { userId, OR };
 }
 
 export function normalizePhone(phone?: string | null) {
