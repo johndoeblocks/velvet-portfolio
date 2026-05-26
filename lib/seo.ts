@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://www.velvetneuron.com';
 export const SITE_NAME = 'Velvet Neuron';
+export const SITE_DESCRIPTION =
+  'Velvet Neuron is a senior-led digital agency in Portugal focused on AI search visibility, process automation, AI agents, custom applications, Web2/Web3 product development, and conversion-ready websites.';
+export const SITE_EMAIL = 'hello@velvetneuron.com';
+export const FOUNDER_NAME = 'João Manteigas';
+export const BRAND_SAME_AS = ['https://www.instagram.com/buildwithvelvet/'] as const;
 export const LOCALES = ['en', 'pt'] as const;
 
 export type AppLocale = (typeof LOCALES)[number];

@@ -4,7 +4,12 @@ import { DM_Mono, DM_Sans, Syne } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import Script from 'next/script';
 import { CookieConsent } from '@/components/cookie-consent';
-import { SITE_NAME, SITE_URL } from '@/lib/seo';
+import {
+  BRAND_SAME_AS,
+  FOUNDER_NAME,
+  SITE_NAME,
+  SITE_URL,
+} from '@/lib/seo';
 
 const GTM_ID = 'GTM-5HWH5NMR';
 
@@ -34,6 +39,16 @@ export const metadata: Metadata = {
   title: 'Velvet Neuron | Automação Prática para PMEs em Portugal',
   description:
     'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
+  keywords: [
+    'Velvet Neuron',
+    'Optimize for AI',
+    'AI search optimization',
+    'LLM SEO',
+    'GEO',
+    'process automation Portugal',
+    'AI agents Portugal',
+    'Next.js agency Portugal',
+  ],
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -72,6 +87,25 @@ export const metadata: Metadata = {
     description:
       'Automação de processos, agentes de IA e aplicações à medida para PMEs em Portugal. Poupe tempo, reduza erros e comece com diagnóstico gratuito.',
     images: ['/logo.png'],
+  },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      en: `${SITE_URL}/en`,
+      pt: `${SITE_URL}/pt`,
+      'x-default': `${SITE_URL}/en`,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
   appleWebApp: {
     capable: true,
@@ -128,6 +162,10 @@ export default async function RootLayout({
           '@id': `${SITE_URL}/#logo`,
         },
         description: siteDescription,
+        sameAs: BRAND_SAME_AS,
+        founder: {
+          '@id': `${SITE_URL}/#founder`,
+        },
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Lisbon',
@@ -143,6 +181,14 @@ export default async function RootLayout({
         priceRange: '$$',
         availableLanguage: ['English', 'Portuguese'],
         knowsAbout: [
+          'AI Search Optimization',
+          'LLM SEO',
+          'Generative Engine Optimization',
+          'Google AI Overviews',
+          'ChatGPT Search',
+          'Perplexity Search',
+          'Structured Data',
+          'Schema.org',
           'Process Automation',
           'AI Agents',
           'WhatsApp Business API',
@@ -153,12 +199,74 @@ export default async function RootLayout({
           'AI Automations',
           'Web Applications',
         ],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: isPortuguese ? 'Serviços da Velvet Neuron' : 'Velvet Neuron services',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: isPortuguese
+                  ? 'Otimização para Pesquisa com IA'
+                  : 'Optimize for AI Search',
+                serviceType: isPortuguese
+                  ? 'Otimização para pesquisa com IA'
+                  : 'AI search optimization',
+                url: `${SITE_URL}/${isPortuguese ? 'pt' : 'en'}/optimize-for-ai`,
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: isPortuguese ? 'Automação de Processos' : 'Process Automation',
+                serviceType: isPortuguese
+                  ? 'Automação de processos'
+                  : 'Process automation',
+                url: `${SITE_URL}/${isPortuguese ? 'pt' : 'en'}/automacao-processos`,
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: isPortuguese ? 'Agentes de IA' : 'AI Agents',
+                serviceType: isPortuguese ? 'Agentes de IA' : 'AI agents',
+                url: `${SITE_URL}/${isPortuguese ? 'pt' : 'en'}/agentes-ia`,
+              },
+            },
+          ],
+        },
         openingHoursSpecification: {
           '@type': 'OpeningHoursSpecification',
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
           opens: '09:00',
           closes: '18:00',
         },
+      },
+      {
+        '@type': 'Person',
+        '@id': `${SITE_URL}/#founder`,
+        name: FOUNDER_NAME,
+        alternateName: 'Joao Manteigas',
+        jobTitle: isPortuguese
+          ? 'Cofundador e engenheiro de produto full-stack'
+          : 'Co-Founder and Full-Stack Product Engineer',
+        url: `${SITE_URL}/${isPortuguese ? 'pt' : 'en'}/cv`,
+        worksFor: {
+          '@id': `${SITE_URL}/#organization`,
+        },
+        knowsAbout: [
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Process Automation',
+          'AI Workflows',
+          'Web3 Product Development',
+          'Technical SEO',
+          'AI Search Optimization',
+        ],
       },
     ],
   };

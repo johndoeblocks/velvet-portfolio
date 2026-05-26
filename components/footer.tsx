@@ -8,7 +8,6 @@ export const Footer: React.FC = () => {
   const t = useTranslations('footer');
   const navT = useTranslations('nav');
   const currentYear = new Date().getFullYear();
-  const emailHref = ['mailto:', 'hello', '@', 'velvetneuron.com'].join('');
 
   const socialLinks = [
     {
@@ -25,7 +24,7 @@ export const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { label: 'Home', href: '/' as const },
+    { label: t('home'), href: '/' as const },
     { label: navT('services'), href: '/#services' as const },
     { label: navT('work'), href: '/#portfolio' as const },
     { label: navT('contact'), href: '/#contact' as const },
@@ -37,6 +36,7 @@ export const Footer: React.FC = () => {
     { label: t('solutions_automation'), href: '/automacao-processos' as const },
     { label: t('solutions_web_apps'), href: '/aplicacoes-web' as const },
     { label: t('solutions_ecommerce'), href: '/sites-ecommerce' as const },
+    { label: t('solutions_ai_visibility'), href: '/optimize-for-ai' as const },
   ];
 
   return (
@@ -116,9 +116,9 @@ export const Footer: React.FC = () => {
             </h3>
             <div className="mt-5 space-y-3 text-sm text-brand-muted">
               <p>{t('location')}</p>
-              <a href={emailHref} className="block transition-colors hover:text-brand-ink">
+              <Link href="/#contact" className="block transition-colors hover:text-brand-ink">
                 {t('email_label')}
-              </a>
+              </Link>
               <div className="mt-4 flex gap-3">
                 <Link
                   href="/privacy"

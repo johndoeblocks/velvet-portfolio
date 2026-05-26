@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { AI_SEARCH_CRAWLERS } from '@/lib/ai-optimization';
 import { SITE_URL } from '@/lib/seo';
 
 const BASE_URL = SITE_URL.replace(/\/$/, '');
@@ -9,13 +10,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/'],
+        disallow: ['/api/'],
       },
-      { userAgent: 'GPTBot', allow: '/' },
-      { userAgent: 'ChatGPT-User', allow: '/' },
-      { userAgent: 'PerplexityBot', allow: '/' },
-      { userAgent: 'ClaudeBot', allow: '/' },
-      { userAgent: 'Google-Extended', allow: '/' },
+      ...AI_SEARCH_CRAWLERS.map((userAgent) => ({
+        userAgent,
+        allow: '/',
+      })),
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
     host: BASE_URL,

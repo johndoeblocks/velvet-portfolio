@@ -168,7 +168,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
+        name: activeLocale === 'pt' ? 'Início' : 'Home',
         item: buildLocalizedUrl(activeLocale, '/'),
       },
       {

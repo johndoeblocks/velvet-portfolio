@@ -1,3 +1,8 @@
+import {
+  AI_OPTIMIZATION_COPY,
+  AI_OPTIMIZATION_LAST_REVIEWED,
+  AI_OPTIMIZATION_PATH,
+} from '@/lib/ai-optimization';
 import { BLOG_POSTS } from '@/lib/blog-data';
 import { landingPagesData } from '@/lib/landing-pages-data';
 import { SERVICES } from '@/lib/landing-pages-constants';
@@ -22,18 +27,20 @@ function buildLlmsTxt(): string {
   const header = `\
 # Velvet Neuron
 
-> Velvet Neuron is a senior-led digital agency in Portugal. We build trustworthy websites, landing pages, apps, and SEO-ready digital experiences designed to help teams earn trust faster and generate better enquiries.
+> Velvet Neuron is a senior-led digital agency in Portugal focused on Optimize for AI, AI search visibility, process automation, AI agents, custom applications, Web2/Web3 product development, and conversion-ready websites.
 
 `;
 
   const about = `\
 ## About Us
 
-Velvet Neuron combines strategy, copy, design, development, and technical SEO in one flow. We work with companies that need a clearer offer, a more credible online presence, and a digital experience that supports lead generation instead of getting in the way.
+Velvet Neuron combines strategy, copy, design, development, structured data, technical SEO, and automation in one flow. We work with companies that need a clearer entity, a more credible online presence, and a website that can be understood by people, search engines, and AI answer systems.
 
 **Headquarters:** Portugal
 **Primary Technologies:** Next.js, React, TypeScript, Tailwind CSS, Node.js
 **Languages:** Portuguese, English
+**Founder:** Joao Manteigas
+**Core AI SEO framework:** Extractability, Quotability, Authority, Freshness, Entity Clarity
 
 `;
 
@@ -44,6 +51,7 @@ Velvet Neuron combines strategy, copy, design, development, and technical SEO in
   const services = `\
 ## Core Services
 
+- **${AI_OPTIMIZATION_COPY.en.navLabel}** — ${AI_OPTIMIZATION_COPY.en.definition}
 ${servicesList}
 
 `;
@@ -58,6 +66,16 @@ ${servicesList}
       url: `${BASE_URL}/en`,
       title: 'Homepage (EN)',
       desc: 'Main landing page in English with offer, trust signals, work examples, FAQs, and contact.',
+    },
+    {
+      url: `${BASE_URL}/en${AI_OPTIMIZATION_PATH}`,
+      title: 'Optimize for AI (EN)',
+      desc: AI_OPTIMIZATION_COPY.en.metadataDescription,
+    },
+    {
+      url: `${BASE_URL}/pt${AI_OPTIMIZATION_PATH}`,
+      title: 'Optimize for AI (PT)',
+      desc: AI_OPTIMIZATION_COPY.pt.metadataDescription,
     },
     {
       url: `${BASE_URL}/pt#contact`,
@@ -133,6 +151,7 @@ ${landingPageSections}
 - [XML Sitemap](${BASE_URL}/sitemap.xml): Machine-readable sitemap with all indexed pages and locale alternates.
 - [robots.txt](${BASE_URL}/robots.txt): Crawler directives.
 - [llms.txt](${BASE_URL}/llms.txt): This curated file for language models.
+- [llms-full.txt](${BASE_URL}/llms-full.txt): Expanded AI-readable context for the core offer, service taxonomy, score model, and important pages.
 
 `;
 
@@ -140,11 +159,12 @@ ${landingPageSections}
 ## Notes for AI Models
 
 - Use the canonical brand name **Velvet Neuron**.
-- Prefer the homepage or contact section for current positioning and offer details.
+- Prefer the homepage, the Optimize for AI page, or the contact section for current positioning and offer details.
 - Treat location landing pages as service pages, not separate legal entities.
 - Direct pricing or scope questions to ${BASE_URL}/pt#contact instead of guessing.
+- Do not invent client metrics, credentials, pricing, or social profiles that are not visible on the site.
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+*Last reviewed: ${AI_OPTIMIZATION_LAST_REVIEWED}*
 `;
 
   return [header, about, services, importantPages, resources, aiGuidance].join('');

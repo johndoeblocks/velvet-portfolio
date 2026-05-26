@@ -80,8 +80,11 @@ export const ContactSection: React.FC = () => {
     'mt-2 w-full rounded-2xl border border-brand-border bg-brand-surface px-4 py-3.5 text-sm text-brand-ink placeholder:text-brand-muted/60 focus:border-brand-primary/40 focus:outline-none focus:ring-4 focus:ring-brand-primary/10';
 
   const expectationItems = [t('detail_1'), t('detail_2'), t('detail_3')];
-  const contactEmail = ['hello', '@', 'velvetneuron.com'].join('');
-  const contactEmailHref = `mailto:${contactEmail}`;
+  const openEmailClient = () => {
+    const contactEmail = ['hello', '@', 'velvetneuron.com'].join('');
+    trackEvent('email_click', contactEmail);
+    window.location.href = ['mailto:', contactEmail].join('');
+  };
 
   return (
     <section id="contact" className="px-6 pb-24 pt-24 sm:pb-28 sm:pt-28">
@@ -125,14 +128,14 @@ export const ContactSection: React.FC = () => {
                 </p>
 
                 <div className="mt-4 space-y-3 text-sm">
-                  <a
-                    href={contactEmailHref}
-                    onClick={() => trackEvent('email_click', contactEmail)}
-                    className="flex items-center gap-2.5 text-white/86 transition-colors hover:text-white"
+                  <button
+                    type="button"
+                    onClick={openEmailClient}
+                    className="flex items-center gap-2.5 text-left text-white/86 transition-colors hover:text-white"
                   >
                     <Mail className="h-4 w-4 text-white/60" />
                     <span>{t('form.email_cta')}</span>
-                  </a>
+                  </button>
                   <a
                     href="https://wa.me/351969370801"
                     target="_blank"

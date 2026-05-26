@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { AI_OPTIMIZATION_LAST_REVIEWED, AI_OPTIMIZATION_PATH } from '@/lib/ai-optimization';
 import { BLOG_POSTS, getBlogUrl } from '@/lib/blog-data';
 import { landingPagesData } from '@/lib/landing-pages-data';
 import { LOCALES, buildLocalizedUrl } from '@/lib/seo';
@@ -7,28 +8,28 @@ export const dynamic = 'force-static';
 
 const STATIC_PATHS: {
   path: string;
+  lastModified: string;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[0]['changeFrequency'];
 }[] = [
-  { path: '', priority: 1.0, changeFrequency: 'weekly' },
-  { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
-  { path: '/agentes-ia', priority: 0.85, changeFrequency: 'monthly' },
-  { path: '/automacao-processos', priority: 0.85, changeFrequency: 'monthly' },
-  { path: '/aplicacoes-web', priority: 0.85, changeFrequency: 'monthly' },
-  { path: '/sites-ecommerce', priority: 0.85, changeFrequency: 'monthly' },
-  { path: '/cv', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/privacy', priority: 0.4, changeFrequency: 'yearly' },
-  { path: '/terms', priority: 0.4, changeFrequency: 'yearly' },
+  { path: '', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 1.0, changeFrequency: 'weekly' },
+  { path: AI_OPTIMIZATION_PATH, lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.92, changeFrequency: 'monthly' },
+  { path: '/blog', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/agentes-ia', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/automacao-processos', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/aplicacoes-web', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/sites-ecommerce', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/cv', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/privacy', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.4, changeFrequency: 'yearly' },
+  { path: '/terms', lastModified: AI_OPTIMIZATION_LAST_REVIEWED, priority: 0.4, changeFrequency: 'yearly' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const today = new Date().toISOString();
-
   const staticEntries: MetadataRoute.Sitemap = STATIC_PATHS.flatMap(
-    ({ path, priority, changeFrequency }) =>
+    ({ path, lastModified, priority, changeFrequency }) =>
       LOCALES.map((locale) => ({
         url: buildLocalizedUrl(locale, path || '/'),
-        lastModified: today,
+        lastModified,
         changeFrequency,
         priority,
         alternates: {
@@ -44,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const landingEntries: MetadataRoute.Sitemap = landingPagesData.flatMap((page) =>
     LOCALES.map((locale) => ({
       url: buildLocalizedUrl(locale, `/${page.slug}`),
-      lastModified: today,
+      lastModified: AI_OPTIMIZATION_LAST_REVIEWED,
       changeFrequency: 'monthly' as const,
       priority: 0.85,
       alternates: {

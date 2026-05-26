@@ -4,11 +4,13 @@ import { HeroSection } from '@/components/hero-section';
 import { TrustSection } from '@/components/trust-section';
 import { PromoVideoSection } from '@/components/promo-video-section';
 import { ServicesSection } from '@/components/services-section';
+import { AiOptimizationSection } from '@/components/ai-optimization-section';
 import { PortfolioSection } from '@/components/portfolio-section';
 import { ProcessSection } from '@/components/process-section';
 import { FAQ_SECTION_KEYS, FAQSection } from '@/components/faq-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
+import { toAppLocale } from '@/lib/seo';
 
 type HomeProps = {
   params: Promise<{
@@ -18,6 +20,7 @@ type HomeProps = {
 
 export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
+  const activeLocale = toAppLocale(locale);
   const t = await getTranslations({ locale, namespace: 'faq' });
 
   const faqSchema = {
@@ -46,6 +49,7 @@ export default async function Home({ params }: HomeProps) {
       {/* <TrustSection /> */}
       <PromoVideoSection />
       <ServicesSection />
+      <AiOptimizationSection locale={activeLocale} />
       <PortfolioSection />
       <ProcessSection />
       <FAQSection />

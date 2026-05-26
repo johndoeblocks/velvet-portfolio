@@ -22,7 +22,7 @@ export function PromoVideoPlayer() {
       className="aspect-video w-full rounded-[1.25rem] bg-brand-dark object-cover"
       src="/videos/VSL.mp4"
       controls
-      poster="/videos/VSL-poster.webp"
+      poster="/videos/VSL-poster-640.webp"
       preload="metadata"
       playsInline
       onPlay={() => trackVideoEvent('video_start')}

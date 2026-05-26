@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
+import { JsonLd } from '@/components/json-ld';
 import { CvPage } from '@/components/cv-page';
+import { flatSkills } from '@/lib/cv-data';
 import {
+  SITE_NAME,
+  SITE_URL,
   buildLocaleAlternates,
   buildLocalizedUrl,
   toAppLocale,
@@ -19,11 +23,11 @@ export async function generateMetadata({
   const activeLocale = toAppLocale(locale);
   const isPortuguese = activeLocale === 'pt';
   const title = isPortuguese
-    ? 'CV de João Manteigas | Velvet Neuron'
-    : 'Joao Manteigas CV | Full-Stack Engineer (FE Heavy)';
+    ? 'João Manteigas | Cofundador da Velvet Neuron'
+    : 'João Manteigas | Velvet Neuron Founder Profile';
   const description = isPortuguese
-    ? 'Curriculum Vitae de João Manteigas, cofundador da Velvet Neuron e Full-Stack Engineer FE-heavy especializado em Next.js, React, TypeScript, React Native, automação, analytics, AWS e produtos Web3.'
-    : 'Curriculum Vitae of Joao Manteigas, Velvet Neuron co-founder and FE-heavy full-stack engineer specialised in Next.js, React, TypeScript, React Native, automation, analytics, AWS, and Web3 products.';
+    ? 'Perfil de João Manteigas, cofundador da Velvet Neuron e engenheiro de produto full-stack especializado em Next.js, automação, IA aplicada, SEO técnico e produtos Web2/Web3.'
+    : 'Profile of João Manteigas, Velvet Neuron co-founder and full-stack product engineer focused on Next.js, automation, applied AI, technical SEO, and Web2/Web3 products.';
 
   return {
     title,
@@ -69,6 +73,57 @@ export async function generateMetadata({
   };
 }
 
-export default function LocalizedCvPage() {
-  return <CvPage />;
+export default async function LocalizedCvPage({ params }: PageProps) {
+  const { locale } = await params;
+  const activeLocale = toAppLocale(locale);
+  const isPortuguese = activeLocale === 'pt';
+  const pageUrl = buildLocalizedUrl(activeLocale, '/cv');
+  const profileDescription = isPortuguese
+    ? 'João Manteigas é cofundador da Velvet Neuron e engenheiro de produto full-stack focado em websites preparados para IA, automação, ferramentas internas, SEO técnico e produtos Web2/Web3.'
+    : 'João Manteigas is the co-founder of Velvet Neuron and a full-stack product engineer focused on AI-search ready websites, automation, internal tools, technical SEO, and Web2/Web3 products.';
+  const jobTitle = isPortuguese
+    ? 'Cofundador e engenheiro de produto full-stack'
+    : 'Co-founder and full-stack product engineer';
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': `${pageUrl}#profile`,
+        url: pageUrl,
+        name: isPortuguese
+          ? 'Perfil de João Manteigas'
+          : 'João Manteigas Founder Profile',
+        description: profileDescription,
+        inLanguage: activeLocale === 'pt' ? 'pt-PT' : 'en',
+        isPartOf: {
+          '@id': `${SITE_URL}/#website`,
+        },
+        mainEntity: {
+          '@id': `${SITE_URL}/#founder`,
+        },
+      },
+      {
+        '@type': 'Person',
+        '@id': `${SITE_URL}/#founder`,
+        name: 'João Manteigas',
+        alternateName: 'Joao Manteigas',
+        jobTitle,
+        description: profileDescription,
+        url: pageUrl,
+        worksFor: {
+          '@id': `${SITE_URL}/#organization`,
+          name: SITE_NAME,
+        },
+        knowsAbout: flatSkills,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <CvPage locale={activeLocale} />
+      <JsonLd data={jsonLd} />
+    </>
+  );
 }

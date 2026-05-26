@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { JsonLd } from '@/components/json-ld';
 import { Header } from '@/components/header';
 import { LandingHero } from '@/components/landing-hero';
 import { LandingSeoContent } from '@/components/landing-seo-content';
@@ -19,6 +20,7 @@ import {
 import { LOCATIONS, SERVICES } from '@/lib/landing-pages-constants';
 import {
   LOCALES,
+  SITE_URL,
   buildLocaleAlternates,
   buildLocalizedUrl,
   toAppLocale,
@@ -210,6 +212,77 @@ export default async function LandingPage({ params }: PageProps) {
   const serviceLabel = getLocalizedServiceLabel(activeLocale, page.service);
   const locationLabel = getLocalizedLocationLabel(activeLocale, page.location);
   const tagline = getLocalizedTagline(activeLocale, page.service, serviceConfig.tagline);
+  const localizedMetadata = getLocalizedMetadata(
+    activeLocale,
+    serviceLabel,
+    locationLabel,
+    page.metaDescription
+  );
+  const pageUrl = buildLocalizedUrl(activeLocale, `/${page.slug}`);
+  const serviceId = `${pageUrl}#service`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: localizedMetadata.title,
+        description: localizedMetadata.description,
+        inLanguage: activeLocale === 'pt' ? 'pt-PT' : 'en',
+        isPartOf: {
+          '@id': `${SITE_URL}/#website`,
+        },
+        mainEntity: {
+          '@id': serviceId,
+        },
+      },
+      {
+        '@type': 'Service',
+        '@id': serviceId,
+        name:
+          activeLocale === 'pt'
+            ? `${capitalizeFirst(serviceLabel)} em ${locationLabel}`
+            : `${capitalizeFirst(serviceLabel)} in ${locationLabel}`,
+        description: localizedMetadata.description,
+        serviceType: serviceLabel,
+        provider: {
+          '@id': `${SITE_URL}/#organization`,
+        },
+        areaServed: {
+          '@type': 'City',
+          name: locationLabel,
+        },
+        url: pageUrl,
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          url: buildLocalizedUrl(activeLocale, '/#contact'),
+          itemOffered: {
+            '@id': serviceId,
+          },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: activeLocale === 'pt' ? 'Início' : 'Home',
+            item: buildLocalizedUrl(activeLocale, '/'),
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: localizedMetadata.title,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-brand-paper text-brand-ink noise">
@@ -248,6 +321,7 @@ export default async function LandingPage({ params }: PageProps) {
 
       <ContactSection />
       <Footer />
+      <JsonLd data={jsonLd} />
     </main>
   );
 }

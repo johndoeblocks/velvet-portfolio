@@ -18,6 +18,7 @@ export const Header: React.FC = () => {
     '/automacao-processos',
     '/aplicacoes-web',
     '/sites-ecommerce',
+    '/optimize-for-ai',
     '/blog',
     '/privacy',
     '/terms',
@@ -72,6 +73,9 @@ export const Header: React.FC = () => {
               </Link>
               <Link href="/sites-ecommerce" className="rounded-xl px-4 py-2.5 text-sm font-medium text-brand-muted transition-colors hover:bg-brand-paper hover:text-brand-ink">
                 {fT('solutions_ecommerce')}
+              </Link>
+              <Link href="/optimize-for-ai" className="rounded-xl px-4 py-2.5 text-sm font-medium text-brand-muted transition-colors hover:bg-brand-paper hover:text-brand-ink">
+                {fT('solutions_ai_visibility')}
               </Link>
             </div>
           </div>
@@ -150,6 +154,9 @@ export const Header: React.FC = () => {
           </Link>
           <Link href="/sites-ecommerce" className="rounded-2xl border border-transparent px-4 py-2 text-sm font-medium text-brand-muted transition-colors hover:border-brand-border hover:bg-white hover:text-brand-ink" onClick={() => setMenuOpen(false)}>
             {fT('solutions_ecommerce')}
+          </Link>
+          <Link href="/optimize-for-ai" className="rounded-2xl border border-transparent px-4 py-2 text-sm font-medium text-brand-muted transition-colors hover:border-brand-border hover:bg-white hover:text-brand-ink" onClick={() => setMenuOpen(false)}>
+            {fT('solutions_ai_visibility')}
           </Link>
           <div className="my-2 h-px w-full bg-brand-border" />
           {navItems.map((item) => (

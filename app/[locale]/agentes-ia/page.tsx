@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { JsonLd } from '@/components/json-ld';
 import { AgentesIAClient } from './client';
+import { buildServicePageJsonLd } from '@/lib/service-schema';
 import {
   buildLocaleAlternates,
   buildLocalizedUrl,
@@ -39,6 +41,32 @@ export async function generateMetadata({
 }
 
 export default async function AgentesIAPage({ params }: PageProps) {
-  await params;
-  return <AgentesIAClient />;
+  const { locale } = await params;
+  const activeLocale = toAppLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'agentesIA' });
+  const faqItems = [
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') },
+    { question: t('faq_4_q'), answer: t('faq_4_a') },
+  ];
+  const jsonLd = buildServicePageJsonLd({
+    locale: activeLocale,
+    path: '/agentes-ia',
+    name: t('hero_title'),
+    description: t('hero_description'),
+    breadcrumbName: t('breadcrumb'),
+    serviceType:
+      activeLocale === 'pt'
+        ? 'Agentes de IA e automação conversacional'
+        : 'AI agents and conversational automation',
+    faqItems,
+  });
+
+  return (
+    <>
+      <AgentesIAClient />
+      <JsonLd data={jsonLd} />
+    </>
+  );
 }
